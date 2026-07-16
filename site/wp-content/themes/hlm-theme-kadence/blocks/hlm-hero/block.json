@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/hero",
+  "title": "Hero - Lead Capture",
+  "category": "hlm-blocks",
+  "icon": "cover-image",
+  "description": "Hero section with headline and lead capture form.",
+  "keywords": ["hero", "lead", "form"],
+  "supports": { "align": ["wide", "full"], "anchor": true, "html": false },
+  "attributes": {
+    "variant": { "type": "string", "default": "light" },
+    "overline": { "type": "string", "default": "Education Lead Generation" },
+    "headline": { "type": "string", "default": "Connect With Your Future Students" },
+    "description": {
+      "type": "string",
+      "default": "Whether you are a student seeking the perfect program, a university looking to expand your reach, or a Berkeley partner - we bridge the gap between ambition and opportunity."
+    },
+    "primaryCtaText": { "type": "string", "default": "Get Started" },
+    "primaryCtaUrl": { "type": "string", "default": "#form" },
+    "secondaryCtaText": { "type": "string", "default": "Our Services" },
+    "secondaryCtaUrl": { "type": "string", "default": "/services/" },
+    "trustHighlight": { "type": "string", "default": "10,000+" },
+    "trustText": { "type": "string", "default": "students connected with programs" },
+    "avatarUrls": {
+      "type": "array",
+      "default": [
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+      ]
+    },
+    "showLeadForm": { "type": "boolean", "default": true },
+    "mediaType": { "type": "string", "default": "image" },
+    "mediaImageUrl": {
+      "type": "string",
+      "default": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&h=1080&fit=crop"
+    },
+    "mediaImageId": { "type": "number", "default": 0 },
+    "mediaImageAlt": { "type": "string", "default": "Students collaborating on a university campus" },
+    "mediaVideoUrl": { "type": "string", "default": "theme:assets/hlm/media/hero-demo.mp4" },
+    "mediaPosterUrl": {
+      "type": "string",
+      "default": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&h=1080&fit=crop"
+    },
+    "mediaPlaceholderLabel": { "type": "string", "default": "University Campus Video" },
+    "mediaShowOverlay": { "type": "boolean", "default": true },
+    "mediaOverlayStrength": { "type": "string", "default": "medium" }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

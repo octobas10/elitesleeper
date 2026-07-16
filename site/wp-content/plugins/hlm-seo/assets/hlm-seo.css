@@ -1,0 +1,249 @@
+/**
+ * HLM SEO Ecosystem - theme-agnostic styles.
+ */
+
+.hlm-seo-page-links {
+	margin: 0 0 1.25rem;
+	font-size: 0.9rem;
+}
+
+.hlm-seo-page-links--cta {
+	margin: 2rem 0 0;
+	padding-top: 1.25rem;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.hlm-seo-page-links a {
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.hlm-seo-page-links a:hover {
+	text-decoration: underline;
+}
+
+.hlm-seo-faq {
+	margin: 2.5rem 0 0;
+	padding-top: 2rem;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.hlm-seo-faq h2 {
+	margin: 0 0 1rem;
+	font-size: 1.35rem;
+}
+
+.hlm-seo-faq__list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.hlm-seo-faq__item {
+	margin: 0;
+	padding: 0;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 8px;
+	background: #fff;
+}
+
+.hlm-seo-faq__question {
+	display: block;
+	padding: 0.875rem 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	list-style: none;
+}
+
+.hlm-seo-faq__question::-webkit-details-marker {
+	display: none;
+}
+
+.hlm-seo-faq__answer p {
+	margin: 0;
+	padding: 0 1rem 0.875rem;
+	font-size: 0.95rem;
+	opacity: 0.9;
+}
+
+.hlm-seo-breadcrumbs {
+	margin: 0 0 1.5rem;
+	font-size: 0.875rem;
+}
+
+.hlm-seo-breadcrumbs__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem 0.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.hlm-seo-breadcrumbs__item:not(:last-child)::after {
+	content: "/";
+	margin-left: 0.5rem;
+	opacity: 0.5;
+}
+
+.hlm-seo-breadcrumbs a {
+	text-decoration: none;
+}
+
+.hlm-seo-breadcrumbs a:hover {
+	text-decoration: underline;
+}
+
+.hlm-seo-cluster-nav {
+	margin: 0 0 1.5rem;
+	padding: 0.75rem 1rem;
+	border-left: 3px solid currentColor;
+	background: rgba(0, 0, 0, 0.04);
+	font-size: 0.9rem;
+}
+
+.hlm-seo-cluster-nav__links a {
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.hlm-seo-cluster-nav__links a:hover {
+	text-decoration: underline;
+}
+
+.hlm-seo-sources {
+	margin: 2rem 0 0;
+	padding: 1.25rem;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 6px;
+	font-size: 0.9rem;
+}
+
+.hlm-seo-sources h3 {
+	margin: 0 0 0.75rem;
+	font-size: 1rem;
+}
+
+.hlm-seo-sources ul {
+	margin: 0;
+	padding-left: 1.25rem;
+}
+
+.hlm-seo-related {
+	margin: 2.5rem 0 0;
+	padding-top: 2rem;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.hlm-seo-related__title {
+	margin: 0 0 1rem;
+	font-size: 1.25rem;
+}
+
+.hlm-seo-related__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 1rem;
+}
+
+.hlm-seo-related__list a {
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.hlm-seo-related__list a:hover {
+	text-decoration: underline;
+}
+
+.hlm-seo-related__list p {
+	margin: 0.25rem 0 0;
+	font-size: 0.9rem;
+	opacity: 0.8;
+}
+
+.hlm-seo-conversion {
+	margin: 2.5rem 0 0;
+	padding: 1.5rem;
+	border-radius: 8px;
+	background: linear-gradient(135deg, rgba(0, 51, 102, 0.06), rgba(201, 169, 110, 0.12));
+	text-align: center;
+}
+
+.hlm-seo-conversion h2 {
+	margin: 0 0 0.5rem;
+	font-size: 1.35rem;
+}
+
+.hlm-seo-conversion p {
+	margin: 0 0 1rem;
+}
+
+.hlm-seo-conversion__cta {
+	display: inline-block;
+	padding: 0.75rem 1.5rem;
+	border-radius: 4px;
+	background: #c9a96e;
+	color: #001520;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.hlm-seo-conversion__cta:hover {
+	background: #d4bc8e;
+}
+
+.hlm-seo-sticky-cta {
+	position: fixed;
+	right: 1.5rem;
+	bottom: 1.5rem;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.75rem 1rem;
+	border-radius: 8px;
+	background: #002536;
+	color: #fff;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hlm-seo-sticky-cta__text {
+	margin: 0;
+	font-size: 0.85rem;
+}
+
+.hlm-seo-sticky-cta__btn {
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	background: #c9a96e;
+	color: #001520;
+	font-weight: 600;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+	.hlm-seo-sticky-cta {
+		left: 1rem;
+		right: 1rem;
+		flex-direction: column;
+		text-align: center;
+	}
+}
+
+.hlm-seo-intro {
+	padding-top: 2rem;
+	padding-bottom: 0;
+}
+
+.hlm-seo-intro__body {
+	max-width: 48rem;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.hlm-seo-intro__body p {
+	margin: 0;
+}

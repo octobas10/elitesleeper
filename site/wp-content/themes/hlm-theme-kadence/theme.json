@@ -1,0 +1,331 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"color": {
+			"custom": true,
+			"defaultPalette": false,
+			"link": true,
+			"palette": [
+				{
+					"name": "HLM Primary",
+					"slug": "hlm-primary",
+					"color": "#003366"
+				},
+				{
+					"name": "HLM Secondary",
+					"slug": "hlm-secondary",
+					"color": "#4A90D9"
+				},
+				{
+					"name": "HLM Accent",
+					"slug": "hlm-accent",
+					"color": "#D4AF37"
+				},
+				{
+					"name": "HLM Neutral",
+					"slug": "hlm-neutral",
+					"color": "#2C2C2C"
+				},
+				{
+					"name": "HLM Light",
+					"slug": "hlm-light",
+					"color": "#F5F5F5"
+				},
+				{
+					"name": "Navy 950",
+					"slug": "hlm-navy-950",
+					"color": "#001520"
+				},
+				{
+					"name": "Navy 900",
+					"slug": "hlm-navy-900",
+					"color": "#002536"
+				},
+				{
+					"name": "Navy 800",
+					"slug": "hlm-navy-800",
+					"color": "#003A52"
+				},
+				{
+					"name": "Navy 700",
+					"slug": "hlm-navy-700",
+					"color": "#004060"
+				},
+				{
+					"name": "Navy 600",
+					"slug": "hlm-navy-600",
+					"color": "#005A7A"
+				},
+				{
+					"name": "Gold 500",
+					"slug": "hlm-gold-500",
+					"color": "#A68B4B"
+				},
+				{
+					"name": "Gold 400",
+					"slug": "hlm-gold-400",
+					"color": "#C9A96E"
+				},
+				{
+					"name": "Gold 300",
+					"slug": "hlm-gold-300",
+					"color": "#D4BC8E"
+				},
+				{
+					"name": "Gold 200",
+					"slug": "hlm-gold-200",
+					"color": "#E0D0B0"
+				},
+				{
+					"name": "Cream",
+					"slug": "hlm-cream",
+					"color": "#E8E4D9"
+				},
+				{
+					"name": "Cream Dark",
+					"slug": "hlm-cream-dark",
+					"color": "#D8D4C9"
+				},
+				{
+					"name": "Cream 100",
+					"slug": "hlm-cream-100",
+					"color": "#F2F0EB"
+				},
+				{
+					"name": "White",
+					"slug": "hlm-white",
+					"color": "#FFFFFF"
+				},
+				{
+					"name": "Gray 700",
+					"slug": "hlm-gray-700",
+					"color": "#2C2C2C"
+				},
+				{
+					"name": "Gray 500",
+					"slug": "hlm-gray-500",
+					"color": "#6B7280"
+				},
+				{
+					"name": "Gray 400",
+					"slug": "hlm-gray-400",
+					"color": "#9CA3AF"
+				},
+				{
+					"name": "Gray 300",
+					"slug": "hlm-gray-300",
+					"color": "#D1D5DB"
+				},
+				{
+					"name": "Success",
+					"slug": "hlm-success",
+					"color": "#059669"
+				},
+				{
+					"name": "Accent (Kadence 1)",
+					"slug": "theme-palette1",
+					"color": "#4A90D9"
+				},
+				{
+					"name": "Gold (Kadence 2)",
+					"slug": "theme-palette2",
+					"color": "#D4AF37"
+				},
+				{
+					"name": "Charcoal (Kadence 3)",
+					"slug": "theme-palette3",
+					"color": "#2C2C2C"
+				},
+				{
+					"name": "Strong Text (Kadence 4)",
+					"slug": "theme-palette4",
+					"color": "#374151"
+				},
+				{
+					"name": "Medium Text (Kadence 5)",
+					"slug": "theme-palette5",
+					"color": "#6B7280"
+				},
+				{
+					"name": "Subtle Text (Kadence 6)",
+					"slug": "theme-palette6",
+					"color": "#9CA3AF"
+				},
+				{
+					"name": "Off-White (Kadence 7)",
+					"slug": "theme-palette7",
+					"color": "#F5F5F5"
+				},
+				{
+					"name": "White (Kadence 8)",
+					"slug": "theme-palette8",
+					"color": "#FFFFFF"
+				},
+				{
+					"name": "Surface (Kadence 9)",
+					"slug": "theme-palette9",
+					"color": "#FFFFFF"
+				},
+				{
+					"name": "Academic Blue (Kadence 10)",
+					"slug": "theme-palette10",
+					"color": "#003366"
+				},
+				{
+					"name": "Success (Kadence 11)",
+					"slug": "theme-palette11",
+					"color": "#13612E"
+				},
+				{
+					"name": "Info (Kadence 12)",
+					"slug": "theme-palette12",
+					"color": "#4A90D9"
+				},
+				{
+					"name": "Alert (Kadence 13)",
+					"slug": "theme-palette13",
+					"color": "#B82105"
+				},
+				{
+					"name": "Warning (Kadence 14)",
+					"slug": "theme-palette14",
+					"color": "#F7630C"
+				},
+				{
+					"name": "Rating (Kadence 15)",
+					"slug": "theme-palette15",
+					"color": "#D4AF37"
+				}
+			]
+		},
+		"custom": {
+			"hlm": {
+				"space": {
+					"xs": "0.5rem",
+					"sm": "1rem",
+					"md": "1.5rem",
+					"lg": "2.5rem",
+					"xl": "4rem",
+					"2xl": "6rem"
+				},
+				"radius": {
+					"sm": "4px",
+					"md": "8px",
+					"lg": "16px"
+				},
+				"layout": {
+					"header-height": "72px",
+					"hero-offset": "16px"
+				},
+				"motion": {
+					"ease-out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+					"transition": "0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+				}
+			}
+		},
+		"layout": {
+			"contentSize": "1280px",
+			"wideSize": "1440px",
+			"fullSize": "none"
+		},
+		"spacing": {
+			"blockGap": null,
+			"margin": true,
+			"padding": true,
+			"units": ["px", "em", "rem", "vh", "vw", "%"]
+		},
+		"typography": {
+			"customFontSize": true,
+			"fontFamilies": [
+				{
+					"name": "HLM Heading",
+					"slug": "hlm-heading",
+					"fontFamily": "Montserrat, system-ui, -apple-system, sans-serif"
+				},
+				{
+					"name": "HLM Body",
+					"slug": "hlm-body",
+					"fontFamily": "Inter, system-ui, -apple-system, sans-serif"
+				},
+				{
+					"name": "HLM Display",
+					"slug": "hlm-display",
+					"fontFamily": "Playfair Display, Georgia, serif"
+				}
+			],
+			"fontSizes": [
+				{
+					"name": "Small",
+					"slug": "small",
+					"size": "0.875rem"
+				},
+				{
+					"name": "Medium",
+					"slug": "medium",
+					"size": "1rem"
+				},
+				{
+					"name": "Large",
+					"slug": "large",
+					"size": "1.125rem"
+				},
+				{
+					"name": "XL",
+					"slug": "xl",
+					"size": "clamp(2rem, 4vw, 3rem)"
+				},
+				{
+					"name": "Display",
+					"slug": "display",
+					"size": "clamp(2.5rem, 5vw, 4rem)"
+				}
+			],
+			"lineHeight": true
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--hlm-light)",
+			"text": "var(--wp--preset--color--hlm-neutral)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--hlm-body)",
+			"fontSize": "var(--wp--preset--font-size--medium)",
+			"lineHeight": "1.6"
+		},
+		"elements": {
+			"button": {
+				"spacing": {
+					"padding": false
+				},
+				"border": {
+					"width": false
+				},
+				"color": {
+					"background": false,
+					"text": false
+				},
+				"typography": {
+					"fontFamily": false,
+					"fontSize": false,
+					"lineHeight": false,
+					"textDecoration": false
+				}
+			},
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--hlm-heading)",
+					"fontWeight": "700"
+				}
+			}
+		}
+	}
+}

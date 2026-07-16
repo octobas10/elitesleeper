@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/partner-showcase",
+  "title": "Partner Showcase",
+  "category": "hlm-blocks",
+  "icon": "groups",
+  "description": "Featured partnership section with image, stats, and badge.",
+  "keywords": ["partner", "showcase", "YGO"],
+  "supports": { "align": ["wide", "full"], "anchor": true, "html": false },
+  "attributes": {
+    "variant": { "type": "string", "default": "partner" },
+    "imagePosition": { "type": "string", "default": "right" },
+    "overline": { "type": "string", "default": "Featured Partnership" },
+    "headline": { "type": "string", "default": "YGO - Youth Guidance Organization" },
+    "content": {
+      "type": "string",
+      "default": "Higher Learning Marketers is proud to partner with YGO, a leading organization dedicated to guiding young people toward educational and career success.\n\nThrough this strategic affiliation, we combine YGO's deep community connections with our proven lead generation infrastructure to reach students who might otherwise miss out on higher education opportunities.\n\nTogether, we have connected thousands of students from underserved communities with accredited programs that match their ambitions and career goals."
+    },
+    "imageUrl": { "type": "string", "default": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop" },
+    "imageId": { "type": "number", "default": 0 },
+    "imageAlt": { "type": "string", "default": "YGO Partnership" },
+    "badge": { "type": "string", "default": "YGO Strategic Partner Since 2019" },
+    "stats": {
+      "type": "array",
+      "default": [
+        { "number": "5,000+", "label": "Students Reached" },
+        { "number": "120+", "label": "Community Events" },
+        { "number": "35%", "label": "Enrollment Lift" }
+      ]
+    }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

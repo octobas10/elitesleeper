@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/timeline",
+  "title": "Timeline",
+  "category": "hlm-blocks",
+  "icon": "backup",
+  "description": "Vertical milestone timeline.",
+  "keywords": ["timeline", "history", "milestones"],
+  "supports": { "align": ["wide", "full"], "anchor": true, "html": false },
+  "attributes": {
+    "variant": { "type": "string", "default": "dark" },
+    "overline": { "type": "string", "default": "Our Journey" },
+    "headline": { "type": "string", "default": "Key Milestones Through the Years" },
+    "description": { "type": "string", "default": "From a single partnership to a global education network." },
+    "milestones": {
+      "type": "array",
+      "default": [
+        { "year": "2014", "title": "The Beginning", "description": "Higher Learning Marketers is founded in New York with a focus on connecting local students with trade schools and community colleges." },
+        { "year": "2016", "title": "First Major Partnership", "description": "Signs exclusive lead generation agreement with Berkeley College, establishing the foundation for long-term institutional partnerships." },
+        { "year": "2018", "title": "Going National", "description": "Expands partner network to include ECPI University, South University, and Abilene Christian University. Reaches 1 million leads generated." },
+        { "year": "2020", "title": "International Expansion", "description": "Partners with CDI College in Canada. Platform now serves students across North America with 50+ partner websites." },
+        { "year": "2023", "title": "10 Million Leads", "description": "Crosses the 10 million lead milestone. Launches advanced AI matching engine and real-time analytics dashboard for partners." },
+        { "year": "2026", "title": "Today & Beyond", "description": "Operating in 164 countries with 560+ partner websites. Continuously innovating to connect the next generation of students with their ideal programs." }
+      ]
+    }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

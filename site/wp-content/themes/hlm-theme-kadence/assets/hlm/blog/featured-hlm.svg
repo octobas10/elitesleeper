@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="hlm-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001520"/>
+      <stop offset="100%" stop-color="#003366"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#hlm-bg)"/>
+  <rect x="0" y="520" width="1200" height="110" fill="#C9A96E" opacity="0.88"/>
+  <g opacity="0.12" stroke="#ffffff" stroke-width="1">
+    <path d="M0 520H1200"/>
+    <path d="M120 80v360M240 80v360M360 80v360M480 80v360"/>
+  </g>
+  <circle cx="980" cy="210" r="130" fill="#4A90D9" opacity="0.16"/>
+  <rect x="96" y="120" width="280" height="10" rx="5" fill="#ffffff" opacity="0.22"/>
+  <rect x="96" y="148" width="420" height="10" rx="5" fill="#C9A96E" opacity="0.55"/>
+  <rect x="96" y="176" width="360" height="10" rx="5" fill="#ffffff" opacity="0.14"/>
+</svg>

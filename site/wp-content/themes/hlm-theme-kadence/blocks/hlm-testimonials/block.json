@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/testimonials",
+  "title": "Testimonials",
+  "category": "hlm-blocks",
+  "icon": "format-quote",
+  "description": "Client testimonial cards.",
+  "keywords": ["testimonials", "quotes", "reviews"],
+  "supports": { "align": ["wide", "full"], "anchor": true, "html": false },
+  "attributes": {
+    "overline": { "type": "string", "default": "Success Stories" },
+    "headline": { "type": "string", "default": "What Our Partners Say" },
+    "description": { "type": "string", "default": "" },
+    "testimonials": {
+      "type": "array",
+      "default": [
+        {
+          "quote": "Higher Learning Marketers transformed our enrollment numbers. We saw a 40% increase in qualified leads within the first quarter.",
+          "author": "Michael Torres",
+          "meta": "Director of Admissions, ECPI University",
+          "photoUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&crop=face",
+          "stars": 5
+        },
+        {
+          "quote": "The quality of leads is exceptional. Every student inquiry is pre-qualified and genuinely interested in our programs. A game-changer for our marketing team.",
+          "author": "Sarah Chen",
+          "meta": "VP Marketing, South University",
+          "photoUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=96&h=96&fit=crop&crop=face",
+          "stars": 5
+        },
+        {
+          "quote": "As a student, I found the perfect nursing program through Higher Learning Marketers. The process was smooth and I had options from multiple top schools.",
+          "author": "Amanda Rodriguez",
+          "meta": "BSN Student, Berkeley College",
+          "photoUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=face",
+          "stars": 5
+        }
+      ]
+    }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

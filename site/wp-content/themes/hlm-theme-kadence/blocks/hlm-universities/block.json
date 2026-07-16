@@ -1,0 +1,72 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/universities",
+  "title": "Partner Universities",
+  "category": "hlm-blocks",
+  "icon": "building",
+  "description": "Grid of partner institution cards.",
+  "keywords": ["universities", "partners", "institutions"],
+  "supports": {
+    "align": ["wide", "full"],
+    "anchor": true,
+    "html": false
+  },
+  "attributes": {
+    "overline": {
+      "type": "string",
+      "default": "Partner Institutions"
+    },
+    "headline": {
+      "type": "string",
+      "default": "Top Universities & Programs"
+    },
+    "description": {
+      "type": "string",
+      "default": "We partner with leading institutions across the United States, Canada, and online to connect students with the right educational opportunities."
+    },
+    "institutions": {
+      "type": "array",
+      "default": [
+        {
+          "badge": "Featured Partner",
+          "title": "Berkeley College",
+          "description": "Career-focused education with campuses in New Jersey and New York, plus a robust online program offering degrees in business, health, and justice studies.",
+          "imageUrl": "https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=450&fit=crop",
+          "imageAlt": "Berkeley College campus walkway",
+          "meta": [
+            { "icon": "location", "text": "4 Campuses + Online" },
+            { "icon": "clock", "text": "90+ Years" }
+          ]
+        },
+        {
+          "badge": "Technology Focus",
+          "title": "ECPI University",
+          "description": "Accelerated programs in technology, health science, nursing, and business with 15+ campus locations and online options across the US.",
+          "imageUrl": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=450&fit=crop",
+          "imageAlt": "Technology and health sciences classroom",
+          "meta": [
+            { "icon": "location", "text": "15+ Campuses" },
+            { "icon": "clock", "text": "1966 Founded" }
+          ]
+        },
+        {
+          "badge": "Health & Business",
+          "title": "South University",
+          "description": "Comprehensive programs in nursing, business, criminal justice, and healthcare with campus and online options for working professionals.",
+          "imageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=450&fit=crop",
+          "imageAlt": "Healthcare and nursing education environment",
+          "meta": [
+            { "icon": "location", "text": "7 Locations" },
+            { "icon": "clock", "text": "1899 Founded" }
+          ]
+        }
+      ]
+    },
+    "viewAllText": { "type": "string", "default": "View All Universities" },
+    "viewAllUrl": { "type": "string", "default": "/affiliations/" }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

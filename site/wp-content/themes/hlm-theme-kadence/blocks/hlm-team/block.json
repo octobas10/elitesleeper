@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/team",
+  "title": "Team Profiles",
+  "category": "hlm-blocks",
+  "icon": "groups",
+  "description": "Team member profiles with photos and bios.",
+  "keywords": ["team", "profiles", "about"],
+  "supports": { "align": ["wide", "full"], "anchor": true, "html": false },
+  "attributes": {
+    "variant": { "type": "string", "default": "profile" },
+    "overline": { "type": "string", "default": "Our Team" },
+    "headline": { "type": "string", "default": "Meet Our Experts" },
+    "description": { "type": "string", "default": "" },
+    "members": {
+      "type": "array",
+      "default": [
+        { "name": "Victor Daniel", "role": "Founder & Lead Consultant", "bio": "With over 15 years in higher education consulting, Victor has guided hundreds of students to top-tier universities including Ivy League institutions.", "photoUrl": "" },
+        { "name": "Robert Intelisano", "role": "Senior Admissions Advisor", "bio": "Robert brings deep expertise in academic planning and career counseling, helping students build compelling profiles that stand out to admissions committees.", "photoUrl": "" }
+      ]
+    }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

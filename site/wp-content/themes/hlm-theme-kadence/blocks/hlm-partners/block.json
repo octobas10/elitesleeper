@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/partners",
+  "title": "Partner Cards",
+  "category": "hlm-blocks",
+  "icon": "networking",
+  "description": "Grid of affiliation partner cards.",
+  "keywords": ["partners", "affiliations", "network"],
+  "supports": { "align": ["wide", "full"], "anchor": true, "html": false },
+  "attributes": {
+    "overline": { "type": "string", "default": "Partner Ecosystem" },
+    "headline": { "type": "string", "default": "Organizations We Work With" },
+    "description": { "type": "string", "default": "Our network extends across education, technology, and community development to create meaningful connections." },
+    "partners": {
+      "type": "array",
+      "default": [
+        { "initials": "YGO", "title": "Youth Guidance Organization", "description": "Community-based youth mentorship and education guidance programs across the United States.", "meta": "Strategic Partner" },
+        { "initials": "BC", "title": "Berkeley College", "description": "Featured institutional partner with direct application integration and dedicated campaign support.", "meta": "Featured Partner" },
+        { "initials": "EC", "title": "ECPI University", "description": "Technology and health sciences focused university with accelerated degree programs.", "meta": "University Partner" },
+        { "initials": "SU", "title": "South University", "description": "Comprehensive health, business, and legal studies programs with campus and online options.", "meta": "University Partner" },
+        { "initials": "AC", "title": "Abilene Christian University", "description": "Faith-based online education programs with strong emphasis on leadership and service.", "meta": "University Partner" },
+        { "initials": "CD", "title": "CDI College", "description": "Canadian career college with campuses across British Columbia, Alberta, Ontario, and Manitoba.", "meta": "Canadian Partner" }
+      ]
+    }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

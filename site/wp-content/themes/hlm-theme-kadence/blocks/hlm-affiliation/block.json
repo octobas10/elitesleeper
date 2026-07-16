@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/affiliation",
+  "title": "Affiliation Benefits",
+  "category": "hlm-blocks",
+  "icon": "networking",
+  "description": "Partnership benefits section with horizontal cards.",
+  "keywords": ["affiliation", "partnership", "benefits"],
+  "supports": { "align": ["wide", "full"], "anchor": true, "html": false },
+  "attributes": {
+    "overline": { "type": "string", "default": "Why Partner With Us" },
+    "headline": { "type": "string", "default": "Benefits of Affiliation" },
+    "description": { "type": "string", "default": "Organizations that partner with Higher Learning Marketers gain access to tools, reach, and expertise that accelerate their mission." },
+    "benefits": {
+      "type": "array",
+      "default": [
+        { "icon": "check", "title": "Verified Lead Quality", "description": "Every student inquiry is pre-qualified, consented, and matched to programs that fit their goals. No wasted outreach." },
+        { "icon": "globe", "title": "Global Reach", "description": "Access our network of 560+ partner websites reaching students in 164 countries, with localized targeting capabilities." },
+        { "icon": "zap", "title": "Technology Integration", "description": "Seamless API connections, real-time dashboards, and CRM integrations that fit into your existing workflow." },
+        { "icon": "handshake", "title": "Dedicated Support", "description": "A dedicated partnership manager, weekly strategy calls, and responsive support team invested in your success." }
+      ]
+    }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

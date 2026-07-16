@@ -1,0 +1,35 @@
+# Ignore everything at root except site + deploy workflow
+/*
+!/.gitignore
+!/site/
+!/.github/
+
+# WordPress secrets (set on server manually)
+site/wp-config.php
+site/wp-config.example.php
+site/wp-config.production.example.php
+
+# Runtime / cache
+site/wp-content/cache/
+site/wp-content/upgrade/
+site/wp-content/debug.log
+
+# Third-party plugins (install on server manually)
+site/wp-content/plugins/advanced-custom-fields-pro/
+site/wp-content/plugins/fluent-smtp/
+site/wp-content/plugins/redis-cache/
+site/wp-content/plugins/updraftplus/
+site/wp-content/plugins/akismet/
+site/wp-content/plugins/query-monitor/
+site/wp-content/plugins/shortpixel-image-optimiser/
+site/wp-content/plugins/litespeed-cache/
+
+# Uploads (large — keep on server)
+site/wp-content/uploads/*
+!site/wp-content/uploads/index.php
+!site/wp-content/uploads/.gitkeep
+
+# Build deps
+**/node_modules/
+site/wordpress-*.zip
+site/wordpress-*.zip:*

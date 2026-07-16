@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/services",
+  "title": "Services Grid",
+  "category": "hlm-blocks",
+  "icon": "grid-view",
+  "description": "Grid of service cards with tags.",
+  "keywords": ["services", "grid", "cards"],
+  "supports": { "align": ["wide", "full"], "anchor": true, "html": false },
+  "attributes": {
+    "overline": { "type": "string", "default": "What We Offer" },
+    "headline": { "type": "string", "default": "Comprehensive Education Services" },
+    "description": { "type": "string", "default": "" },
+    "columns": { "type": "string", "default": "3" },
+    "services": {
+      "type": "array",
+      "default": [
+        { "icon": "🎓", "title": "College Admissions", "description": "Strategic guidance through every stage of the application process, from school selection to essay review.", "tags": "Essays, Applications, Interviews", "link": "" },
+        { "icon": "📊", "title": "Academic Planning", "description": "Personalized course selection and extracurricular strategy to build a compelling academic profile.", "tags": "Course Planning, GPA Strategy", "link": "" },
+        { "icon": "💼", "title": "Career Counseling", "description": "Discover career paths aligned with your strengths, interests, and long-term goals.", "tags": "Assessments, Internships", "link": "" },
+        { "icon": "✍️", "title": "Essay Coaching", "description": "Expert feedback on personal statements, supplemental essays, and scholarship applications.", "tags": "Personal Statement, Supplements", "link": "" },
+        { "icon": "🏆", "title": "Scholarship Support", "description": "Identify and apply for merit-based and need-based scholarship opportunities.", "tags": "Merit Aid, Financial Aid", "link": "" },
+        { "icon": "🌐", "title": "International Admissions", "description": "Specialized support for students applying to universities in the US, UK, and beyond.", "tags": "Study Abroad, Visa Guidance", "link": "" }
+      ]
+    }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

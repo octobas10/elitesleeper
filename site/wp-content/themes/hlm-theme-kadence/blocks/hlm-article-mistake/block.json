@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/article-mistake",
+  "title": "Article Mistake Card",
+  "category": "hlm-blocks",
+  "icon": "warning",
+  "description": "Numbered mistake callout for SEO blog articles.",
+  "keywords": ["article", "blog", "mistake", "fafsa"],
+  "supports": { "anchor": true, "html": false },
+  "attributes": {
+    "number": { "type": "string", "default": "1" },
+    "title": { "type": "string", "default": "" },
+    "summary": { "type": "string", "default": "" },
+    "recommendation": { "type": "string", "default": "" },
+    "whyItMatters": { "type": "string", "default": "" },
+    "paragraphs": { "type": "array", "default": [] }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}

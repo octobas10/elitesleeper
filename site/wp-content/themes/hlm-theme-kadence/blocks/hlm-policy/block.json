@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hlm/policy",
+  "title": "Policy Content",
+  "category": "hlm-blocks",
+  "icon": "media-document",
+  "description": "Structured legal/policy content sections.",
+  "keywords": ["policy", "legal", "privacy"],
+  "supports": { "align": ["wide", "full"], "anchor": true, "html": false },
+  "attributes": {
+    "headline": { "type": "string", "default": "Privacy Policy" },
+    "lastUpdated": { "type": "string", "default": "" },
+    "intro": { "type": "string", "default": "" },
+    "contactInfo": { "type": "string", "default": "" },
+    "sections": {
+      "type": "array",
+      "default": [
+        { "title": "Information We Collect", "content": "We collect information you provide directly, including name, email address, phone number, and academic information when you fill out our consultation forms or contact us." },
+        { "title": "How We Use Your Information", "content": "We use collected information to provide consulting services, communicate about your application process, send relevant educational content, and improve our services." },
+        { "title": "Your Rights & Opt-Out", "content": "You have the right to access, correct, or delete your personal data. You may opt out of marketing communications at any time." }
+      ]
+    }
+  },
+  "textdomain": "hlm-kadence",
+  "editorScript": "hlm-blocks-editor",
+  "render": "file:./render.php"
+}
