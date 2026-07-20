@@ -1,0 +1,22 @@
+{% set image_alt = image_alt|default('') %}
+<section class="hlm-page-hero">
+	{% if image_url %}
+	<div class="hlm-page-hero__media hlm-media-wrap--overlay" aria-hidden="true">
+		<div class="hlm-page-hero__media-placeholder hlm-page-hero__media-placeholder--image">
+			<img class="hlm-media-image" src="{{ image_url }}" alt="{{ image_alt }}" loading="eager" decoding="async" />
+		</div>
+	</div>
+	{% endif %}
+	<div class="hlm-page-hero__bg" aria-hidden="true"></div>
+	<div class="hlm-page-hero__grid" aria-hidden="true"></div>
+	<div class="hlm-container hlm-page-hero__inner">
+		{% if overline %}<div class="hlm-overline">{{ overline }}</div>{% endif %}
+		<h1 class="hlm-h1">{{ headline }}</h1>
+		{% if description %}<p class="hlm-body-lg">{{ description }}</p>{% endif %}
+		{% if primary_cta_text and primary_cta_url %}
+		<div class="hlm-page-hero__cta">
+			<a class="hlm-btn hlm-btn-gold hlm-btn-arrow" href="{{ primary_cta_url }}">{{ primary_cta_text }}</a>
+		</div>
+		{% endif %}
+	</div>
+</section>

@@ -1,0 +1,31 @@
+{% set service_cards = service_cards|default([]) %}
+{% set overline = overline|default('Core Services') %}
+{% set headline = headline|default('Built for U.S. Higher Education') %}
+{% set description = description|default('Every service is designed for enrollment teams competing for motivated students in the United States, with verified leads, program-level targeting, and full-funnel support.') %}
+<section class="hlm-services hlm-section hlm-bg-cream">
+	<div class="hlm-container">
+		<div class="hlm-services__header">
+			{% if overline %}<p class="hlm-overline">{{ overline }}</p>{% endif %}
+			<h2 class="hlm-h2">{{ headline }}</h2>
+			{% if description %}<p class="hlm-body-lg">{{ description }}</p>{% endif %}
+		</div>
+		<div class="hlm-grid-3">
+			{% for service in service_cards %}
+			<article class="hlm-card hlm-service-card">
+				<h3 class="hlm-h3">{{ service.title }}</h3>
+				<p class="hlm-body">{{ service.description }}</p>
+				{% if service.tags %}
+				<div class="hlm-service-card__tags">
+					{% for tag in service.tags.split(',') %}
+					<span class="hlm-card__tag">{{ tag|trim }}</span>
+					{% endfor %}
+				</div>
+				{% endif %}
+				{% if service.link %}
+				<a href="{{ service.link }}" class="hlm-btn hlm-btn-outline hlm-service-card__cta">Learn More</a>
+				{% endif %}
+			</article>
+			{% endfor %}
+		</div>
+	</div>
+</section>

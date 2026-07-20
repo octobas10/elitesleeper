@@ -1,0 +1,77 @@
+{% set variant = variant|default('home') %}
+{% set overline = overline|default('How It Works') %}
+{% set headline = headline|default('Three Simple Steps') %}
+{% set steps = steps|default([]) %}
+{% set step_count = steps|length if steps|length > 0 else 1 %}
+{% set section_class = 'hlm-process hlm-section' %}
+{% if variant == 'cream' %}{% set section_class = section_class ~ ' hlm-process--cream hlm-bg-cream' %}{% endif %}
+{% if variant == 'strip' %}{% set section_class = section_class ~ ' hlm-process--strip' %}{% endif %}
+
+<section class="{{ section_class }}">
+	<div class="hlm-container">
+		<div class="hlm-section-header">
+			{% if overline %}<div class="hlm-overline">{{ overline }}</div>{% endif %}
+			<h2 class="hlm-h2">{{ headline }}</h2>
+			{% if description %}<p class="hlm-body-lg">{{ description }}</p>{% endif %}
+		</div>
+
+		<div class="hlm-process-row hlm-process-row--{{ step_count }}">
+			{% for step in steps %}
+			<div class="hlm-process-row__step">
+				<div class="hlm-process-card">
+					{% if step.number %}
+					<div class="hlm-process-card__head">
+						<div class="hlm-process-num" aria-hidden="true">{{ step.number }}</div>
+					</div>
+					{% endif %}
+					<h4>{{ step.title }}</h4>
+					<p>{{ step.description }}</p>
+					{% if step.ctaText and step.ctaUrl %}
+					<a class="hlm-process-card__cta" href="{{ step.ctaUrl }}">{{ step.ctaText }}</a>
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+		{% if footer_cta_text and footer_cta_url %}
+		<div class="hlm-process__footer">
+			<a class="hlm-btn hlm-btn-primary" href="{{ footer_cta_url }}">{{ footer_cta_text }}</a>
+		</div>
+		{% endif %}
+	</div>
+</section>
+
+<style>
+	.hlm-process-row {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: stretch;
+		gap: 1.25rem;
+		width: 100%;
+	}
+
+	.hlm-process-row__step {
+		flex: 1 1 0;
+		min-width: 0;
+		display: flex;
+	}
+
+	.hlm-process-row__step .hlm-process-card {
+		width: 100%;
+		height: auto;
+		min-height: 100%;
+	}
+
+	@media (max-width: 900px) {
+		.hlm-process-row {
+			flex-direction: column;
+			gap: 1.25rem;
+		}
+
+		.hlm-process-row__step .hlm-process-card {
+			min-height: 0;
+		}
+	}
+</style>

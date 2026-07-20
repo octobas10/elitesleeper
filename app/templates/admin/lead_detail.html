@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="noindex, nofollow" />
+	<title>{{ lead.name|default(lead.id)|default('Lead') }} | HLM Admin</title>
+	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+		rel="stylesheet"
+	/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/hlm-tokens.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/hlm-blocks.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/hlm-admin.css') }}" />
+</head>
+<body class="hlm-theme hlm-admin">
+	{% set lead = lead|default({}) %}
+	{% set summary = summary|default({}) %}
+	{% set back_href = back_href|default('/admin/') %}
+	<div class="hlm-admin__shell hlm-admin__shell--wide">
+		<header class="hlm-admin__top">
+			<div>
+				<p class="hlm-admin__brand">Higher Learning Marketers</p>
+				<p class="hlm-admin__crumb">
+					<a href="{{ back_href }}">Leads</a>
+					<span aria-hidden="true"> / </span>
+					<span>{{ lead.id }}</span>
+				</p>
+				<h1 class="hlm-admin__title">{{ summary.name|default(lead.name)|default(lead.id) }}</h1>
+				<p class="hlm-admin__subtitle">
+					<span class="hlm-admin__badge hlm-admin__badge--{{ lead.form_type|default('student') }}">
+						{{ lead.form_type|default('—') }}
+					</span>
+					<span class="hlm-admin__meta-inline">{{ summary.when|default(lead.created_at|default('')) }}</span>
+					{% if lead.status %}
+					<span class="hlm-admin__meta-inline">Status: {{ lead.status }}</span>
+					{% endif %}
+				</p>
+			</div>
+			<div class="hlm-admin__actions">
+				<a class="hlm-btn hlm-btn--outline" href="{{ back_href }}">Back to list</a>
+				<form method="post" action="/admin/logout/" style="display:inline;">
+					<button type="submit" class="hlm-btn hlm-btn--outline">Sign out</button>
+				</form>
+			</div>
+		</header>
+
+		<section class="hlm-admin__hero-card" aria-label="Lead overview">
+			<div class="hlm-admin__hero-grid">
+				<div>
+					<p class="hlm-admin__stat-label">Email</p>
+					<p class="hlm-admin__hero-value">
+						{% if lead.email %}<a href="mailto:{{ lead.email }}">{{ lead.email }}</a>{% else %}—{% endif %}
+					</p>
+				</div>
+				<div>
+					<p class="hlm-admin__stat-label">Phone</p>
+					<p class="hlm-admin__hero-value">
+						{% if lead.phone %}<a href="tel:{{ lead.phone }}">{{ lead.phone }}</a>{% else %}—{% endif %}
+					</p>
+				</div>
+				<div>
+					<p class="hlm-admin__stat-label">
+						{% if lead.form_type == 'university' %}Institution{% else %}Program{% endif %}
+					</p>
+					<p class="hlm-admin__hero-value">
+						{% if lead.form_type == 'university' %}
+						{{ summary.institution|default(lead.institution_name)|default('—') }}
+						{% else %}
+						{{ summary.program|default(lead.program_of_interest)|default('—') }}
+						{% endif %}
+					</p>
+				</div>
+				<div>
+					<p class="hlm-admin__stat-label">Location</p>
+					<p class="hlm-admin__hero-value">{{ summary.location|default(lead.city)|default('—') }}</p>
+				</div>
+			</div>
+		</section>
+
+		{% for section in sections|default([]) %}
+		<section class="hlm-admin__section-card" aria-labelledby="sec-{{ section.id }}">
+			<h2 class="hlm-admin__section-title" id="sec-{{ section.id }}">{{ section.title }}</h2>
+			<dl class="hlm-admin__dl">
+				{% for f in section.fields %}
+				<div class="hlm-admin__dl-row">
+					<dt>{{ f.label }}</dt>
+					<dd>
+						{% if f.href %}
+						<a href="{{ f.href }}"{% if f.href[:4] == 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ f.value }}</a>
+						{% else %}
+						{{ f.value }}
+						{% endif %}
+						{% if f.code and f.code != f.value %}
+						<span class="hlm-admin__code">code: {{ f.code }}</span>
+						{% endif %}
+					</dd>
+				</div>
+				{% endfor %}
+			</dl>
+		</section>
+		{% endfor %}
+
+		<section class="hlm-admin__section-card" aria-labelledby="sec-raw">
+			<h2 class="hlm-admin__section-title" id="sec-raw">Raw payload</h2>
+			<pre class="hlm-admin__payload hlm-admin__payload--full">{{ payload_pretty|default(lead|tojson(indent=2)) }}</pre>
+		</section>
+	</div>
+</body>
+</html>

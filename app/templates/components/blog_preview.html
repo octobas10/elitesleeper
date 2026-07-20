@@ -1,0 +1,27 @@
+{% set posts = posts|default(blog_posts)|default([]) %}
+{% set posts = posts[:3] %}
+<section class="hlm-blog hlm-section">
+	<div class="hlm-container">
+		<div class="hlm-section-header">
+			<div class="hlm-overline">{{ overline|default('From the Blog') }}</div>
+			<h2 class="hlm-h2">{{ headline|default('Insights for Students & Institutions') }}</h2>
+		</div>
+		<div class="hlm-grid-3">
+			{% for post in posts %}
+			<article class="hlm-blog-card">
+				<div class="hlm-blog-card__body">
+					<time class="hlm-blog-card__date" datetime="{{ post.date }}">{{ post.date }}</time>
+					<h3 class="hlm-h4">
+						<a href="/blog/{{ post.slug }}/">{{ post.title }}</a>
+					</h3>
+					<p class="hlm-blog-card__excerpt">{{ post.excerpt }}</p>
+					<a class="hlm-blog-card__link" href="/blog/{{ post.slug }}/">Read article</a>
+				</div>
+			</article>
+			{% endfor %}
+		</div>
+		<div class="hlm-section__actions">
+			<a class="hlm-btn hlm-btn-outline hlm-btn-arrow" href="/blog/">View All Articles</a>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+{% set overline = 'Blog' %}
+{% set headline = headline|default('U.S. Enrollment Marketing & Student Guides') %}
+{% set description = description|default('Practical guides for enrollment leaders and prospective students exploring nursing, business, and career programs.') %}
+{% include 'components/page_hero.html' %}
+
+<section class="hlm-blog-archive hlm-section hlm-bg-cream">
+	<div class="hlm-container">
+		<div class="hlm-blog-grid">
+			{% for post in blog_posts|default([]) %}
+			<div class="hlm-blog-grid__item">
+				<article class="hlm-blog-card">
+					<div class="hlm-blog-card__body">
+						<time class="hlm-blog-card__date" datetime="{{ post.date }}">{{ post.date }}</time>
+						<h2 class="hlm-h4">
+							<a href="/blog/{{ post.slug }}/">{{ post.title }}</a>
+						</h2>
+						<p class="hlm-blog-card__excerpt">{{ post.excerpt }}</p>
+						<a class="hlm-blog-card__link" href="/blog/{{ post.slug }}/">Read More</a>
+					</div>
+				</article>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+{% set overline = 'Ready to Connect?' %}
+{% set headline = 'Start Your Journey Today' %}
+{% set description = 'Talk with an advisor about programs or partnership opportunities.' %}
+{% set primary_text = 'Get Started' %}
+{% set primary_url = '/contact-us/#form' %}
+{% set secondary_text = 'View Services' %}
+{% set secondary_url = '/services/' %}
+{% include 'components/cta_banner.html' %}
+{% endblock %}

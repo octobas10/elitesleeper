@@ -1,0 +1,223 @@
+/**
+ * HLM motion system — stagger reveals, hero parallax, enhanced easing.
+ */
+
+/* ─── Stagger grids ────────────────────────────────────────── */
+.hlm-stagger-grid .hlm-stagger-item {
+	opacity: 0;
+	transform: translate3d(0, var(--hlm-motion-distance, 32px), 0);
+	transition:
+		opacity var(--hlm-motion-duration, 0.85s) var(--hlm-ease-out-expo),
+		transform var(--hlm-motion-duration, 0.85s) var(--hlm-ease-out-expo);
+	transition-delay: calc(var(--hlm-stagger-i, 0) * var(--hlm-stagger-step, 110ms));
+	will-change: opacity, transform;
+}
+
+.hlm-stagger-grid.is-visible .hlm-stagger-item {
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+}
+
+/* ─── Section entrance ─────────────────────────────────────── */
+.hlm-section-reveal {
+	opacity: 0;
+	transform: translate3d(0, var(--hlm-motion-distance, 32px), 0);
+	transition:
+		opacity var(--hlm-motion-duration, 0.85s) var(--hlm-ease-out-expo),
+		transform var(--hlm-motion-duration, 0.85s) var(--hlm-ease-out-expo);
+}
+
+.hlm-section-reveal.is-visible {
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+}
+
+/* ─── Hero media / video placeholder ───────────────────────── */
+.hlm-hero-media__placeholder,
+.hlm-page-hero__media-placeholder {
+	position: relative;
+	overflow: hidden;
+}
+
+.hlm-hero-media__placeholder::after,
+.hlm-page-hero__media-placeholder::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		115deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.04) 45%,
+		transparent 70%
+	);
+	transform: translateX(-120%);
+	animation: hlm-media-shimmer 8s var(--hlm-ease-out-expo) infinite;
+}
+
+.hlm-hero-media__play,
+.hlm-page-hero__media-play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 72px;
+	height: 72px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.45);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	color: var(--hlm-white);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+	backdrop-filter: blur(8px);
+	pointer-events: none;
+	transition: transform 0.4s var(--hlm-ease-out-expo), box-shadow 0.4s var(--hlm-ease-out-expo);
+}
+
+.hlm-hero-media__play .hlm-icon,
+.hlm-page-hero__media-play .hlm-icon {
+	width: 28px;
+	height: 28px;
+	margin-left: 3px;
+}
+
+.hlm-hero:hover .hlm-hero-media__play,
+.hlm-page-hero:hover .hlm-page-hero__media-play {
+	transform: translate(-50%, -50%) scale(1.06);
+	box-shadow: 0 16px 48px rgba(201, 169, 110, 0.25);
+}
+
+.hlm-hero-media__label,
+.hlm-page-hero__media-placeholder span {
+	position: relative;
+	z-index: 1;
+}
+
+/* ─── Unified SVG icon treatment ───────────────────────────── */
+.hlm-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.25em;
+	height: 1.25em;
+	flex-shrink: 0;
+}
+
+.hlm-icon svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.hlm-card__icon .hlm-icon,
+.hlm-pillar__icon .hlm-icon,
+.hlm-value-card__icon .hlm-icon,
+.hlm-affiliation-benefit__icon .hlm-icon,
+.hlm-page-hero__icon .hlm-icon {
+	width: 24px;
+	height: 24px;
+	color: var(--hlm-navy-950);
+}
+
+.hlm-card__icon,
+.hlm-pillar__icon,
+.hlm-value-card__icon,
+.hlm-affiliation-benefit__icon {
+	background: var(--hlm-gold-400);
+	color: var(--hlm-navy-950);
+}
+
+.hlm-page-hero__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	margin: 0 auto 1rem;
+	background: rgba(212, 175, 55, 0.18);
+	border: 1px solid rgba(212, 175, 55, 0.35);
+	border-radius: var(--hlm-radius-sm);
+}
+
+.hlm-page-hero__icon .hlm-icon {
+	color: var(--hlm-gold-300);
+}
+
+/* ─── Card hover lift (motion) ─────────────────────────────── */
+.hlm-uni-card,
+.hlm-service-card,
+.hlm-process-card,
+.hlm-testimonial-card,
+.hlm-blog-card {
+	transition:
+		transform 0.45s var(--hlm-ease-out-expo),
+		box-shadow 0.45s var(--hlm-ease-out-expo),
+		border-color 0.45s var(--hlm-ease-out-expo),
+		background 0.45s var(--hlm-ease-out-expo);
+}
+
+.hlm-uni-card:hover,
+.hlm-service-card:hover,
+.hlm-process-card:hover,
+.hlm-testimonial-card:hover,
+.hlm-blog-card:hover {
+	transform: translateY(-6px);
+}
+
+/* ─── Stat counter pulse on reveal ─────────────────────────── */
+.hlm-stat-number.is-counted,
+.hlm-stats__number.is-counted {
+	animation: hlm-stat-pop 0.6s var(--hlm-ease-out-expo);
+}
+
+@keyframes hlm-media-shimmer {
+	0%, 70%, 100% {
+		transform: translateX(-120%);
+	}
+	85% {
+		transform: translateX(120%);
+	}
+}
+
+@keyframes hlm-stat-pop {
+	0% {
+		transform: scale(0.92);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	.hlm-stagger-grid .hlm-stagger-item,
+	.hlm-section-reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	.hlm-hero-media__placeholder::after,
+	.hlm-page-hero__media-placeholder::after {
+		animation: none;
+	}
+
+	.hlm-uni-card:hover,
+	.hlm-service-card:hover,
+	.hlm-process-card:hover,
+	.hlm-testimonial-card:hover,
+	.hlm-blog-card:hover {
+		transform: none;
+	}
+
+	.hlm-stat-number.is-counted,
+	.hlm-stats__number.is-counted {
+		animation: none;
+	}
+}

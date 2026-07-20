@@ -1,0 +1,45 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+{% set image_url = image_url|default(media.hero_home_poster) %}
+{% set headline = headline|default('Connect Universities With Motivated U.S. Students') %}
+{% set description = description|default('Higher Learning Marketers is a U.S.-focused education lead generation platform - helping universities fill nursing, business, and career programs while guiding students to accredited institutions that fit their goals.') %}
+{% set image_alt = image_alt|default('Students collaborating on a university campus') %}
+{% include 'components/hero_with_form.html' %}
+{% if stats %}{% include 'components/stats_bar.html' %}{% endif %}
+{% if seo_intro %}
+<section class="hlm-seo-intro hlm-seo-intro--compact hlm-section hlm-bg-cream" aria-label="Overview">
+	<div class="hlm-container">
+		<div class="hlm-seo-intro__card">
+			<div class="hlm-seo-intro__body hlm-body-lg">{{ seo_intro|safe }}</div>
+		</div>
+	</div>
+</section>
+{% endif %}
+{% set items = institutions_list|default([]) %}
+{% include 'components/universities.html' %}
+{% include 'components/programs.html' %}
+{% set steps = process_steps|default([]) %}
+{% set footer_cta_text = 'Get Started Now' %}
+{% set footer_cta_url = '#form' %}
+{% set overline = 'How It Works' %}
+{% set headline = 'Three Simple Steps' %}
+{% set description = 'Whether you are a student or institution, getting started takes just minutes.' %}
+{% include 'components/process.html' %}
+{% include 'components/testimonials.html' %}
+{% include 'components/blog_preview.html' %}
+{% include 'components/faq_section.html' %}
+{% set variant = 'soft' %}
+{% set primary_text = 'Join Now' %}
+{% set primary_url = '#form' %}
+{% set secondary_text = 'See All Programs' %}
+{% set secondary_url = '/services/' %}
+{% set description = 'Whether you are a student looking for the right program or an institution seeking qualified leads, we are here to help you succeed.' %}
+{% set overline = 'Ready to Connect?' %}
+{% set headline = 'Start Your Journey Today' %}
+{% include 'components/cta_banner.html' %}
+{% endblock %}
+{% block scripts %}
+{% if institution_data is defined %}
+<script>window.HLM_INSTITUTION_DATA = {{ institution_data|tojson }};</script>
+{% endif %}
+{% endblock %}

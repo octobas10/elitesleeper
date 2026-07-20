@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="noindex, nofollow" />
+	<title>Leads | HLM Admin</title>
+	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+		rel="stylesheet"
+	/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/hlm-tokens.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/hlm-blocks.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/hlm-admin.css') }}" />
+</head>
+<body class="hlm-theme hlm-admin">
+	<div class="hlm-admin__shell hlm-admin__shell--wide">
+		<header class="hlm-admin__top">
+			<div>
+				<p class="hlm-admin__brand">Higher Learning Marketers</p>
+				<h1 class="hlm-admin__title">Leads</h1>
+				<p class="hlm-admin__subtitle">Full submissions from leads.db — open a row for every field</p>
+			</div>
+			<div class="hlm-admin__actions">
+				<form method="post" action="/admin/logout/" style="display:inline;">
+					<button type="submit" class="hlm-btn hlm-btn--outline">Sign out</button>
+				</form>
+			</div>
+		</header>
+
+		{% if not_found %}
+		<p class="hlm-admin-login__error" role="alert">That lead was not found.</p>
+		{% endif %}
+
+		<section class="hlm-admin__stats" aria-label="Lead counts">
+			<div class="hlm-admin__stat">
+				<p class="hlm-admin__stat-label">Total</p>
+				<p class="hlm-admin__stat-value">{{ counts.total|default(0) }}</p>
+			</div>
+			<div class="hlm-admin__stat">
+				<p class="hlm-admin__stat-label">Student</p>
+				<p class="hlm-admin__stat-value">{{ counts.student|default(0) }}</p>
+			</div>
+			<div class="hlm-admin__stat">
+				<p class="hlm-admin__stat-label">University</p>
+				<p class="hlm-admin__stat-value">{{ counts.university|default(0) }}</p>
+			</div>
+		</section>
+
+		<form class="hlm-admin__filters" method="get" action="/admin/">
+			<div class="hlm-admin__field">
+				<label for="q">Search</label>
+				<input id="q" name="q" type="search" value="{{ q|default('') }}" placeholder="Email, name, phone, ID…" />
+			</div>
+			<div class="hlm-admin__field" style="flex: 0 0 10rem; min-width: 8rem;">
+				<label for="form_type">Type</label>
+				<select id="form_type" name="form_type">
+					<option value="" {% if not form_type %}selected{% endif %}>All</option>
+					<option value="student" {% if form_type == 'student' %}selected{% endif %}>Student</option>
+					<option value="university" {% if form_type == 'university' %}selected{% endif %}>University</option>
+				</select>
+			</div>
+			<button type="submit" class="hlm-btn hlm-btn--primary">Filter</button>
+			{% if form_type or q %}
+			<a class="hlm-btn hlm-btn--outline" href="/admin/">Clear</a>
+			{% endif %}
+		</form>
+
+		<div class="hlm-admin__table-wrap">
+			{% set leads = leads|default([]) %}
+			{% if not leads %}
+			<p class="hlm-admin__empty">No leads found.</p>
+			{% else %}
+			<table class="hlm-admin__table hlm-admin__table--rich">
+				<thead>
+					<tr>
+						<th>When</th>
+						<th>Type</th>
+						<th>Name / contact</th>
+						<th>Location</th>
+						<th>Education</th>
+						<th>Program / institution</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for lead in leads %}
+					<tr>
+						<td>{{ lead.when|default(lead.created_at|default('—')) }}</td>
+						<td>
+							<span class="hlm-admin__badge hlm-admin__badge--{{ lead.form_type|default('student') }}">
+								{{ lead.form_type|default('—') }}
+							</span>
+						</td>
+						<td>
+							<strong>{{ lead.name|default(((lead.first_name|default('')) ~ ' ' ~ (lead.last_name|default('')))|trim) or '—' }}</strong><br />
+							{% if lead.email %}<a href="mailto:{{ lead.email }}">{{ lead.email }}</a><br />{% endif %}
+							{% if lead.phone %}<a href="tel:{{ lead.phone }}">{{ lead.phone }}</a>{% endif %}
+						</td>
+						<td>{{ lead.location|default('—') }}</td>
+						<td>{{ lead.education|default('—') }}</td>
+						<td>{{ lead.program|default(lead.institution|default(lead.institution_name|default('—'))) }}</td>
+						<td>
+							<a class="hlm-btn hlm-btn--outline hlm-btn--compact" href="/admin/leads/{{ lead.id }}/">View</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% endif %}
+		</div>
+
+		{% if pages|default(1) > 1 %}
+		<nav class="hlm-admin__pager" aria-label="Pagination">
+			{% if page > 1 %}
+			<a class="hlm-btn hlm-btn--outline" href="?page={{ page - 1 }}{% if form_type %}&form_type={{ form_type }}{% endif %}{% if q %}&q={{ q|urlencode }}{% endif %}">Previous</a>
+			{% endif %}
+			<span class="hlm-admin__pager-meta">Page {{ page }} of {{ pages }}</span>
+			{% if page < pages %}
+			<a class="hlm-btn hlm-btn--outline" href="?page={{ page + 1 }}{% if form_type %}&form_type={{ form_type }}{% endif %}{% if q %}&q={{ q|urlencode }}{% endif %}">Next</a>
+			{% endif %}
+		</nav>
+		{% endif %}
+	</div>
+</body>
+</html>

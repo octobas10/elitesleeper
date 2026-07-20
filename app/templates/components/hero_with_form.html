@@ -1,0 +1,38 @@
+{% set overline = overline|default('Education Lead Generation') %}
+{% set image_alt = image_alt|default('University campus') %}
+{% set primary_cta_text = primary_cta_text|default('Get Started') %}
+{% set primary_cta_url = primary_cta_url|default('#form') %}
+{% set secondary_cta_text = secondary_cta_text|default('University Services') %}
+{% set secondary_cta_url = secondary_cta_url|default('/services/') %}
+{% set trust_highlight = trust_highlight|default('10,000+') %}
+{% set trust_text = trust_text|default('students connected with programs') %}
+{% set variant = variant|default('light') %}
+{% set hero_class = 'hlm-hero hlm-hero--landing hlm-hero--has-media hlm-hero--has-overlay' if variant == 'landing' else 'hlm-hero hlm-hero--light hlm-hero--has-media hlm-hero--has-overlay' %}
+<section id="get-started" class="{{ hero_class }}">
+	<div class="hlm-hero-media">
+		<img class="hlm-media-image" src="{{ image_url }}" alt="{{ image_alt }}" loading="eager" />
+		<div class="hlm-media-scrim hlm-media-scrim--medium" aria-hidden="true"></div>
+	</div>
+	<div class="hlm-hero-bg"></div>
+	<div class="hlm-hero-grid"></div>
+	<div class="hlm-hero-inner">
+		<div class="hlm-hero-content hlm-animate is-visible">
+			{% if overline %}<div class="hlm-overline">{{ overline }}</div>{% endif %}
+			<h1 class="hlm-h1">{{ headline }}</h1>
+			{% if description %}<p class="hlm-hero-desc">{{ description }}</p>{% endif %}
+			<div class="hlm-hero-btns">
+				<a class="hlm-btn hlm-btn-primary hlm-btn-arrow" href="{{ primary_cta_url }}">{{ primary_cta_text }}</a>
+				<a class="hlm-btn hlm-btn-outline" href="{{ secondary_cta_url }}">{{ secondary_cta_text }}</a>
+			</div>
+			<div class="hlm-hero-trust">
+				<p class="hlm-hero-trust-text">
+					<strong>{{ trust_highlight }}</strong>
+					{{ trust_text }}
+				</p>
+			</div>
+		</div>
+		<div id="form" class="hlm-form-card hlm-animate is-visible hlm-animate-delay-2">
+			{% include 'components/lead_form.html' %}
+		</div>
+	</div>
+</section>

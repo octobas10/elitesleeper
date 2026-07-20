@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Higher Learning Marketers">
+  <defs>
+    <linearGradient id="hlm-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001520"/>
+      <stop offset="100%" stop-color="#002536"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#hlm-bg)"/>
+  <path fill="#C9A96E" d="M148 136h56v104h104V136h56v240h-56V296H204v80h-56z"/>
+  <rect x="132" y="368" width="248" height="18" rx="9" fill="#C9A96E" opacity="0.9"/>
+</svg>
