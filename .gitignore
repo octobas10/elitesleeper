@@ -43,6 +43,8 @@ Thumbs.db
 *~
 
 # --- Deploy / backups ---
+_archived/
+*.zip
 *.sql.gz
 *.tar.gz
 wp-backup-*
