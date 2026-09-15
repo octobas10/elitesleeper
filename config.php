@@ -20,7 +20,7 @@ final class Config
 
         $leadStorage = getenv('LEAD_STORAGE_DIR');
         if ($leadStorage === false || $leadStorage === '') {
-            $leadStorage = dirname(__DIR__) . '/data/leads';
+            $leadStorage = SITE_ROOT . '/data/leads';
         }
 
         $adminIps = array_values(array_filter(array_map(

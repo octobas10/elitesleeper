@@ -1,53 +1,41 @@
-# --- Python / Flask ---
-.venv/
-venv/
-__pycache__/
-*.py[cod]
-*$py.class
-*.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# Secrets & local env
+# --- Secrets ---
 .env
 .env.local
 .env.*.local
 !.env.example
 
-# Lead storage (runtime — keep folder, ignore data)
+# --- Runtime data ---
 data/leads/*
 !data/leads/.gitkeep
-flask/data/leads/*
-!flask/data/leads/.gitkeep
 
-# --- Legacy stacks (not deployed) ---
+# --- Python (not used at runtime) ---
+.venv/
+.venv-report/
+.venv-xlsx/
+__pycache__/
+*.py[cod]
+commit_log.txt
+smoke_result.txt
+rm_flask.txt
+
+# --- Local-only artifacts ---
+node_modules/
 astro/
 design-ref-html/
 docs/
-.venv-report/
-.venv-xlsx/
 docker-compose.yml
 HLM-*.xlsx
+_archived/
+*.zip
+*.sql.gz
+*.tar.gz
+wp-backup-*
 
-# PHP site runtime
-site/data/leads/*
-!site/data/leads/.gitkeep
-site/.env
-
-# --- Node / OS / IDE ---
-node_modules/
-npm-debug.log*
+# --- OS / IDE ---
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
 *.swp
 *~
-
-# --- Deploy / backups ---
-_archived/
-*.zip
-*.sql.gz
-*.tar.gz
-wp-backup-*
+npm-debug.log*

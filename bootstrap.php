@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 define('SITE_ROOT', __DIR__);
-define('REPO_ROOT', dirname(__DIR__));
+define('REPO_ROOT', __DIR__);
 define('TEMPLATES_DIR', SITE_ROOT . '/templates');
 
 /**
- * Simple PSR-4-like autoload for site/lib and site/services.
+ * Simple PSR-4-like autoload for root-level app folders.
  */
 spl_autoload_register(static function (string $class): void {
     $map = [
@@ -27,7 +27,7 @@ spl_autoload_register(static function (string $class): void {
 });
 
 /**
- * Load .env from repo root or site/.
+ * Load .env from the repo root.
  */
 function load_env_file(string $path): void
 {

@@ -1,49 +1,49 @@
 # Higher Learning Marketers — Pure PHP
 
-No Node.js. No Python required to run the site.
+Apache/Nginx document root = **this repository root**. No Node. No Python. No Flask.
 
 ## Setup
 
 ```bash
 cp .env.example .env
-# Edit .env — set SECRET_KEY and ADMIN_PASSWORD at minimum
-
-# Export content bundle from Flask content.py (one-time / when content changes)
-python3 scripts/export_content_for_php.py
-
-# Ensure static assets & JSON are in place
-mkdir -p site/data/leads
-cp -n app/data/*.json site/data/ 2>/dev/null || true
-cp -a app/static/. site/static/
+# Set at least SECRET_KEY and ADMIN_PASSWORD
+mkdir -p data/leads
 ```
+
+Required PHP extensions: `pdo_sqlite`, `curl`, `mbstring`.
 
 ## Run (development)
 
+From the repo root:
+
 ```bash
-cd site
-php -S localhost:10001 ../deploy/router.php
+php -S localhost:10001 deploy/router.php
 ```
 
 Or:
 
 ```bash
-cd site
 php -S localhost:10001
 ```
 
-## Production (Apache)
+## Production (VPS)
 
-Point the vhost document root at `site/`. `.htaccess` rewrites to `index.php`.
+Point the vhost `DocumentRoot` at the clone directory (where `index.php` and `.htaccess` live).
 
-Required PHP extensions: `pdo_sqlite`, `curl`, `mbstring`.
+```apache
+DocumentRoot /var/www/hlm
+<Directory /var/www/hlm>
+    AllowOverride All
+    Require all granted
+</Directory>
+```
+
+`.htaccess` rewrites non-file requests to `index.php`.
+
+Keep `data/leads/` writable by the web user. Do not commit `.env`.
 
 ## Admin
 
-Leads admin UI: **/admin/**
-
+- UI: `/admin/`
 - Login: `/admin/login/`
 - Requires `ADMIN_PASSWORD` in `.env`
-
-## Flask archive
-
-The previous Flask app remains in this repo (`app/`, `wsgi.py`). A zip snapshot may be under `_archived/`.

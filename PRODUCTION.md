@@ -1,37 +1,24 @@
-# Production on your VPS — replace WordPress with Flask
+# Production on your VPS — pure PHP
 
-**Server:** `vish@74.205.70.188`  
-**Old WP root:** `/usr/virtual/www.higherlearningmarketers.com`  
-**Goal:** Remove WordPress, run the Flask app, keep `higherlearningmarketers.com`.
+**Goal:** Serve Higher Learning Marketers from this repo root (where `index.php` lives).
 
-No Node. Python + gunicorn only.
+No Python. No Gunicorn. No Flask. PHP + Apache (or Nginx + php-fpm) only.
 
 ---
 
-## A. Upload Flask (from your WSL machine)
+## A. Upload / clone
 
 ```bash
-ssh vish@74.205.70.188 "mkdir -p /var/www/hlm-flask /var/www/hlm-flask/data/leads"
+# Example path on the VPS
+sudo mkdir -p /var/www/hlm
+sudo chown "$USER":"$USER" /var/www/hlm
 
-rsync -avz --exclude '.venv' --exclude '__pycache__' --exclude 'data/leads/*' \
-  /home/buildco/highereducation_eilte/flask/ \
-  vish@74.205.70.188:/var/www/hlm-flask/
-```
-
----
-
-## B. On the VPS — install & configure
-
-```bash
-ssh vish@74.205.70.188
-cd /var/www/hlm-flask
-
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
+git clone https://github.com/octobas10/hlm-ebp.git /var/www/hlm
+cd /var/www/hlm
 cp .env.example .env
 nano .env
+mkdir -p data/leads
+chmod 775 data/leads
 ```
 
 Set at least:
@@ -40,168 +27,47 @@ Set at least:
 SECRET_KEY=paste-a-long-random-string-here
 SITE_URL=https://higherlearningmarketers.com
 ADMIN_PASSWORD=your-strong-admin-password
-LEAD_STORAGE_DIR=/var/www/hlm-flask/data/leads
-
-# Optional
-ELITE_PROMO_CODE=
-ELITE_LEAD_MODE=live
-LEAD_NOTIFY_EMAIL=support@higherlearningmarketers.com
-```
-
-Generate a secret:
-
-```bash
-python3 -c "import secrets; print(secrets.token_hex(32))"
+LEAD_STORAGE_DIR=/var/www/hlm/data/leads
 ```
 
 ---
 
-## C. Run gunicorn with systemd
-
-```bash
-sudo tee /etc/systemd/system/hlm-flask.service >/dev/null <<'EOF'
-[Unit]
-Description=HLM Flask site
-After=network.target
-
-[Service]
-User=vish
-Group=vish
-WorkingDirectory=/var/www/hlm-flask
-EnvironmentFile=/var/www/hlm-flask/.env
-ExecStart=/var/www/hlm-flask/.venv/bin/gunicorn -b 127.0.0.1:5000 --workers 2 --timeout 60 wsgi:app
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl enable --now hlm-flask
-sudo systemctl status hlm-flask
-```
-
-Test locally on the server:
-
-```bash
-curl -I http://127.0.0.1:5000/
-```
-
-You should see `200`.
-
----
-
-## D. Point the web server at Flask (not WordPress)
-
-Find what serves the site:
-
-```bash
-# Apache?
-sudo apache2ctl -S 2>/dev/null | head
-# Nginx?
-sudo nginx -t 2>/dev/null
-ls /etc/nginx/sites-enabled/ 2>/dev/null
-# LiteSpeed / other
-ps aux | egrep -i 'nginx|apache|litespeed|httpd' | grep -v grep
-```
-
-### If Nginx
-
-Proxy the vhost for `higherlearningmarketers.com` to gunicorn:
-
-```nginx
-location / {
-    proxy_pass http://127.0.0.1:5000;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-}
-```
-
-Reload: `sudo nginx -t && sudo systemctl reload nginx`
-
-### If Apache
-
-Enable modules and proxy:
-
-```bash
-sudo a2enmod proxy proxy_http headers
-```
-
-In the vhost for this domain:
+## B. Apache vhost
 
 ```apache
-ProxyPreserveHost On
-RequestHeader set X-Forwarded-Proto "https"
-ProxyPass / http://127.0.0.1:5000/
-ProxyPassReverse / http://127.0.0.1:5000/
+<VirtualHost *:80>
+    ServerName higherlearningmarketers.com
+    DocumentRoot /var/www/hlm
+
+    <Directory /var/www/hlm>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/hlm-error.log
+    CustomLog ${APACHE_LOG_DIR}/hlm-access.log combined
+</VirtualHost>
 ```
 
-Reload: `sudo systemctl reload apache2`
+Enable `mod_rewrite`. Terminate TLS with Certbot as usual.
 
-DNS can stay as-is (same VPS IP). Only the app behind port 80/443 changes.
+Forward real client IP if behind a proxy — `ADMIN_ALLOWED_IPS` uses `X-Forwarded-For` when present.
 
 ---
 
-## E. Remove WordPress (after Flask responds 200)
-
-**Do this only after** https://higherlearningmarketers.com shows the Flask site.
+## C. Permissions
 
 ```bash
-# Backup first (safety)
-sudo tar -czf /root/wp-backup-$(date +%F).tar.gz \
-  /usr/virtual/www.higherlearningmarketers.com
-
-# Then remove WP (or move it aside)
-sudo mv /usr/virtual/www.higherlearningmarketers.com \
-        /usr/virtual/www.higherlearningmarketers.com.wp-OLD
-```
-
-Optional later: drop the MySQL/MariaDB WordPress database once you no longer need it.
-
-Also remove any WP deploy webhook PHP files if still present:
-
-```bash
-rm -f /usr/virtual/www.higherlearningmarketers.com.wp-OLD/hlm-deploy-webhook.php
+sudo chown -R www-data:www-data /var/www/hlm/data/leads
+# or keep deploy user owner and add www-data to the group
 ```
 
 ---
 
-## F. Verify
+## D. Smoke check
 
 - https://higherlearningmarketers.com/
-- https://higherlearningmarketers.com/services/
-- https://higherlearningmarketers.com/blog/
-- Submit a test lead
-- https://higherlearningmarketers.com/admin/ (ADMIN_PASSWORD)
+- https://higherlearningmarketers.com/admin/login/
+- POST `/api/submit/` from the contact form
 
-Useful commands:
-
-```bash
-sudo systemctl status hlm-flask
-sudo journalctl -u hlm-flask -f
-```
-
----
-
-## Updates later
-
-```bash
-rsync -avz --exclude '.venv' --exclude 'data/leads' --exclude '.env' \
-  /home/buildco/highereducation_eilte/flask/ \
-  vish@74.205.70.188:/var/www/hlm-flask/
-
-ssh vish@74.205.70.188 'sudo systemctl restart hlm-flask'
-```
-
----
-
-## Order of operations (safe cutover)
-
-1. Upload Flask to `/var/www/hlm-flask` (WordPress still live)
-2. Start gunicorn on `127.0.0.1:5000`
-3. Switch Nginx/Apache vhost to proxy → `:5000`
-4. Confirm site + forms work
-5. Move/delete WordPress docroot
-6. Change passwords / clean malware leftovers from the old WP tree
+Admin requires `ADMIN_PASSWORD` in `.env`.
