@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 define('SITE_ROOT', __DIR__);
-define('REPO_ROOT', __DIR__);
+define('REPO_ROOT', dirname(__DIR__));
 define('TEMPLATES_DIR', SITE_ROOT . '/templates');
 
 /**

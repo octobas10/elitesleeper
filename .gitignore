@@ -3,26 +3,26 @@
 .env.local
 .env.*.local
 !.env.example
+site/.env
 
-# --- Runtime data ---
+# --- Runtime lead data ---
 data/leads/*
 !data/leads/.gitkeep
+site/data/leads/*
+!site/data/leads/.gitkeep
 
-# --- Python (not used at runtime) ---
+# --- Not for VPS / not the PHP app ---
+design-ref-html/
+docs/
+astro/
+scripts/
+flask/
 .venv/
+venv/
 .venv-report/
 .venv-xlsx/
 __pycache__/
-*.py[cod]
-commit_log.txt
-smoke_result.txt
-rm_flask.txt
-
-# --- Local-only artifacts ---
 node_modules/
-astro/
-design-ref-html/
-docs/
 docker-compose.yml
 HLM-*.xlsx
 _archived/
