@@ -1,57 +1,49 @@
-# Higher Learning Marketers — Flask app
+# Higher Learning Marketers — Pure PHP
 
-Pure Python site and admin. **No Node.js** is required to build or run.
+No Node.js. No Python required to run the site.
 
 ## Setup
 
 ```bash
-cd flask
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
 cp .env.example .env
-# Edit .env — at least set SECRET_KEY and ADMIN_PASSWORD for admin
+# Edit .env — set SECRET_KEY and ADMIN_PASSWORD at minimum
+
+# Export content bundle from Flask content.py (one-time / when content changes)
+python3 scripts/export_content_for_php.py
+
+# Ensure static assets & JSON are in place
+mkdir -p site/data/leads
+cp -n app/data/*.json site/data/ 2>/dev/null || true
+cp -a app/static/. site/static/
 ```
 
 ## Run (development)
 
 ```bash
-flask --app wsgi:app run --host 0.0.0.0 --port 5000
+cd site
+php -S localhost:10001 ../deploy/router.php
 ```
 
-## Run (production)
+Or:
 
 ```bash
-gunicorn -b 0.0.0.0:5000 wsgi:app
+cd site
+php -S localhost:10001
 ```
 
-Or with Docker:
+## Production (Apache)
 
-```bash
-docker build -t hlm-flask .
-docker run --env-file .env -p 5000:5000 hlm-flask
-```
+Point the vhost document root at `site/`. `.htaccess` rewrites to `index.php`.
 
-## Nginx reverse proxy tip
-
-Proxy HTTPS to Gunicorn on localhost:5000 and forward the real client IP:
-
-```nginx
-location / {
-    proxy_pass http://127.0.0.1:5000;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-}
-```
-
-`ADMIN_ALLOWED_IPS` uses `X-Forwarded-For` when present, so set that header from a trusted proxy only.
+Required PHP extensions: `pdo_sqlite`, `curl`, `mbstring`.
 
 ## Admin
 
-Leads admin UI: **[/admin/](/admin/)**
+Leads admin UI: **/admin/**
 
 - Login: `/admin/login/`
-- Logout: `/admin/logout/` (GET or POST)
-- Requires `ADMIN_PASSWORD` in the environment
+- Requires `ADMIN_PASSWORD` in `.env`
+
+## Flask archive
+
+The previous Flask app remains in this repo (`app/`, `wsgi.py`). A zip snapshot may be under `_archived/`.

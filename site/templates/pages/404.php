@@ -1,0 +1,58 @@
+<section class="hlm-page-hero hlm-404">
+	<div class="hlm-page-hero__bg" aria-hidden="true"></div>
+	<div class="hlm-page-hero__grid" aria-hidden="true"></div>
+	<div class="hlm-container hlm-page-hero__inner">
+		<div class="hlm-overline">Error 404</div>
+		<h1 class="hlm-h1">Page not found</h1>
+		<p class="hlm-body-lg">That link may be outdated or mistyped. Use the options below to get back to Higher Learning Marketers.</p>
+		<div class="hlm-page-hero__cta hlm-404__actions">
+			<a class="hlm-btn hlm-btn-gold" href="/">Back to Home</a>
+			<a class="hlm-btn hlm-btn-outline hlm-404__outline" href="/contact-us/#form">Contact Us</a>
+		</div>
+	</div>
+</section>
+
+<section class="hlm-section hlm-bg-cream">
+	<div class="hlm-container">
+		<div class="hlm-section-header"><div class="hlm-overline">Quick Links</div><h2 class="hlm-h2">Where would you like to go?</h2></div>
+		<ul class="hlm-404__links" role="list">
+			<li><a class="hlm-404__link" href="/">Home</a></li>
+			<?php foreach (($nav ?? []) as $item): ?>
+			<li><a class="hlm-404__link" href="<?= e((string) ($item['href'] ?? '#')) ?>"><?= e((string) ($item['label'] ?? '')) ?></a></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</section>
+
+<section class="hlm-page-hero hlm-404">
+	<div class="hlm-page-hero__bg" aria-hidden="true"></div>
+	<div class="hlm-page-hero__grid" aria-hidden="true"></div>
+	<div class="hlm-container hlm-page-hero__inner">
+		<div class="hlm-overline">Error 404</div>
+		<h1 class="hlm-h1">Page not found</h1>
+		<p class="hlm-body-lg">
+			That link may be outdated or mistyped. Use the options below to get back to Higher Learning
+			Marketers.
+		</p>
+		<div class="hlm-page-hero__cta hlm-404__actions">
+			<a class="hlm-btn hlm-btn-gold" href="/">Back to Home</a>
+			<a class="hlm-btn hlm-btn-outline hlm-404__outline" href="/contact-us/#form">Contact Us</a>
+		</div>
+	</div>
+</section>
+
+<section class="hlm-section hlm-bg-cream">
+	<div class="hlm-container">
+		<div class="hlm-section-header">
+			<div class="hlm-overline">Quick Links</div>
+			<h2 class="hlm-h2">Where would you like to go?</h2>
+		</div>
+		<ul class="hlm-404__links" role="list">
+			<li><a class="hlm-404__link" href="/">Home</a></li>
+			<?php foreach ($nav as $item): ?>
+			<li><a class="hlm-404__link" href="<?= e((string)($item['href'])) ?>"><?= e((string)($item['label'])) ?></a></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</section>
+

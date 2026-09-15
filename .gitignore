@@ -22,15 +22,18 @@ flask/data/leads/*
 !flask/data/leads/.gitkeep
 
 # --- Legacy stacks (not deployed) ---
-site/
 astro/
 design-ref-html/
 docs/
-scripts/
 .venv-report/
 .venv-xlsx/
 docker-compose.yml
 HLM-*.xlsx
+
+# PHP site runtime
+site/data/leads/*
+!site/data/leads/.gitkeep
+site/.env
 
 # --- Node / OS / IDE ---
 node_modules/

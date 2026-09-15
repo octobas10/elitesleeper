@@ -1,0 +1,378 @@
+/**
+ * HLM semantic design tokens.
+ *
+ * Source of truth: theme.json (WordPress global styles).
+ * This file maps --wp--preset--* / --wp--custom--* → --hlm-* aliases,
+ * then defines semantic tokens for components and the site shell.
+ *
+ * Light / dark / system modes via [data-theme] on <html> (see theme-switcher.php).
+ */
+
+/* ─── Primitives (from theme.json) ─────────────────────────── */
+:root {
+	scroll-behavior: smooth;
+
+	--hlm-primary: var(--wp--preset--color--hlm-primary, #003366);
+	--hlm-secondary: var(--wp--preset--color--hlm-secondary, #4a90d9);
+	--hlm-accent: var(--wp--preset--color--hlm-accent, #d4af37);
+	--hlm-neutral: var(--wp--preset--color--hlm-neutral, #2c2c2c);
+	--hlm-light: var(--wp--preset--color--hlm-light, #f5f5f5);
+
+	--hlm-navy-950: var(--wp--preset--color--hlm-navy-950, #001520);
+	--hlm-navy-900: var(--wp--preset--color--hlm-navy-900, #002536);
+	--hlm-navy-800: var(--wp--preset--color--hlm-navy-800, #003a52);
+	--hlm-navy-700: var(--wp--preset--color--hlm-navy-700, #004060);
+	--hlm-navy-600: var(--wp--preset--color--hlm-navy-600, #005a7a);
+
+	--hlm-gold-500: var(--wp--preset--color--hlm-gold-500, #a68b4b);
+	--hlm-gold-400: var(--wp--preset--color--hlm-gold-400, #c9a96e);
+	--hlm-gold-300: var(--wp--preset--color--hlm-gold-300, #d4bc8e);
+	--hlm-gold-200: var(--wp--preset--color--hlm-gold-200, #e0d0b0);
+
+	--hlm-cream: var(--wp--preset--color--hlm-cream, #e8e4d9);
+	--hlm-cream-dark: var(--wp--preset--color--hlm-cream-dark, #d8d4c9);
+	--hlm-cream-100: var(--wp--preset--color--hlm-cream-100, #f2f0eb);
+	--hlm-white: var(--wp--preset--color--hlm-white, #ffffff);
+
+	--hlm-gray-700: var(--wp--preset--color--hlm-gray-700, #2c2c2c);
+	--hlm-gray-500: var(--wp--preset--color--hlm-gray-500, #6b7280);
+	--hlm-gray-400: var(--wp--preset--color--hlm-gray-400, #9ca3af);
+	--hlm-gray-300: var(--wp--preset--color--hlm-gray-300, #d1d5db);
+	--hlm-success: var(--wp--preset--color--hlm-success, #059669);
+	--hlm-error: #ef4444;
+
+	--hlm-font-heading: var(--wp--preset--font-family--hlm-heading, 'Montserrat', system-ui, -apple-system, sans-serif);
+	--hlm-font-body: var(--wp--preset--font-family--hlm-body, 'Inter', system-ui, -apple-system, sans-serif);
+	--hlm-font-accent: var(--wp--preset--font-family--hlm-display, 'Playfair Display', Georgia, serif);
+	--hlm-font-sans: var(--hlm-font-body);
+	--hlm-font-serif: var(--hlm-font-accent);
+
+	--hlm-space-xs: var(--wp--custom--hlm--space--xs, 0.5rem);
+	--hlm-space-sm: var(--wp--custom--hlm--space--sm, 1rem);
+	--hlm-space-md: var(--wp--custom--hlm--space--md, 1.5rem);
+	--hlm-space-lg: var(--wp--custom--hlm--space--lg, 2.5rem);
+	--hlm-space-xl: var(--wp--custom--hlm--space--xl, 4rem);
+	--hlm-space-2xl: var(--wp--custom--hlm--space--2xl, 6rem);
+
+	--hlm-radius-sm: var(--wp--custom--hlm--radius--sm, 4px);
+	--hlm-radius-md: var(--wp--custom--hlm--radius--md, 8px);
+	--hlm-radius-lg: var(--wp--custom--hlm--radius--lg, 16px);
+
+	--hlm-ease-out-expo: var(--wp--custom--hlm--motion--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+	--hlm-transition: var(--wp--custom--hlm--motion--transition, 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+
+	--hlm-header-height: var(--wp--custom--hlm--layout--header-height, 72px);
+	--hlm-hero-offset: var(--wp--custom--hlm--layout--hero-offset, 16px);
+	--hlm-hero-top: calc(var(--hlm-header-height) + var(--hlm-hero-offset));
+	/* Content breathing room when the header already occupies document flow */
+	--hlm-hero-content-offset: clamp(16px, 2.5vh, 28px);
+
+	--hlm-content-width: var(--wp--style--global--content-size, 1280px);
+	--hlm-wide-width: var(--wp--style--global--wide-size, 1440px);
+}
+
+/* ─── Semantic tokens — light mode ─────────────────────────── */
+:root,
+[data-theme="light"] {
+	color-scheme: light;
+
+	--hlm-on-dark: #ffffff;
+	--hlm-on-dark-muted: rgba(255, 255, 255, 0.86);
+	--hlm-on-dark-subtle: rgba(255, 255, 255, 0.72);
+	--hlm-on-light: var(--hlm-navy-900);
+	--hlm-on-light-muted: #3d4f63;
+	--hlm-on-light-subtle: var(--hlm-gray-500);
+
+	--hlm-surface-light-fg: var(--hlm-navy-900);
+	--hlm-surface-light-fg-muted: #3d4f63;
+	--hlm-surface-light-fg-subtle: var(--hlm-gray-500);
+	--hlm-surface-brand-fg: var(--hlm-white);
+	--hlm-surface-brand-fg-muted: rgba(255, 255, 255, 0.86);
+	--hlm-surface-brand-fg-accent: var(--hlm-gold-300);
+
+	--hlm-motion-duration: 0.85s;
+	--hlm-motion-distance: 32px;
+	--hlm-stagger-step: 110ms;
+
+	--hlm-surface-base: var(--hlm-light);
+	--hlm-surface-raised: var(--hlm-white);
+	--hlm-surface-sunken: var(--hlm-cream-100);
+	--hlm-surface-overlay: var(--hlm-white);
+	--hlm-surface-brand: var(--hlm-primary);
+	--hlm-surface-accent: var(--hlm-accent);
+	--hlm-surface-inverse: var(--hlm-navy-950);
+
+	--hlm-text-primary: var(--hlm-navy-900);
+	--hlm-text-muted: var(--hlm-gray-700);
+	--hlm-text-subtle: var(--hlm-gray-500);
+	--hlm-text-on-brand: var(--hlm-white);
+	--hlm-text-accent: var(--hlm-gold-500);
+	--hlm-text-inverse: var(--hlm-white);
+	--hlm-brand-text: var(--hlm-primary);
+
+	--hlm-border-subtle: rgba(0, 51, 102, 0.08);
+	--hlm-border-strong: rgba(0, 51, 102, 0.16);
+	--hlm-border-accent: var(--hlm-gold-400);
+
+	--hlm-shadow: 0 4px 24px rgba(0, 51, 102, 0.08);
+	--hlm-shadow-elevated: 0 12px 48px rgba(0, 51, 102, 0.1);
+	--hlm-shadow-card-hover: 0 12px 40px rgba(0, 51, 102, 0.08);
+
+	--hlm-cta-bg: var(--hlm-secondary);
+	--hlm-cta-bg-hover: var(--hlm-navy-700);
+	--hlm-cta-text: var(--hlm-white);
+	--hlm-cta-outline: var(--hlm-primary);
+	--hlm-cta-gold-bg: var(--hlm-gold-400);
+	--hlm-cta-gold-text: var(--hlm-navy-950);
+
+	--hlm-shell-bg: var(--hlm-surface-base);
+	--hlm-shell-text: var(--hlm-neutral);
+	--hlm-header-bg: var(--hlm-surface-raised);
+	--hlm-header-text: var(--hlm-neutral);
+	--hlm-header-text-hover: var(--hlm-secondary);
+	--hlm-header-border: var(--hlm-border-subtle);
+	--hlm-footer-bg: #001a33;
+	--hlm-footer-text: rgba(255, 255, 255, 0.75);
+	--hlm-footer-border: rgba(255, 255, 255, 0.08);
+
+	--hlm-hero-bg: linear-gradient(145deg, var(--hlm-white) 0%, var(--hlm-light) 45%, rgba(74, 144, 217, 0.14) 100%);
+	--hlm-hero-text: var(--hlm-neutral);
+	--hlm-hero-headline: var(--hlm-primary);
+	--hlm-hero-headline-em: var(--hlm-secondary);
+	--hlm-hero-desc: var(--hlm-gray-700);
+	--hlm-hero-overline: var(--hlm-gold-500);
+	--hlm-hero-grid-line: rgba(0, 51, 102, 0.035);
+	--hlm-hero-glow-a: rgba(212, 175, 55, 0.1);
+	--hlm-hero-glow-b: rgba(74, 144, 217, 0.14);
+	--hlm-hero-media-overlay: linear-gradient(135deg, rgba(0, 51, 102, 0.55) 0%, rgba(0, 21, 32, 0.35) 100%);
+
+	--hlm-page-hero-bg: var(--hlm-navy-950);
+	--hlm-page-hero-text: var(--hlm-white);
+
+	--hlm-form-surface: var(--hlm-white);
+	--hlm-form-border: var(--hlm-cream-dark);
+	--hlm-form-shadow: 0 12px 48px rgba(0, 51, 102, 0.08);
+	--hlm-form-label: var(--hlm-primary);
+	--hlm-form-input-bg: var(--hlm-light);
+	--hlm-form-input-border: var(--hlm-cream-dark);
+	--hlm-form-input-text: var(--hlm-neutral);
+	--hlm-form-input-focus-border: var(--hlm-secondary);
+	--hlm-form-input-focus-ring: rgba(74, 144, 217, 0.15);
+	--hlm-form-tab-track: var(--hlm-light);
+	--hlm-form-tab-border: var(--hlm-cream-dark);
+
+	--hlm-card-bg: var(--hlm-light);
+	--hlm-card-border: var(--hlm-cream-dark);
+	--hlm-card-hover-bg: var(--hlm-white);
+	--hlm-card-hover-border: rgba(74, 144, 217, 0.35);
+
+	--hlm-section-bg: var(--hlm-white);
+	--hlm-section-alt-bg: var(--hlm-cream-100);
+	--hlm-stats-bg: linear-gradient(180deg, var(--hlm-white) 0%, rgba(74, 144, 217, 0.07) 100%);
+	--hlm-stats-border: var(--hlm-cream-dark);
+	--hlm-stats-number: var(--hlm-primary);
+	--hlm-stats-divider: var(--hlm-cream-dark);
+}
+
+/* ─── Semantic tokens — dark mode ──────────────────────────── */
+[data-theme="dark"] {
+	color-scheme: dark;
+
+	--hlm-on-dark: #ffffff;
+	--hlm-on-dark-muted: rgba(255, 255, 255, 0.86);
+	--hlm-on-dark-subtle: rgba(255, 255, 255, 0.72);
+	--hlm-on-light: rgba(255, 255, 255, 0.94);
+	--hlm-on-light-muted: var(--hlm-gray-400);
+	--hlm-on-light-subtle: var(--hlm-gray-500);
+
+	--hlm-surface-light-fg: rgba(255, 255, 255, 0.94);
+	--hlm-surface-light-fg-muted: var(--hlm-gray-400);
+	--hlm-surface-light-fg-subtle: var(--hlm-gray-500);
+	--hlm-surface-brand-fg: var(--hlm-white);
+	--hlm-surface-brand-fg-muted: rgba(255, 255, 255, 0.86);
+	--hlm-surface-brand-fg-accent: var(--hlm-gold-300);
+
+	--hlm-motion-duration: 0.85s;
+	--hlm-motion-distance: 32px;
+	--hlm-stagger-step: 110ms;
+
+	--hlm-surface-base: var(--hlm-navy-950);
+	--hlm-surface-raised: var(--hlm-navy-900);
+	--hlm-surface-sunken: var(--hlm-navy-800);
+	--hlm-surface-overlay: rgba(255, 255, 255, 0.03);
+	--hlm-surface-brand: var(--hlm-navy-800);
+	--hlm-surface-accent: var(--hlm-gold-400);
+	--hlm-surface-inverse: var(--hlm-white);
+
+	--hlm-text-primary: var(--hlm-white);
+	--hlm-text-muted: var(--hlm-gray-400);
+	--hlm-text-subtle: var(--hlm-gray-500);
+	--hlm-text-on-brand: var(--hlm-white);
+	--hlm-text-accent: var(--hlm-gold-300);
+	--hlm-text-inverse: var(--hlm-navy-950);
+	--hlm-brand-text: var(--hlm-white);
+
+	--hlm-border-subtle: rgba(255, 255, 255, 0.06);
+	--hlm-border-strong: rgba(255, 255, 255, 0.12);
+	--hlm-border-accent: rgba(201, 169, 110, 0.35);
+
+	--hlm-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+	--hlm-shadow-elevated: 0 16px 48px rgba(0, 0, 0, 0.35);
+	--hlm-shadow-card-hover: 0 16px 40px rgba(0, 0, 0, 0.3);
+
+	--hlm-cta-bg: var(--hlm-gold-400);
+	--hlm-cta-bg-hover: var(--hlm-gold-300);
+	--hlm-cta-text: var(--hlm-navy-950);
+	--hlm-cta-outline: var(--hlm-gold-400);
+	--hlm-cta-gold-bg: var(--hlm-gold-400);
+	--hlm-cta-gold-text: var(--hlm-navy-950);
+
+	--hlm-shell-bg: var(--hlm-surface-base);
+	--hlm-shell-text: rgba(255, 255, 255, 0.9);
+	--hlm-header-bg: rgba(0, 21, 32, 0.92);
+	--hlm-header-text: var(--hlm-gray-300);
+	--hlm-header-text-hover: var(--hlm-gold-300);
+	--hlm-header-border: rgba(255, 255, 255, 0.06);
+	--hlm-footer-bg: var(--hlm-navy-950);
+	--hlm-footer-text: rgba(255, 255, 255, 0.72);
+	--hlm-footer-border: rgba(255, 255, 255, 0.06);
+
+	--hlm-hero-bg: var(--hlm-navy-950);
+	--hlm-hero-text: var(--hlm-white);
+	--hlm-hero-headline: var(--hlm-white);
+	--hlm-hero-headline-em: var(--hlm-gold-300);
+	--hlm-hero-desc: var(--hlm-gray-400);
+	--hlm-hero-overline: var(--hlm-gold-400);
+	--hlm-hero-grid-line: rgba(255, 255, 255, 0.015);
+	--hlm-hero-glow-a: rgba(201, 169, 110, 0.06);
+	--hlm-hero-glow-b: rgba(0, 58, 82, 0.4);
+	--hlm-hero-media-overlay: linear-gradient(135deg, rgba(0, 21, 32, 0.75) 0%, rgba(0, 58, 82, 0.45) 100%);
+
+	--hlm-page-hero-bg: var(--hlm-navy-950);
+	--hlm-page-hero-text: var(--hlm-white);
+
+	--hlm-form-surface: rgba(255, 255, 255, 0.03);
+	--hlm-form-border: rgba(255, 255, 255, 0.08);
+	--hlm-form-shadow: none;
+	--hlm-form-label: var(--hlm-gray-300);
+	--hlm-form-input-bg: rgba(255, 255, 255, 0.04);
+	--hlm-form-input-border: rgba(255, 255, 255, 0.08);
+	--hlm-form-input-text: var(--hlm-white);
+	--hlm-form-input-focus-border: var(--hlm-gold-400);
+	--hlm-form-input-focus-ring: rgba(201, 169, 110, 0.08);
+	--hlm-form-tab-track: rgba(255, 255, 255, 0.04);
+	--hlm-form-tab-border: rgba(255, 255, 255, 0.08);
+
+	--hlm-card-bg: rgba(255, 255, 255, 0.02);
+	--hlm-card-border: rgba(255, 255, 255, 0.06);
+	--hlm-card-hover-bg: rgba(255, 255, 255, 0.04);
+	--hlm-card-hover-border: rgba(201, 169, 110, 0.25);
+
+	--hlm-section-bg: var(--hlm-navy-950);
+	--hlm-section-alt-bg: var(--hlm-navy-900);
+	--hlm-stats-bg: var(--hlm-navy-800);
+	--hlm-stats-border: rgba(255, 255, 255, 0.06);
+	--hlm-stats-number: var(--hlm-gold-400);
+	--hlm-stats-divider: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── HLM theme shell ──────────────────────────────────────── */
+body.hlm-theme,
+body.hlm-landing-page {
+	background: var(--hlm-shell-bg);
+	color: var(--hlm-shell-text);
+	font-family: var(--hlm-font-body);
+	font-size: 1rem;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+
+body.hlm-theme #wrapper,
+body.hlm-theme .site,
+body.hlm-theme #inner-wrap,
+body.hlm-landing-page #wrapper,
+body.hlm-landing-page .site,
+body.hlm-landing-page #inner-wrap {
+	background: var(--hlm-shell-bg);
+}
+
+body.hlm-theme .entry-hero.page-hero-section,
+body.hlm-landing-page .entry-hero.page-hero-section {
+	display: none;
+}
+
+body.hlm-theme:not(.hlm-blog):not(.hlm-single-post) .content-area,
+body.hlm-theme:not(.hlm-blog):not(.hlm-single-post) .content-container.site-container,
+body.hlm-theme:not(.hlm-blog):not(.hlm-single-post) .content-wrap,
+body.hlm-landing-page .content-area,
+body.hlm-landing-page .content-container.site-container,
+body.hlm-landing-page .content-wrap {
+	max-width: none;
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+body.hlm-theme:not(.hlm-blog):not(.hlm-single-post) article.entry.content-bg,
+body.hlm-landing-page article.entry.content-bg {
+	background: transparent;
+	box-shadow: none;
+	border: 0;
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
+	max-width: none;
+	color: var(--hlm-shell-text);
+}
+
+body.hlm-theme:not(.hlm-blog):not(.hlm-single-post) .entry-content-wrap,
+body.hlm-theme:not(.hlm-blog):not(.hlm-single-post) .entry-content.single-content,
+body.hlm-landing-page .entry-content-wrap,
+body.hlm-landing-page .entry-content.single-content {
+	padding: 0;
+	margin: 0;
+	max-width: none;
+}
+
+body.hlm-theme .entry-content > section[class^="hlm-"],
+body.hlm-theme .entry-content > .hlm-section,
+body.hlm-landing-page .entry-content > section[class^="hlm-"],
+body.hlm-landing-page .entry-content > .hlm-section {
+	width: 100%;
+	max-width: none;
+	margin-inline: 0;
+}
+
+/* ─── Kadence footer (semantic tokens) ────────────── */
+body.hlm-theme .mobile-toggle-open-container .menu-toggle-open,
+body.hlm-landing-page .mobile-toggle-open-container .menu-toggle-open {
+	color: var(--hlm-brand-text);
+}
+
+body.hlm-theme .primary-menu-container > ul > li.menu-item:last-child > a,
+body.hlm-landing-page .primary-menu-container > ul > li.menu-item:last-child > a {
+	background: var(--hlm-cta-bg);
+	color: var(--hlm-cta-text) !important;
+	padding: 10px 24px;
+	border-radius: var(--hlm-radius-sm);
+	font-weight: 600;
+}
+
+body.hlm-theme .primary-menu-container > ul > li.menu-item:last-child > a:hover,
+body.hlm-landing-page .primary-menu-container > ul > li.menu-item:last-child > a:hover {
+	background: var(--hlm-cta-bg-hover);
+	color: var(--hlm-cta-text) !important;
+}
+
+body.hlm-theme #colophon,
+body.hlm-theme .site-footer,
+body.hlm-landing-page #colophon,
+body.hlm-landing-page .site-footer {
+	background: var(--hlm-footer-bg);
+	color: var(--hlm-footer-text);
+}
+
+body.hlm-theme .footer-html-inner a[href*="kadencewp.com"],
+body.hlm-landing-page .footer-html-inner a[href*="kadencewp.com"] {
+	display: none;
+}
