@@ -1,41 +1,25 @@
-# --- Secrets ---
 .env
 .env.local
 .env.*.local
 !.env.example
 site/.env
-
-# --- Runtime lead data ---
-data/leads/*
-!data/leads/.gitkeep
 site/data/leads/*
 !site/data/leads/.gitkeep
-
-# --- Not for VPS / not the PHP app ---
+.venv/
+.venv-*/
+__pycache__/
+*.py[cod]
+node_modules/
+astro/
 design-ref-html/
 docs/
-astro/
-scripts/
-flask/
-.venv/
-venv/
-.venv-report/
-.venv-xlsx/
-__pycache__/
-node_modules/
-docker-compose.yml
-HLM-*.xlsx
 _archived/
+HLM-*.xlsx
 *.zip
 *.sql.gz
 *.tar.gz
 wp-backup-*
-
-# --- OS / IDE ---
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
-*.swp
-*~
-npm-debug.log*

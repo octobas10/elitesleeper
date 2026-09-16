@@ -1,6 +1,6 @@
-# Higher Learning Marketers — Pure PHP
+# Higher Learning Marketers (PHP)
 
-The deployable app lives in **`site/`**. Point the VPS document root at `site/` only — ignore design refs and other root clutter.
+Live site code is in `site/`. Point the web server document root at that folder.
 
 ## Setup
 
@@ -11,35 +11,27 @@ cp .env.example .env
 mkdir -p data/leads
 ```
 
-Required PHP extensions: `pdo_sqlite`, `curl`, `mbstring`.
+PHP extensions: `pdo_sqlite`, `curl`, `mbstring`.
 
-## Run (development)
+## Local development
 
-From the **repo root**:
+From the repo root:
 
 ```bash
 php -S localhost:10001 deploy/router.php
 ```
 
-Or from `site/`:
+Or:
 
 ```bash
 cd site && php -S localhost:10001
 ```
 
-## Production (VPS)
+## Production
 
-Upload / rsync **only `site/`** to the server. DocumentRoot should point at the deployed `site/` folder.
-
-```apache
-# If you clone full repo on server:
-DocumentRoot /var/www/hlm-repo/site
-# If you rsync only ./site/ into /var/www/hlm:
-# DocumentRoot /var/www/hlm
-```
-
-Keep `data/leads/` writable. Do not commit `.env`.
+Upload only `site/`. Set DocumentRoot to that directory. Keep `data/leads/` writable. Do not commit `.env`.
 
 ## Admin
 
-- `/admin/` — requires `ADMIN_PASSWORD` in `site/.env`
+- `/admin/` and `/admin/login/`
+- Requires `ADMIN_PASSWORD` in `site/.env`
