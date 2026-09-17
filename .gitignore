@@ -2,9 +2,8 @@
 .env.local
 .env.*.local
 !.env.example
-site/.env
-site/data/leads/*
-!site/data/leads/.gitkeep
+data/leads/*
+!data/leads/.gitkeep
 .venv/
 .venv-*/
 __pycache__/

@@ -6,7 +6,7 @@
  *   php -S localhost:10001 deploy/router.php
  */
 
-$root = dirname(__DIR__) . '/site';
+$root = dirname(__DIR__);
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $file = $root . $path;
 

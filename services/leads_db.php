@@ -53,7 +53,7 @@ function get_leads_dir(?string $storageDir = null): string
     if ($env !== false && $env !== '') {
         return $env;
     }
-    return dirname(__DIR__, 2) . '/data/leads';
+    return dirname(__DIR__) . '/data/leads';
 }
 
 function leads_db_path(?string $storageDir = null): string
