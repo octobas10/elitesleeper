@@ -6,6 +6,8 @@ define('SITE_ROOT', __DIR__);
 define('REPO_ROOT', SITE_ROOT);
 define('TEMPLATES_DIR', SITE_ROOT . '/templates');
 
+require_once SITE_ROOT . '/lib/php74_polyfill.php';
+
 /**
  * Simple PSR-4-like autoload for root-level app folders.
  */

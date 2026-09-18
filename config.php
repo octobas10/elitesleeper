@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 final class Config
 {
-    public static function get(string $key, mixed $default = ''): mixed
+    /** @param mixed $default */
+    public static function get(string $key, $default = '')
     {
         $map = self::all();
         return $map[$key] ?? $default;
