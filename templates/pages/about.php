@@ -78,24 +78,7 @@ if (!empty($seo_intro)):
 </section>
 <?php endif; ?>
 
-<?php if (!empty($leadership) && is_array($leadership)): ?>
-<section class="hlm-team hlm-team--leadership hlm-section">
-	<div class="hlm-container">
-		<div class="hlm-section-header"><div class="hlm-overline">About Us</div><h2 class="hlm-h2">Meet Our Leadership</h2><p class="hlm-body-lg">The team guiding consent-based education marketing for U.S. institutions and prospective students.</p></div>
-		<div class="hlm-team-profiles">
-			<?php foreach ($leadership as $m): ?>
-			<article class="hlm-team-profile">
-				<div class="hlm-team-profile__head">
-					<?php if (!empty($m['photoUrl'])): ?><img class="hlm-team-profile__photo" src="<?= e((string) $m['photoUrl']) ?>" alt="<?= e((string) ($m['name'] ?? '')) ?>" width="120" height="120" loading="lazy" /><?php endif; ?>
-					<div><h3 class="hlm-h3"><?= e((string) ($m['name'] ?? '')) ?></h3><p class="hlm-team-profile__role"><?= e((string) ($m['role'] ?? '')) ?></p></div>
-				</div>
-				<p class="hlm-body"><?= e((string) ($m['bio'] ?? '')) ?></p>
-			</article>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-<?php endif;
+<?php
 partial('components/faq_section', ['faqs' => $faqs ?? []]);
 $variant = 'soft';
 $overline = 'Work With Us';

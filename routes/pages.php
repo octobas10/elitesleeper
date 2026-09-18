@@ -114,7 +114,6 @@ function handle_pages(string $path): bool
             render('pages/about', seo_ctx('about-us', '/about-us/', [
                 'about_values' => $GLOBALS['about_values'],
                 'timeline' => $GLOBALS['timeline'],
-                'leadership' => $GLOBALS['leadership'],
                 'hero_image' => MEDIA['page_about'],
             ]));
             return true;
