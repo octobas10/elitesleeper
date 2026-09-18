@@ -1,4 +1,12 @@
+Options -Indexes
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+
+# Block direct web access to PHP internals
+RewriteRule ^(lib|services|routes|templates|data|deploy)/ - [F,L]
+
+# Let real public files through (e.g. /static/...)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Everything else → front controller (including /services/)
 RewriteRule ^ index.php [L]
