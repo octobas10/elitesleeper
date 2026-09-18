@@ -113,13 +113,15 @@ function client_ip(): string
     return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
 }
 
-function redirect(string $url, int $code = 302): never
+/** @return no-return */
+function redirect(string $url, int $code = 302)
 {
     header('Location: ' . $url, true, $code);
     exit;
 }
 
-function json_response(array $data, int $status = 200): never
+/** @return no-return */
+function json_response(array $data, int $status = 200)
 {
     http_response_code($status);
     header('Content-Type: application/json; charset=utf-8');

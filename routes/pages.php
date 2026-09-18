@@ -31,7 +31,7 @@ function seo_ctx(string $slug, string $path, array $extra = []): array
     ], $extra);
 }
 
-function handle_robots(): never
+function handle_robots()
 {
     $siteUrl = Config::get('SITE_URL', SITE['url']);
     $body = "User-agent: *\n"
@@ -43,7 +43,7 @@ function handle_robots(): never
     exit;
 }
 
-function handle_sitemap(): never
+function handle_sitemap()
 {
     $base = rtrim((string) Config::get('SITE_URL', SITE['url']), '/');
     $urls = [

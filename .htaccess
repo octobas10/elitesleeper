@@ -1,4 +1,3 @@
-Options -Indexes
 RewriteEngine On
 
 # Block direct web access to app internals (not public URL paths)

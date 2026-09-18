@@ -118,10 +118,10 @@ function handle_admin_leads(): void
     $storage = (string) Config::get('LEAD_STORAGE_DIR');
 
     $result = list_leads(
-        storageDir: $storage,
-        formType: $formType !== '' ? $formType : null,
-        q: $q !== '' ? $q : null,
-        limit: 200
+        $storage,
+        $formType !== '' ? $formType : null,
+        $q !== '' ? $q : null,
+        200
     );
     $counts = get_lead_counts($storage);
 

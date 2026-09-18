@@ -33,7 +33,7 @@ function handle_api(string $path, string $method): bool
     json_response(['error' => 'Not found.'], 404);
 }
 
-function handle_submit_lead(): never
+function handle_submit_lead()
 {
     $ip = client_ip();
     $maxSubmits = (int) Config::get('RATE_LIMIT_MAX', 5);
