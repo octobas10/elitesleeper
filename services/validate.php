@@ -46,11 +46,9 @@ function is_valid_name(string $v): bool
 
 function is_valid_zip(string $v): bool
 {
+    // US ZIP only: 12345 or 12345-6789
     $zipCode = trim($v);
-    return (bool) (
-        preg_match('/^\d{5}(-\d{4})?$/', $zipCode)
-        || preg_match('/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/', $zipCode)
-    );
+    return (bool) preg_match('/^\d{5}(-\d{4})?$/', $zipCode);
 }
 
 /** @param array<string, mixed> $data */
@@ -105,7 +103,7 @@ function validate_lead(string $formType, array $data): array
 
     $zipCode = str_field($data, 'zip');
     if ($zipCode !== '' && !is_valid_zip($zipCode)) {
-        return [false, ['error' => 'Please enter a valid ZIP or postal code.']];
+        return [false, ['error' => 'Please enter a valid 5-digit U.S. ZIP code.']];
     }
 
     foreach (['first_name', 'last_name', 'institution_name'] as $nameField) {

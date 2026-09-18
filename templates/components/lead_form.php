@@ -89,8 +89,19 @@
 				</div>
 			</div>
 			<div class="hlm-form-group">
-				<label for="<?= e((string)($form_id)) ?>-student-zip">ZIP / Postal code</label>
-				<input type="text" id="<?= e((string)($form_id)) ?>-student-zip" name="zip" autocomplete="postal-code" required />
+				<label for="<?= e((string)($form_id)) ?>-student-zip">U.S. ZIP code</label>
+				<input
+					type="text"
+					id="<?= e((string)($form_id)) ?>-student-zip"
+					name="zip"
+					autocomplete="postal-code"
+					inputmode="numeric"
+					pattern="\d{5}(-\d{4})?"
+					maxlength="10"
+					placeholder="12345"
+					required
+				/>
+				<p class="hlm-field-hint">5 digits (or ZIP+4 like 12345-6789).</p>
 			</div>
 			<button type="button" class="hlm-btn hlm-btn--primary hlm-btn--full hlm-form-next">Continue</button>
 		</div>

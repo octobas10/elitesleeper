@@ -20,9 +20,18 @@
 		return '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6);
 	}
 
+	function formatZipDisplay(value) {
+		var digits = String(value || '').replace(/\D/g, '').slice(0, 9);
+		if (digits.length <= 5) {
+			return digits;
+		}
+		return digits.slice(0, 5) + '-' + digits.slice(5);
+	}
+
 	function isValidZip(zip) {
+		// US ZIP only: 12345 or 12345-6789 (max length 10)
 		var z = String(zip || '').trim();
-		return /^\d{5}(-\d{4})?$/.test(z) || /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/.test(z);
+		return /^\d{5}(-\d{4})?$/.test(z);
 	}
 
 	function isValidName(name) {
@@ -131,7 +140,7 @@
 		}
 
 		if (field.name === 'zip' && !isValidZip(String(value))) {
-			return 'Enter a valid ZIP (12345) or postal code (A1A 1A1).';
+			return 'Enter a valid 5-digit U.S. ZIP (12345).';
 		}
 
 		if (
@@ -190,13 +199,22 @@
 					});
 				}
 
+				if (field.name === 'zip') {
+					field.setAttribute('maxlength', '10');
+					field.addEventListener('input', function () {
+						var formatted = formatZipDisplay(field.value);
+						if (field.value !== formatted) field.value = formatted;
+						if (!validateField(field)) setFieldError(field, '');
+					});
+				}
+
 				field.addEventListener('blur', function () {
 					if (field.type === 'hidden' || field.classList.contains('hlm-hp')) return;
 					setFieldError(field, validateField(field));
 				});
 
 				field.addEventListener('input', function () {
-					if (field.type === 'tel' || field.name === 'phone') return;
+					if (field.type === 'tel' || field.name === 'phone' || field.name === 'zip') return;
 					if (!validateField(field)) setFieldError(field, '');
 				});
 
