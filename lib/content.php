@@ -737,15 +737,15 @@ const SEO_DATA = [
             ],
             [
                 "question" => "Where is Higher Learning Marketers located?",
-                "answer" => "We are headquartered in Briarwood, New York, and serve universities and colleges across the United States.",
+                "answer" => "We are headquartered in Briarwood, New York, and serve universities and colleges across the United States and Canada.",
             ],
             [
                 "question" => "Is HLM TCPA compliant?",
-                "answer" => "Yes. Consent documentation, transparent form disclosures, and TCPA-aligned outreach practices are core to how we generate and deliver education leads.",
+                "answer" => "Yes. Higher Learning Marketers utilities explicit written consent documentation with fully transparent form disclosures, and TCPA-aligned outreach practices which are core to how we generate and deliver education leads. Higher Learning Marketers implemented Jornaya ID and Trusted Form ID technology on its website forms which is what most education institutions require in the present day with regards to college bound student lead generation.",
             ],
             [
                 "question" => "What makes HLM an education marketing company universities trust?",
-                "answer" => "We prioritize lead quality over raw volume, document consent for every inquiry, and align campaigns with enrollment KPIs - helping partners fill programs with students who chose to be contacted.",
+                "answer" => "We prioritize lead quality over raw volume, express written consent for each and every inquiry, and aligning campaigns with enrollment KPIs - helping College, University & Higher Learning Education partners fill programs with students who chose to be contacted.",
             ],
         ],
         "affiliations" => [
@@ -755,19 +755,15 @@ const SEO_DATA = [
             ],
             [
                 "question" => "How do strategic affiliations work with Higher Learning Marketers?",
-                "answer" => "Affiliation partners collaborate with HLM on student outreach, campaign distribution, and program promotion. We align goals, compliance requirements, and reporting so partnerships support measurable enrollment outcomes.",
+                "answer" => "Affiliation partners collaborate with HLM on student outreach, college campus campaigns, and specific education course program promotions. We align student goals, balance compliance requirements, and reporting so our partnerships support measurable enrollment outcomes.",
             ],
             [
                 "question" => "Do you partner with institutions only in the United States?",
-                "answer" => "Our primary enrollment marketing focus is U.S. universities and colleges. Our network reaches students across many regions, but campaigns and partnerships are built around U.S. higher education programs and compliance standards.",
+                "answer" => "Our primary enrollment marketing focus is U.S.A. universities and colleges. However, we have started partnering with some Canada colleges and universities by inquiring students popular demand in recent years.  Our Educational network reaches students across many regions, but campaigns and partnerships are built around U.S. and some Canada higher education programs and specialized courses.",
             ],
             [
-                "question" => "How can my organization become an affiliate partner?",
-                "answer" => "Submit the contact form on our website with your organization name, audience, and partnership goals. Our team will schedule a consultation to review fit, program alignment, and next steps.",
-            ],
-            [
-                "question" => "What is the YGO affiliation?",
-                "answer" => "Higher Learning Marketers partners with YGO to connect young people and community audiences with accredited education pathways. The affiliation combines community reach with HLM lead generation infrastructure and consent-based inquiry capture.",
+                "question" => "How can my education based organization become an affiliate partner?",
+                "answer" => "Email us at support@higherlearningmarketers.com with your company name and contact information, email, telephone and postal address so we can arrange an exploratory call to chat about partnering with us as an affiliate.  Many of our affiliated colleges and Universities require 3 trade references in order to become an affiliate of their organization.",
             ],
         ],
         "lead-generation" => [
@@ -884,7 +880,7 @@ const SEO_DATA = [
         "services" => "<p>Our <strong>education lead generation services</strong> help U.S. enrollment teams fill priority programs with students who have explicitly requested information. Higher Learning Marketers delivers verified, consent-based inquiries - not shared lists - with program-level targeting, real-time CRM delivery, and reporting aligned to <strong>cost per enrollment</strong> rather than raw lead volume.</p>",
         "contact-us" => "<p>Use this page to <strong>partner with an education lead generation company</strong> serving universities and colleges in the United States, or to connect with accredited programs as a prospective student. University enrollment leaders can request a consultation to discuss nursing, business, and adult-learner campaigns. Students and working adults can submit an inquiry to compare pathways with an advisor.</p>",
         "about-us" => "<p>Higher Learning Marketers is an <strong>education marketing company</strong> based in New York, specializing in consent-based student recruitment for U.S. higher education. Since 2014 we have helped universities improve enrollment outcomes through TCPA-compliant lead generation, program-matched inquiries, and transparent data practices that protect both institutions and students.</p>",
-        "affiliations" => "<p>Our <strong>education partnerships</strong> connect accredited universities, colleges, and community organizations with motivated students across the United States. Higher Learning Marketers combines strategic <strong>affiliations</strong> - including community-focused partners like YGO - with TCPA-compliant lead generation so institutions expand reach through trusted, consent-based enrollment marketing rather than generic list buying.</p>",
+        "affiliations" => "<p>Our <strong>education partnerships</strong> connect accredited universities, colleges, and education platforms with motivated college-bound students across the United States and Canada. Higher Learning Marketers combines strategic <strong>affiliations</strong> with TCPA-compliant lead generation so institutions expand reach through trusted, consent-based enrollment marketing rather than generic list buying.</p>",
         "lead-generation" => "<p>Our <strong>student lead generation</strong> service delivers TCPA-compliant, consent-based inquiries to U.S. university and college admissions teams. Higher Learning Marketers connects enrollment leaders with students who have explicitly requested information about nursing, business, and adult-learner programs - with real-time CRM delivery and quality filters that protect <strong>cost per enrollment</strong> outcomes.</p>",
         "brand-awareness" => "<p><strong>Education brand awareness</strong> campaigns keep your U.S. institution visible across display, social, and retargeting channels while students research degree options. Higher Learning Marketers combines creative, media, and landing experiences so your programs stay top of mind before prospects are ready to request information.</p>",
         "multi-channel-marketing" => "<p><strong>Multi-channel enrollment marketing</strong> coordinates search, social, email, and partner placements for U.S. universities under one strategy. Higher Learning Marketers aligns messaging, compliance, and attribution so each touchpoint moves prospective students closer to application - not isolated campaigns with disconnected reporting.</p>",
@@ -1692,7 +1688,7 @@ const SERVICE_CARDS = [
 const ABOUT_VALUES = [
     [
         "title" => "Integrity First",
-        "description" => "We are TCPA and GDPR compliant. Every lead is verified, consented, and delivered with full transparency.",
+        "description" => "We are fully TCPA compliant. Every lead is verified, consented, and delivered with full transparency utilizing either a unique Jornaya ID and/or Trusted Form ID for each college bound student to our institution education partners.",
     ],
     [
         "title" => "Quality Leads",
@@ -1704,7 +1700,7 @@ const ABOUT_VALUES = [
     ],
     [
         "title" => "Innovation",
-        "description" => "From AI-driven matching to real-time analytics, we constantly evolve our technology to stay ahead.",
+        "description" => "From our advanced student to educational institutions matching algorithms to real-time analytics marketing pivoting, we are constantly evolving our technology to stay ahead.",
     ],
 ];
 
@@ -1722,22 +1718,22 @@ const TIMELINE = [
     [
         "year" => "2018",
         "title" => "Going National",
-        "description" => "Expands partner network to include ECPI University, South University, and Abilene Christian University. Reaches 1 million leads generated.",
+        "description" => "Expands partner network to include ECPI University, South University, and Abilene Christian University.",
     ],
     [
         "year" => "2020",
         "title" => "International Expansion",
-        "description" => "Partners with CDI College in Canada. Platform now serves students across North America with 50+ partner websites.",
+        "description" => "We Partner with CDI College in Canada. The Higher Learning Marketers Platform now serves students across North America and Canada.",
     ],
     [
         "year" => "2023",
-        "title" => "10 Million Leads",
-        "description" => "Crosses the 10 million lead milestone. Launches advanced AI matching engine and real-time analytics dashboard for partners.",
+        "title" => "80,000 Students Connected With Colleges & Universities",
+        "description" => "Crosses the 80,000 college bound student milestone. Launches advanced algorithm matching engine and real-time analytics dashboard for partners.",
     ],
     [
         "year" => "2026",
         "title" => "Today & Beyond",
-        "description" => "Operating in 164 countries with 560+ partner websites. Continuously innovating to connect the next generation of students with their ideal programs.",
+        "description" => "Operating both in the United States and Canada with over 200 owned and operated websites helping college bound students find the higher education institutions that will meet their career oriented goals. Continuously innovating to connect the next generation of students with their ideal programs.",
     ],
 ];
 
@@ -1757,12 +1753,6 @@ const LEADERSHIP = [
 ];
 
 const PARTNERS = [
-    [
-        "initials" => "YGO",
-        "title" => "Youth Guidance Organization",
-        "description" => "Community-based youth mentorship and education guidance programs across the United States.",
-        "meta" => "Strategic Partner",
-    ],
     [
         "initials" => "BC",
         "title" => "Berkeley College",
@@ -1801,8 +1791,8 @@ const AFFILIATION_BENEFITS = [
         "description" => "Every student inquiry is pre-qualified, consented, and matched to programs that fit their goals.",
     ],
     [
-        "title" => "Global Reach",
-        "description" => "Access our network of 560+ partner websites reaching students in 164 countries.",
+        "title" => "U.S.A Reach",
+        "description" => "Accessing our network of over 200 owned and operated websites reaching thousands of college bound students daily throughout the United States.",
     ],
     [
         "title" => "Technology Integration",

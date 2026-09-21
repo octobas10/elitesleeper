@@ -2,7 +2,7 @@
 partial('components/page_hero', [
     'overline' => 'What We Offer',
     'headline' => $headline ?? 'Education Lead Generation Services',
-    'description' => $description ?? 'TCPA-compliant, consent-based student inquiries for universities and colleges, from nursing and business programs to adult-learner enrollment campaigns.',
+    'description' => $description ?? 'TCPA-compliant, consent-based student inquiries for universities and colleges, from nursing to business programs for college bound students throughout the USA and Canada..',
     'image_url' => $image_url ?? ($media['page_services'] ?? ''),
     'image_alt' => $image_alt ?? 'Enrollment analytics dashboard for higher education campaigns',
     'primary_cta_text' => 'Schedule a Consultation',

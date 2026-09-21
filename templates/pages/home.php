@@ -3,13 +3,12 @@ if (!empty($institution_data)) {
     $block_scripts = '<script>window.HLM_INSTITUTION_DATA = ' . json_encode($institution_data, JSON_UNESCAPED_SLASHES) . ';</script>';
 }
 $image_url = $image_url ?? ($media['hero_home_poster'] ?? '');
-$headline = $headline ?? 'Connect Universities With Motivated U.S. Students';
-$description = $description ?? 'Higher Learning Marketers is a U.S.-focused education lead generation platform - helping universities fill nursing, business, and career programs while guiding students to accredited institutions that fit their goals.';
+$headline = $headline ?? 'Connecting Universities With Motivated USA College Bound Students';
+$description = $description ?? 'Higher Learning Marketers is a U.S.A focused education lead generation platform,  helping universities fill nursing, business, technical, engineering, medical and other career programs while guiding students to accredited institutions that fit their educational goals.';
 $image_alt = $image_alt ?? 'Students collaborating on a university campus';
-partial('components/hero_with_form', compact('image_url', 'headline', 'description', 'image_alt', 'institutions', 'state_options', 'grad_years', 'tcpa_text', 'turnstile_site_key'));
-if (!empty($stats)) {
-    partial('components/stats_bar', compact('stats'));
-}
+$trust_highlight = $trust_highlight ?? '100,000+';
+$trust_text = $trust_text ?? 'students connected with programs';
+partial('components/hero_with_form', compact('image_url', 'headline', 'description', 'image_alt', 'trust_highlight', 'trust_text', 'institutions', 'state_options', 'grad_years', 'tcpa_text', 'turnstile_site_key'));
 if (!empty($seo_intro)):
 ?>
 <section class="hlm-seo-intro hlm-seo-intro--compact hlm-section hlm-bg-cream" aria-label="Overview">

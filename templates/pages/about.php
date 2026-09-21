@@ -17,14 +17,14 @@ if (!empty($seo_intro)):
 		<div class="hlm-partner-showcase__grid hlm-partner-showcase__grid--image-left">
 			<div class="hlm-partner-showcase__visual">
 				<img class="hlm-partner-showcase__image" src="<?= e((string) ($media['partner_story'] ?? '')) ?>" alt="Higher Learning Marketers team strategy session" loading="lazy" />
-				<div class="hlm-partner-showcase__badge">Trusted by 560+ Partner Websites</div>
+				<div class="hlm-partner-showcase__badge">100,000+ Students Connected</div>
 			</div>
 			<div class="hlm-partner-showcase__content">
 				<div class="hlm-overline">Who We Are</div>
 				<h2 class="hlm-h2">A Decade of Proven Results</h2>
 				<div class="hlm-partner-showcase__copy hlm-body-lg">
-					<p>Higher Learning Marketers was founded with a simple mission: eliminate the friction between students searching for the right educational path and the institutions ready to welcome them.</p>
-					<p>What began as a small lead generation service has grown into a comprehensive education marketing platform. We now operate across 164 countries, partner with 560+ websites, and have generated over 10 million qualified leads for our partner institutions.</p>
+					<p>Higher Learning Marketers was founded with a simple mission to eliminate the friction between students searching for the right educational path and the institutions ready to welcome them.</p>
+					<p>What began as a small lead generation service has grown into a comprehensive education marketing platform. We now operate across the entire U.S.A partnering with many colleges and universities, and have sourced over 100,000 qualified college bound students for our partner institutions.</p>
 					<p>Our team combines deep expertise in higher education marketing, data science, and student engagement to deliver results that matter - not just clicks, but enrollments.</p>
 				</div>
 			</div>

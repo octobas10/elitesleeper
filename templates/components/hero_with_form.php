@@ -4,7 +4,7 @@
 <?php $primary_cta_url = $primary_cta_url ?? ($primary_cta_url ?? '#form'); ?>
 <?php $secondary_cta_text = $secondary_cta_text ?? ($secondary_cta_text ?? 'University Services'); ?>
 <?php $secondary_cta_url = $secondary_cta_url ?? ($secondary_cta_url ?? '/services/'); ?>
-<?php $trust_highlight = $trust_highlight ?? ($trust_highlight ?? '10,000+'); ?>
+<?php $trust_highlight = $trust_highlight ?? ($trust_highlight ?? '100,000+'); ?>
 <?php $trust_text = $trust_text ?? ($trust_text ?? 'students connected with programs'); ?>
 <?php $variant = $variant ?? 'light'; ?>
 <?php $hero_class = ($variant === 'landing') ? 'hlm-hero hlm-hero--landing hlm-hero--has-media hlm-hero--has-overlay' : 'hlm-hero hlm-hero--light hlm-hero--has-media hlm-hero--has-overlay'; ?>

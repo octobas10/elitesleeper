@@ -59,7 +59,7 @@
 		</div>
 
 		<div class="hlm-footer__bottom">
-			<p><?= e((string) ($current_year ?? 2026)) ?> <?= e((string) ($site['name'] ?? 'Higher Learning Marketers')) ?>. All rights reserved. TCPA &amp; GDPR Compliant.</p>
+			<p><?= e((string) ($current_year ?? 2026)) ?> <?= e((string) ($site['name'] ?? 'Higher Learning Marketers')) ?>. All rights reserved. TCPA Compliant.</p>
 		</div>
 	</div>
 </footer>
