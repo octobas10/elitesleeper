@@ -5,7 +5,6 @@
       "pillarUrl": "/blog/",
       "posts": [
         "how-to-choose-the-right-nursing-program",
-        "berkeley-college-application-tips-for-working-adults",
         "online-vs-campus-nursing-programs",
         "5-fafsa-mistakes-to-avoid"
       ],
@@ -14,18 +13,12 @@
           "services",
           "contact-us"
         ],
-        "berkeley-college-application-tips-for-working-adults": [
-          "services",
-          "contact-us",
-          "affiliations"
-        ],
         "online-vs-campus-nursing-programs": [
           "how-to-choose-the-right-nursing-program",
           "contact-us"
         ],
         "5-fafsa-mistakes-to-avoid": [
           "contact-us",
-          "berkeley-college-application-tips-for-working-adults",
           "how-students-find-the-right-program-with-hlm"
         ]
       }
@@ -118,7 +111,6 @@
         "adult-learner-enrollment-marketing": [
           "services",
           "contact-us",
-          "berkeley-college-application-tips-for-working-adults",
           "how-students-find-the-right-program-with-hlm"
         ],
         "cost-per-enrollment-vs-cost-per-lead": [
@@ -577,7 +569,6 @@
     "adult-learner-enrollment-marketing": "Adult Learner Enrollment Marketing for U.S. Colleges",
     "cost-per-enrollment-vs-cost-per-lead": "Cost Per Enrollment vs Cost Per Lead for Universities",
     "how-to-buy-education-leads": "How to Buy Education Leads for U.S. Universities",
-    "berkeley-college-application-tips-for-working-adults": "Berkeley College Application Tips for Working Adults",
     "online-vs-campus-nursing-programs": "Online vs Campus Nursing Programs: A U.S. Comparison Guide",
     "what-universities-should-know-about-lead-quality": "What Universities Should Know About Education Lead Quality",
     "5-fafsa-mistakes-to-avoid": "5 FAFSA Mistakes to Avoid | U.S. Student Financial Aid Guide"

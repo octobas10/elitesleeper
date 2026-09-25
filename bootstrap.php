@@ -74,6 +74,7 @@ load_env_file(SITE_ROOT . '/.env');
 require_once SITE_ROOT . '/config.php';
 require_once SITE_ROOT . '/lib/view.php';
 require_once SITE_ROOT . '/lib/content.php';
+require_once SITE_ROOT . '/lib/legal_content.php';
 require_once SITE_ROOT . '/lib/links.php';
 require_once SITE_ROOT . '/routes/pages.php';
 require_once SITE_ROOT . '/routes/api.php';

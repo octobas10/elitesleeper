@@ -33,8 +33,8 @@
 				<h4>Legal</h4>
 				<ul class="hlm-footer__links">
 					<li><a href="/privacy-policy/">Privacy Policy</a></li>
-					<li><a href="/privacy-policy/">Terms of Service</a></li>
-					<li><a href="/privacy-policy/">Compliance</a></li>
+					<li><a href="/terms-of-service/">Terms of Service</a></li>
+					<li><a href="/do-not-sell/">Do Not Sell My Info</a></li>
 				</ul>
 			</div>
 

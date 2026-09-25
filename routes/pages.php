@@ -54,6 +54,9 @@ function handle_sitemap()
         '/contact-us/',
         '/blog/',
         '/privacy-policy/',
+        '/terms-of-service/',
+        '/do-not-sell/',
+        '/removeme/',
     ];
     foreach (SERVICE_CATALOG as $slug => $_service) {
         $urls[] = '/services/' . $slug . '/';
@@ -156,6 +159,75 @@ function handle_pages(string $path): bool
             render('pages/privacy', seo_ctx('privacy-policy', '/privacy-policy/', [
                 'privacy_sections' => $GLOBALS['privacy_sections'],
             ]));
+            return true;
+
+        case '/terms-of-service':
+        case '/terms-of-service/':
+            $termsPath = SITE_ROOT . '/data/terms-of-service.txt';
+            $termsText = is_readable($termsPath) ? (string) file_get_contents($termsPath) : '';
+            render('pages/terms', seo_ctx('terms-of-service', '/terms-of-service/', [
+                'terms_text' => $termsText,
+            ]));
+            return true;
+
+        case '/do-not-sell':
+        case '/do-not-sell/':
+        case '/ccpa':
+        case '/ccpa/':
+            render('pages/do_not_sell', seo_ctx('do-not-sell', '/do-not-sell/', [
+                'ccpa_sections' => $GLOBALS['ccpa_sections'] ?? CCPA_SECTIONS,
+            ]));
+            return true;
+
+        case '/removeme':
+        case '/removeme/':
+            $sent = false;
+            $error = '';
+            if (strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
+                $name = trim((string) ($_POST['name'] ?? ''));
+                $email = trim((string) ($_POST['email'] ?? ''));
+                $phone = trim((string) ($_POST['phone'] ?? ''));
+                $zip = trim((string) ($_POST['zip'] ?? ''));
+                if ($name === '' || $email === '' || $phone === '' || $zip === '') {
+                    $error = 'Please complete all fields so we can locate your record.';
+                } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $error = 'Please enter a valid email address.';
+                } else {
+                    $storageDir = Config::get('LEAD_STORAGE_DIR');
+                    if ($storageDir === '') {
+                        $storageDir = SITE_ROOT . '/data/leads';
+                    }
+                    if (!is_dir($storageDir)) {
+                        @mkdir($storageDir, 0755, true);
+                    }
+                    $payload = [
+                        'type' => 'do_not_sell',
+                        'name' => $name,
+                        'email' => $email,
+                        'phone' => $phone,
+                        'zip' => $zip,
+                        'created_at' => gmdate('c'),
+                        'ip' => $_SERVER['REMOTE_ADDR'] ?? '',
+                    ];
+                    $file = rtrim((string) $storageDir, '/') . '/removeme-' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(4)) . '.json';
+                    file_put_contents($file, json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+                    $to = CONTACT['email'] ?? 'support@higherlearningmarketers.com';
+                    @mail(
+                        (string) $to,
+                        'Do Not Sell or Share',
+                        "Do Not Sell or Share request\n\nName: {$name}\nEmail: {$email}\nPhone: {$phone}\nZIP: {$zip}\n",
+                        'From: ' . $to
+                    );
+                    $sent = true;
+                }
+            }
+            render('pages/removeme', [
+                'page_title' => 'Do Not Sell or Share Request - Higher Learning Marketers',
+                'page_description' => 'Submit a Do Not Sell or Share my personal information request.',
+                'path' => '/removeme/',
+                'removeme_sent' => $sent,
+                'removeme_error' => $error,
+            ]);
             return true;
 
         case '/thank-you':

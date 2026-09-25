@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Cliqbux dashboard test</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #f4f5f7;
+      color: #1a1a1a;
+    }
+    header {
+      padding: 16px 20px;
+      background: #111;
+      color: #fff;
+    }
+    header p {
+      margin: 6px 0 0;
+      color: #c8c8c8;
+      font-size: 14px;
+    }
+    #status {
+      margin: 16px 20px;
+      padding: 12px 14px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+    #cliqbux-dashboard-dsh_ffcimxulwacbno6a5vjbygbugpjcmsf1nrrtopio {
+      margin: 0 20px 24px;
+      min-height: 720px;
+      background: #fff;
+      border: 1px dashed #bbb;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Cliqbux embed test</strong>
+    <p>Local page used to confirm the dashboard snippet loads.</p>
+  </header>
+  <div id="status">Waiting for embed script…</div>
+  <div id="cliqbux-dashboard-dsh_ffcimxulwacbno6a5vjbygbugpjcmsf1nrrtopio"></div>
+  <script src="https://cliqsense.vercel.app/embed/cliqbux-embed.js"></script>
+  <script>
+    (function () {
+      var status = document.getElementById("status");
+      var container = "#cliqbux-dashboard-dsh_ffcimxulwacbno6a5vjbygbugpjcmsf1nrrtopio";
+
+      function setStatus(message) {
+        status.textContent = message;
+      }
+
+      function render() {
+        if (!window.CliqbuxEmbed || typeof window.CliqbuxEmbed.renderDashboard !== "function") {
+          setStatus("Embed script loaded, but CliqbuxEmbed.renderDashboard is missing.");
+          return;
+        }
+
+        var iframe = window.CliqbuxEmbed.renderDashboard({
+          token: "dsh_ffcimxulwacbno6a5vjbygbugpjcmsf1nrrtopio",
+          container: container,
+          baseUrl: "https://cliqsense.vercel.app",
+          height: 720,
+        });
+
+        if (!iframe) {
+          setStatus("renderDashboard returned nothing. Check the token and container selector.");
+          return;
+        }
+
+        setStatus("Dashboard iframe inserted.\n" + iframe.src);
+        iframe.addEventListener("load", function () {
+          setStatus("Dashboard iframe loaded.\n" + iframe.src);
+        });
+        iframe.addEventListener("error", function () {
+          setStatus("Dashboard iframe failed to load.\n" + iframe.src);
+        });
+      }
+
+      if (window.CliqbuxEmbed) {
+        render();
+      } else {
+        var script = document.querySelector('script[src*="cliqbux-embed.js"]');
+        if (!script) {
+          setStatus("Embed script tag was not found.");
+          return;
+        }
+        script.addEventListener("load", render);
+        script.addEventListener("error", function () {
+          setStatus("Failed to load https://cliqsense.vercel.app/embed/cliqbux-embed.js");
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

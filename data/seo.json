@@ -21,8 +21,8 @@
       "description": "Get in touch with Higher Learning Marketers. Partner with us for qualified education leads or find the right program for your career goals."
     },
     "blog": {
-      "title": "Blog - Higher Education Insights | Higher Learning Marketers",
-      "description": "Insights from Higher Learning Marketers on education lead generation, student pathways, university partnerships, and enrollment marketing."
+      "title": "Blog - U.S. & Canada Enrollment Marketing & Student Guides | Higher Learning Marketers",
+      "description": "Practical guides for enrollment leaders and prospective students exploring nursing, business, information technology and various other career programs."
     },
     "privacy-policy": {
       "title": "Privacy Policy - Higher Learning Marketers",
@@ -46,11 +46,19 @@
     },
     "partner-network": {
       "title": "Education Partner Network for Student Reach - Higher Learning Marketers",
-      "description": "Education partner network with 560+ sites reaching U.S. students. Compliance-reviewed placements and consent-based lead generation."
+      "description": "Access to 500+ trusted education-focused websites and platforms that reach U.S. and Canada college bound students at every stage of their decision journey."
     },
     "enrollment-funnel": {
       "title": "Enrollment Funnel Optimization for Universities - Higher Learning Marketers",
       "description": "Enrollment funnel optimization for U.S. universities. Landing page, form, and CRO improvements that raise inquiry-to-application rates."
+    },
+    "terms-of-service": {
+      "title": "Terms of Service - Higher Learning Marketers",
+      "description": "HigherLearningMarketers.com Terms of Service. Effective as of 9/10/2026."
+    },
+    "do-not-sell": {
+      "title": "Do Not Sell or Share My Personal Information - Higher Learning Marketers",
+      "description": "Your privacy choices under CCPA/CPRA and other U.S. state privacy laws. Opt out of the sale or sharing of personal information."
     }
   },
   "faqs": {
@@ -105,7 +113,7 @@
       },
       {
         "question": "Is my information kept private?",
-        "answer": "Yes. We follow TCPA and GDPR-aligned practices. See our Privacy Policy for full details on data collection, sharing, and your rights."
+        "answer": "Yes, we follow TCPA - Telephone Consumer Protection Act policies and Can Spam Law compliances for each and every marketing inquiry of potential students interested. See our Privacy Policy for full details on data collection, sharing, and your rights here https://higherlearningmarketers.com/privacy-policy."
       },
       {
         "question": "I represent a university. How do we get started?",
@@ -231,7 +239,7 @@
     "partner-network": [
       {
         "question": "How large is the HLM education partner network?",
-        "answer": "Higher Learning Marketers distributes campaigns across 560+ education-focused websites and platforms that reach students comparing schools and exploring career pathways."
+        "answer": "Higher Learning Marketers owns and operates over 200 plus websites and it's media buyer team distributes campaigns across 500+ trusted education-focused websites and platforms that reach students comparing schools and exploring career pathways."
       },
       {
         "question": "Are partner placements compliance-reviewed?",
@@ -275,7 +283,7 @@
     "brand-awareness": "<p><strong>Education brand awareness</strong> campaigns keep your U.S. institution visible across display, social, and retargeting channels while students research degree options. Higher Learning Marketers combines creative, media, and landing experiences so your programs stay top of mind before prospects are ready to request information.</p>",
     "multi-channel-marketing": "<p><strong>Multi-channel enrollment marketing</strong> coordinates search, social, email, and partner placements for U.S. universities under one strategy. Higher Learning Marketers aligns messaging, compliance, and attribution so each touchpoint moves prospective students closer to application - not isolated campaigns with disconnected reporting.</p>",
     "analytics-reporting": "<p><strong>Enrollment marketing analytics</strong> from Higher Learning Marketers tie campaign spend to inquiry volume, source attribution, and downstream starts. U.S. enrollment leaders use our dashboards and weekly reviews to track <strong>cost per lead</strong> and <strong>cost per enrollment</strong> with transparent ROI reporting.</p>",
-    "partner-network": "<p>Our <strong>education partner network</strong> places your programs on 560+ education-focused websites where U.S. students compare schools and request information. Higher Learning Marketers combines network reach with compliance-reviewed placements and consent-based <strong>lead generation</strong> infrastructure.</p>",
+    "partner-network": "<p>Our <strong>education partner network</strong> places your programs on 500+ trusted education-focused websites where U.S. and Canada college-bound students compare schools and request information. Higher Learning Marketers combines 200+ owned and operated channels with compliance-reviewed placements and consent-based <strong>lead generation</strong> infrastructure.</p>",
     "enrollment-funnel": "<p><strong>Enrollment funnel optimization</strong> improves conversion from first click to submitted application for U.S. universities. Higher Learning Marketers audits landing pages, forms, and follow-up sequences - then runs A/B tests and CRO sprints that raise inquiry-to-application rates without always increasing media spend.</p>"
   }
 }
