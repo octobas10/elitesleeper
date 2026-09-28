@@ -74,8 +74,12 @@ load_env_file(SITE_ROOT . '/.env');
 require_once SITE_ROOT . '/config.php';
 require_once SITE_ROOT . '/lib/view.php';
 require_once SITE_ROOT . '/lib/content.php';
+require_once SITE_ROOT . '/lib/privacy_policy_data.php';
 require_once SITE_ROOT . '/lib/legal_content.php';
 require_once SITE_ROOT . '/lib/links.php';
+
+$GLOBALS['privacy_intro'] = PRIVACY_POLICY_INTRO;
+$GLOBALS['privacy_sections'] = PRIVACY_POLICY_SECTIONS;
 require_once SITE_ROOT . '/routes/pages.php';
 require_once SITE_ROOT . '/routes/api.php';
 require_once SITE_ROOT . '/routes/admin.php';

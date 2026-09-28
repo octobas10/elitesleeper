@@ -157,7 +157,8 @@ function handle_pages(string $path): bool
         case '/privacy-policy':
         case '/privacy-policy/':
             render('pages/privacy', seo_ctx('privacy-policy', '/privacy-policy/', [
-                'privacy_sections' => $GLOBALS['privacy_sections'],
+                'privacy_intro' => $GLOBALS['privacy_intro'] ?? (defined('PRIVACY_POLICY_INTRO') ? PRIVACY_POLICY_INTRO : ''),
+                'privacy_sections' => $GLOBALS['privacy_sections'] ?? [],
             ]));
             return true;
 

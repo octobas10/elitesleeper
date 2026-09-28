@@ -221,7 +221,7 @@ const GRAD_YEARS = [
     2006,
 ];
 
-const TCPA_TEXT_STUDENT = "I agree to be contacted by phone, email, and text message regarding educational opportunities. I understand consent is not required to apply.";
+const TCPA_TEXT_STUDENT = "By checking this box, I agree that Higher Learning Marketers and the school(s) I selected may contact me about educational programs by phone, text and email at the number and email I provided, including by autodialer and prerecorded messages. Consent is not required to enroll. Message and data rates may apply. See our Privacy Policy.";
 
 const SERVICE_CATALOG = [
     "lead-generation" => [

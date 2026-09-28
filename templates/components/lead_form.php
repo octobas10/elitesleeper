@@ -2,7 +2,7 @@
 <?php $institutions = $institutions ?? []; ?>
 <?php $state_options = $state_options ?? []; ?>
 <?php $grad_years = $grad_years ?? []; ?>
-<?php $tcpa_text = $tcpa_text ?? 'I agree to be contacted by phone, email, and text message regarding educational opportunities. I understand consent is not required to apply.'; ?>
+<?php $tcpa_text = $tcpa_text ?? 'By checking this box, I agree that Higher Learning Marketers and the school(s) I selected may contact me about educational programs by phone, text and email at the number and email I provided, including by autodialer and prerecorded messages. Consent is not required to enroll. Message and data rates may apply. See our Privacy Policy.'; ?>
 <?php $turnstile_site_key = $turnstile_site_key ?? ''; ?>
 <div class="hlm-lead-capture" id="<?= e((string)($form_id)) ?>" data-hlm-lead-capture>
 	<script src="https://api.trustedform.com/trustedform.js?provide_tag=true&field=trustedformcerturl" async></script>
@@ -192,7 +192,16 @@
 			<div class="hlm-form-group hlm-form-group--checkbox">
 				<input type="hidden" name="tcpa_text" value="<?= e((string)($tcpa_text)) ?>" />
 				<input type="checkbox" name="tcpa_consent" id="<?= e((string)($form_id)) ?>-tcpa-student" value="1" required />
-				<label for="<?= e((string)($form_id)) ?>-tcpa-student"><?= e((string)($tcpa_text)) ?></label>
+				<label for="<?= e((string)($form_id)) ?>-tcpa-student"><?php
+					$tcpa_label = (string) $tcpa_text;
+					if (str_contains($tcpa_label, 'Privacy Policy')) {
+						echo e(strstr($tcpa_label, 'Privacy Policy', true));
+						echo '<a href="/privacy-policy/">Privacy Policy</a>';
+						echo e(substr(strstr($tcpa_label, 'Privacy Policy'), strlen('Privacy Policy')));
+					} else {
+						echo e($tcpa_label);
+					}
+				?></label>
 			</div>
 			<?php if ($turnstile_site_key): ?>
 			<div class="hlm-turnstile-wrap">
@@ -342,6 +351,20 @@
 			<div class="hlm-form-group">
 				<label for="<?= e((string)($form_id)) ?>-uni-message">Additional details / goals</label>
 				<input type="text" id="<?= e((string)($form_id)) ?>-uni-message" name="message" placeholder="Tell us about your goals..." />
+			</div>
+			<div class="hlm-form-group hlm-form-group--checkbox">
+				<input type="hidden" name="tcpa_text" value="<?= e((string)($tcpa_text)) ?>" />
+				<input type="checkbox" name="tcpa_consent" id="<?= e((string)($form_id)) ?>-tcpa-university" value="1" required />
+				<label for="<?= e((string)($form_id)) ?>-tcpa-university"><?php
+					$tcpa_label = (string) $tcpa_text;
+					if (str_contains($tcpa_label, 'Privacy Policy')) {
+						echo e(strstr($tcpa_label, 'Privacy Policy', true));
+						echo '<a href="/privacy-policy/">Privacy Policy</a>';
+						echo e(substr(strstr($tcpa_label, 'Privacy Policy'), strlen('Privacy Policy')));
+					} else {
+						echo e($tcpa_label);
+					}
+				?></label>
 			</div>
 			<?php if ($turnstile_site_key): ?>
 			<div class="hlm-turnstile-wrap">
