@@ -1,14 +1,27 @@
+# Production rules ship inside public/.htaccess and land in out/ after the build.
+# This copy is for a document root pointed at the repo before you switch the deploy to out/.
+
 RewriteEngine On
 
-# Block direct web access to app internals (not public URL paths)
-RewriteRule ^(lib|routes|templates|data|deploy)/ - [F,L]
+RewriteRule ^data/ - [F,L]
 
-# Block only PHP source files inside /services/ (keep /services/ page public)
-RewriteRule ^services/[^/]+\.php$ - [F,L]
+<FilesMatch "^\.env">
+  Require all denied
+</FilesMatch>
 
-# Let real public files through (e.g. /static/...)
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^ - [L]
+RewriteCond %{QUERY_STRING} (?:^|&)mode=howitwork(?:&|$) [NC]
+RewriteRule ^index\.php$ /how-it-works/? [R=301,L]
 
-# Everything else → front controller (/services/, /blog/..., etc.)
-RewriteRule ^ index.php [L]
+RewriteCond %{QUERY_STRING} (?:^|&)mode=ordernow(?:&|$) [NC]
+RewriteRule ^index\.php$ /order/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} (?:^|&)mode=faq(?:&|$) [NC]
+RewriteRule ^index\.php$ /faq/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} (?:^|&)mode=contact(?:&|$) [NC]
+RewriteRule ^index\.php$ /contact/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} (?:^|&)mode=optoutlink(?:&|$) [NC]
+RewriteRule ^index\.php$ /opt-out/? [R=301,L]
+
+RewriteRule ^index\.php$ /? [R=301,L]

@@ -1,24 +1,41 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# next.js
+.next/
+out/
+build/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# env (keep the example)
 .env
-.env.local
-.env.*.local
+.env.*
 !.env.example
+
+# lead storage
 data/leads/*
 !data/leads/.gitkeep
-.venv/
-.venv-*/
-__pycache__/
-*.py[cod]
-node_modules/
-astro/
-design-ref-html/
-docs/
-_archived/
-HLM-*.xlsx
-*.zip
-*.sql.gz
-*.tar.gz
-wp-backup-*
+
+# misc
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
+*.log
+*.pem
+.vercel
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
