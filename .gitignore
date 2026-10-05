@@ -26,6 +26,11 @@ next-env.d.ts
 data/leads/*
 !data/leads/.gitkeep
 
+# Cursor
+.cursor
+.cursor/**
+.cursorrules
+
 # misc
 .DS_Store
 Thumbs.db
