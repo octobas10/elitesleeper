@@ -7,6 +7,7 @@ export type IconName =
   | "card"
   | "chat"
   | "check"
+  | "close"
   | "clock"
   | "leaf"
   | "mail"
@@ -42,6 +43,7 @@ const paths: Record<IconName, ReactNode> = {
   ),
   chat: <path d="M5 6.5h22a2 2 0 0 1 2 2v10.5a2 2 0 0 1-2 2H13.2L6.5 27v-6H5a2 2 0 0 1-2-2V8.5a2 2 0 0 1 2-2Z" />,
   check: <path d="M5.5 16.2 12.4 23.4 27 7.6l-3.1-2.9-11.5 12.4-3.8-4-3.1 3.1Z" />,
+  close: <path d="M7.2 5.1 16 13.9 24.8 5.1l2.1 2.1L18.1 16l8.8 8.8-2.1 2.1L16 18.1 7.2 26.9 5.1 24.8 13.9 16 5.1 7.2l2.1-2.1Z" />,
   clock: (
     <path
       fillRule="evenodd"

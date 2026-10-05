@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { Icon } from "./Icons";
 import { fdaLine, phoneHref, posts, site, whatsappHref } from "@/lib/site";
 
 const year = new Date().getFullYear();
@@ -10,6 +12,26 @@ export function Footer() {
   const phone = phoneHref();
   const whatsapp = whatsappHref("Hi, I want to order Elite Sleeper.");
   const hideBuy = path.startsWith("/order") || path.startsWith("/thank-you") || path.startsWith("/opt-out");
+  const askHref = path === "/" ? "#contact" : "/#contact";
+  const [showFab, setShowFab] = useState(false);
+
+  useEffect(() => {
+    if (hideBuy) {
+      setShowFab(false);
+      return;
+    }
+    const update = () => {
+      const hero = document.querySelector(".home-hero .hero-actions");
+      setShowFab(!hero || hero.getBoundingClientRect().bottom < 72);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [hideBuy, path]);
 
   return (
     <>
@@ -78,10 +100,26 @@ export function Footer() {
           </p>
         </div>
       </footer>
-      {hideBuy ? null : (
-        <div className="mobile-buy">
-          <a className="btn" href="/order/">
-            Order the bottle · {site.priceLabel}
+      {hideBuy || !showFab ? null : (
+        <div className="fab-dock" aria-label="Quick actions">
+          {phone && site.phoneLabel ? (
+            <a className="fab fab-icon" href={phone}>
+              <Icon name="phone" />
+              <span className="sr-only">Call {site.phoneLabel}</span>
+            </a>
+          ) : null}
+          {whatsapp ? (
+            <a className="fab fab-icon" href={whatsapp}>
+              <Icon name="chat" />
+              <span className="sr-only">Order on WhatsApp</span>
+            </a>
+          ) : null}
+          <a className="fab fab-ask" href={askHref}>
+            <Icon name="mail" />
+            Ask
+          </a>
+          <a className="fab fab-order" href="/order/">
+            Order · {site.priceLabel}
           </a>
         </div>
       )}

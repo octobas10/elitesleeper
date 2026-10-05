@@ -8,20 +8,3 @@ RewriteRule ^data/ - [F,L]
 <FilesMatch "^\.env">
   Require all denied
 </FilesMatch>
-
-RewriteCond %{QUERY_STRING} (?:^|&)mode=howitwork(?:&|$) [NC]
-RewriteRule ^index\.php$ /how-it-works/? [R=301,L]
-
-RewriteCond %{QUERY_STRING} (?:^|&)mode=ordernow(?:&|$) [NC]
-RewriteRule ^index\.php$ /order/? [R=301,L]
-
-RewriteCond %{QUERY_STRING} (?:^|&)mode=faq(?:&|$) [NC]
-RewriteRule ^index\.php$ /faq/? [R=301,L]
-
-RewriteCond %{QUERY_STRING} (?:^|&)mode=contact(?:&|$) [NC]
-RewriteRule ^index\.php$ /contact/? [R=301,L]
-
-RewriteCond %{QUERY_STRING} (?:^|&)mode=optoutlink(?:&|$) [NC]
-RewriteRule ^index\.php$ /opt-out/? [R=301,L]
-
-RewriteRule ^index\.php$ /? [R=301,L]

@@ -16,11 +16,11 @@ Open http://127.0.0.1:10001
 
 ## Leads
 
-`php/lead.php` writes JSON to `data/leads/` outside the web root when the built site lives in `out/`. Set `LEAD_NOTIFY_EMAIL` and `LEAD_WEBHOOK_URL` in `.env` if the desk should also get a copy.
+`php/lead.php` writes each form to `data/leads/` outside the web root. On the server that folder is `/var/www/data/leads`. Set `LEAD_NOTIFY_EMAIL` in `.env` if the desk should also get a copy by email.
 
 ## Deploy
 
-The GitHub action builds the site and rsyncs `out/` to the document root. Old `index.php?mode=` URLs 301 to the new pages.
+The GitHub action builds the site and rsyncs `out/` to the document root.
 
 ## Desk numbers
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import { Icon } from "./Icons";
 import { nav, site } from "@/lib/site";
@@ -8,8 +9,12 @@ import { nav, site } from "@/lib/site";
 export function Header() {
   const path = usePathname() || "/";
   const onHome = path === "/";
-  const menuRef = useRef<HTMLDetailsElement>(null);
+  const menuId = useId();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState("");
+  const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     if (!onHome) {
@@ -38,9 +43,105 @@ export function Header() {
     };
   }, [onHome]);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [path]);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 980) setOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("menu-open", open);
+    if (!open) return;
+
+    const panel = panelRef.current;
+    const closeBtn = panel?.querySelector<HTMLElement>("[data-menu-close]");
+    closeBtn?.focus();
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+        return;
+      }
+      if (event.key !== "Tab" || !panel) return;
+      const items = panel.querySelectorAll<HTMLElement>("a[href], button:not([disabled])");
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   function closeMenu() {
-    if (menuRef.current) menuRef.current.open = false;
+    setOpen(false);
   }
+
+  const drawer = (
+    <div className={`offcanvas${open ? " is-open" : ""}`}>
+      <button type="button" className="offcanvas-backdrop" aria-label="Close menu" tabIndex={-1} onClick={closeMenu} />
+      <nav
+        id={menuId}
+        ref={panelRef}
+        className="offcanvas-panel"
+        aria-label="Mobile"
+        aria-hidden={open ? undefined : true}
+        inert={open ? undefined : true}
+      >
+        <div className="offcanvas-head">
+          <p>Menu</p>
+          <button type="button" className="offcanvas-close" data-menu-close onClick={closeMenu}>
+            <Icon name="close" />
+            <span className="sr-only">Close menu</span>
+          </button>
+        </div>
+        <div className="offcanvas-links">
+          {nav.map((item) => (
+            <a
+              key={item.id}
+              href={onHome ? `#${item.id}` : item.href}
+              aria-current={onHome && active === item.id ? "location" : undefined}
+              onClick={() => {
+                setActive(item.id);
+                closeMenu();
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+        <a className="btn" href="/order/" onClick={closeMenu}>
+          Order · {site.priceLabel}
+        </a>
+        <p className="offcanvas-meta">
+          <a href={`mailto:${site.email}`} onClick={closeMenu}>
+            {site.email}
+          </a>
+          <span>
+            Ships from {site.city}, {site.region}
+          </span>
+        </p>
+      </nav>
+    </div>
+  );
 
   return (
     <header className="site-header">
@@ -76,32 +177,20 @@ export function Header() {
             Order · {site.priceLabel}
           </a>
         </nav>
-        <details className="mobile-nav" ref={menuRef}>
-          <summary>
-            <Icon name="menu" />
-            <span>Menu</span>
-          </summary>
-          <nav aria-label="Mobile">
-            {nav.map((item) => (
-              <a
-                key={item.id}
-                href={onHome ? `#${item.id}` : item.href}
-                aria-current={onHome && active === item.id ? "location" : undefined}
-                onClick={() => {
-                  setActive(item.id);
-                  closeMenu();
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-            <a className="btn" href="/order/" onClick={closeMenu}>
-              Order · {site.priceLabel}
-            </a>
-          </nav>
-        </details>
+        <button
+          ref={toggleRef}
+          type="button"
+          className="menu-toggle"
+          aria-expanded={open}
+          aria-controls={menuId}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <Icon name="menu" />
+          <span className="sr-only">Open menu</span>
+        </button>
       </div>
       <p className="sr-only">{site.tagline}</p>
+      {mounted ? createPortal(drawer, document.body) : null}
     </header>
   );
 }

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { FactsTable, FaqList, ProductShot } from "@/components/Blocks";
+import { FactsTable, FaqList } from "@/components/Blocks";
 import { ContactForm } from "@/components/Forms";
-import { ReviewSlider } from "@/components/ReviewSlider";
 import { Icon } from "@/components/Icons";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { faqs, fdaLine, ingredients, otherIngredients, posts, site } from "@/lib/site";
+import { faqs, fdaLine, ingredients, otherIngredients, posts, reviews, site } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "Elite Sleeper | Sleep Capsules for a Clear Morning",
@@ -44,242 +43,247 @@ const faqSchema = {
   })),
 };
 
+const tiles = [
+  {
+    href: "#ingredients",
+    kicker: "The label",
+    title: "Herbs. Quiet. Bedtime.",
+    text: "Seven ingredients on the panel, including melatonin at 2 mg.",
+    image: "/images/stock/chamomile.jpg",
+    alt: "Hands holding a warm cup of tea",
+    cta: "See the formula",
+  },
+  {
+    href: "#ritual",
+    kicker: "The ritual",
+    title: "One bedtime. Then lights out.",
+    text: "1 or 2 capsules with water. The evening is over after that.",
+    image: "/images/stock/night-bed.jpg",
+    alt: "A person sleeping under a light comforter",
+    cta: "How to take it",
+  },
+  {
+    href: "#reviews",
+    kicker: "The notes",
+    title: "What people wrote us.",
+    text: "New Jersey, Baltimore, and Staten Island. We did not write the notes.",
+    image: "/images/stock/moon.jpg",
+    alt: "A person resting with eyes closed",
+    cta: "Read the notes",
+  },
+  {
+    href: "/order/",
+    kicker: "The morning",
+    title: "A day you can use.",
+    text: "The bottle is built so the next morning stays the point.",
+    image: "/images/stock/linen.jpg",
+    alt: "A person with a mug, looking out a bright window",
+    cta: "Order the bottle",
+    action: true,
+  },
+];
+
 export default function HomePage() {
   return (
-    <main id="main">
+    <main id="main" className="home">
       <JsonLd data={productSchema} />
       <JsonLd data={faqSchema} />
 
-      <section className="hero">
-        <div className="wrap hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow">Dietary supplement · 60 capsules</p>
-            <h1>
-              Sleep the night. <em>Wake up clear.</em>
-            </h1>
-            <p>
-              Elite Sleeper is a nighttime capsule: melatonin, valerian root, GABA, and four herbs people have used
-              to wind down. One bottle is {site.priceLabel}. Take it, go to bed, and get up without the heavy morning.
-            </p>
-            <p className="price-line">
-              {site.priceLabel} <span>about $1.00 a night</span>
-            </p>
-            <div className="hero-actions">
-              <a className="btn" href="/order/">
-                Order the bottle
-              </a>
-              <a className="btn btn-ghost" href="#ingredients">
-                See the formula
-              </a>
-            </div>
-            <ul className="tick-list">
-              <li>
-                <Icon name="moon" />
-                <span>1 or 2 capsules, then lights out. Do not drive after you take it.</span>
-              </li>
-              <li>
-                <Icon name="sun" />
-                <span>2 mg of melatonin, so the morning is the point of the formula.</span>
-              </li>
-              <li>
-                <Icon name="truck" />
-                <span>Ships from Forest Hills, NY after we confirm payment by email.</span>
-              </li>
-            </ul>
-            <p className="fine">{fdaLine}</p>
+      <section className="home-hero-band" id="bottle">
+        <div className="home-hero">
+        <div className="home-hero-copy">
+          <p className="home-kicker">Dietary supplement · 60 capsules</p>
+          <h1>Morning is calling.</h1>
+          <p className="home-lede">
+            Elite Sleeper is a bedtime capsule for adults who want the night to end and the morning to stay usable.
+            Melatonin stays at 2 mg, with valerian, GABA, and four evening herbs.
+          </p>
+          <p className="home-price">
+            {site.priceLabel} <span>about $1 a night</span>
+          </p>
+          <div className="hero-actions">
+            <a className="btn home-btn-light" href="/order/">
+              Order the bottle
+            </a>
           </div>
-          <ProductShot />
+          <p className="home-trust">
+            The form does not charge your card. We confirm by email, then ship from {site.city}, {site.region}.
+          </p>
+          <p className="home-fine">{fdaLine}</p>
+        </div>
+        <div className="home-hero-visual">
+          <img
+            src="/images/bottle-clear.png"
+            alt="Elite Sleeper bottle, dietary supplement, 60 capsules"
+            width={505}
+            height={971}
+          />
+        </div>
         </div>
       </section>
 
-      <section className="proof" aria-label="Bottle at a glance">
-        <div className="wrap proof-row">
+      <section className="home-statement">
+        <div className="wrap home-statement-grid">
           <div>
-            <strong>60</strong>
-            <span>capsules in the bottle</span>
-          </div>
-          <div>
-            <strong>30</strong>
-            <span>nights at 2 capsules</span>
-          </div>
-          <div>
-            <strong>$1</strong>
-            <span>about a night</span>
-          </div>
-          <div>
-            <strong>2 mg</strong>
-            <span>melatonin per serving</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="band band-paper" id="bottle">
-        <div className="wrap media-split">
-          <figure className="media-frame">
-            <img src="/images/stock/night-bed.jpg" alt="A person sleeping under a light comforter" />
-          </figure>
-          <div>
-            <p className="eyebrow">The bottle</p>
-            <h2>A straightforward capsule at bedtime</h2>
+            <h2>
+              Kept at 2 mg,
+              <br />
+              so the morning is the point.
+            </h2>
             <p>
-              Prescription sleep drugs are one path. They can also leave people foggy the next day, which is why a
-              lot of adults look for something simpler. Elite Sleeper is not a treatment for a sleep disorder. It is
-              a dietary supplement for adults who want one capsule when the night should end.
-            </p>
-            <p>
-              The <a href="#reviews">notes</a> on this page are from customers who wrote us.
+              Elite Sleeper is not a treatment for a sleep disorder. It is a dietary supplement with a modest melatonin
+              dose, for adults who still want the next day.
             </p>
             <a className="btn" href="/order/">
               Order 60 capsules
             </a>
           </div>
-        </div>
-      </section>
-
-      <section className="band">
-        <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">Why this bottle</p>
-            <h2>Built for the night, and for the morning after</h2>
-          </div>
-          <div className="card-grid">
-            <article className="card">
-              <Icon name="capsule" />
-              <h3>One formula, seven ingredients</h3>
-              <p>Valerian, GABA, melatonin, L-tryptophan, chamomile, passion flower, and lemon balm.</p>
-            </article>
-            <article className="card">
-              <Icon name="sun" />
-              <h3>A morning you can use</h3>
-              <p>Melatonin stays at 2 mg in the 2-capsule serving. The bottle is meant to leave the next day clear.</p>
-            </article>
-            <article className="card">
-              <Icon name="bed" />
-              <h3>Then the evening is over</h3>
-              <p>Take 1 or 2 capsules and go to bed. Do not drive, and do not stay up to finish one more task.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="band" id="how">
-        <div className="wrap media-split media-split-reverse">
-          <div>
-            <p className="eyebrow">Directions</p>
-            <h2>How to take it</h2>
-            <p>Adults only. Swallow 1 or 2 capsules with water, then the evening is over.</p>
-            <ol className="steps steps-list">
-              <li className="step">
-                <p className="step-no">1</p>
-                <h3>Set the bottle by the bed</h3>
-                <p>If you take medicine, ask your clinician before the first night.</p>
-              </li>
-              <li className="step">
-                <p className="step-no">2</p>
-                <h3>Take 1 or 2 capsules</h3>
-                <p>The label serving is 2. Start with 1 if you want to see how the morning feels.</p>
-              </li>
-              <li className="step">
-                <p className="step-no">3</p>
-                <h3>Stop for the night</h3>
-                <p>Do not drive or keep working. The capsule is for sleep, not for one more task.</p>
-              </li>
-            </ol>
-            <p className="warn">
-              Adults 18 and older. If you are pregnant, nursing, or taking medicine, talk to your clinician first. Do
-              not mix it with alcohol or with another sleep product. It is a dietary supplement, not a treatment for
-              insomnia, sleep apnea, or any other condition.
-            </p>
-          </div>
-          <figure className="media-frame">
-            <img src="/images/stock/morning-bed.jpg" alt="A person stretching after waking up" />
+          <figure className="home-orb">
+            <img src="/images/stock/linen.jpg" alt="A person with a mug in morning light" />
           </figure>
         </div>
       </section>
 
-      <section className="band band-paper" id="ingredients">
+      <section className="home-mosaic-wrap" id="how">
         <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">Product details</p>
-            <h2>What is in the bottle</h2>
-            <p>
-              The supplement facts panel is the label: seven ingredients for a 2-capsule serving, plus{" "}
-              {otherIngredients.join(" and ").toLowerCase()}. The capsule is not vegetarian. A longer walk-through is
-              in <a href="/blog/what-is-in-the-bottle/">what&apos;s in the bottle</a>.
-            </p>
+          <div className="home-head">
+            <p className="home-kicker">The night</p>
+            <h2>How the evening should end</h2>
           </div>
-          <div className="ingredient-grid">
-            {ingredients.map((item) => (
-              <article className="card" key={item.name}>
-                <p className="eyebrow">{item.amount}</p>
-                <h3>{item.name}</h3>
-                <p>{item.note}</p>
-              </article>
+          <div className="home-mosaic">
+            {tiles.map((tile) => (
+              <a className={`home-tile${tile.action ? " home-tile-action" : ""}`} href={tile.href} key={tile.title}>
+                <div className="home-tile-copy">
+                  <p>{tile.kicker}</p>
+                  <h3>{tile.title}</h3>
+                  <span>{tile.text}</span>
+                  <strong>{tile.cta}</strong>
+                </div>
+                <img src={tile.image} alt={tile.alt} />
+              </a>
             ))}
           </div>
-          <p className="fine section-gap">
-            Other ingredients: {otherIngredients.join(", ").toLowerCase()}. The shell is gelatin, so this is not a
-            vegetarian or vegan capsule. If you take 1 capsule, you get half of each amount on the label.
+          <ol className="home-steps" id="ritual">
+            <li>
+              <span>1</span>
+              <div>
+                <h3>Set the bottle by the bed</h3>
+                <p>Adults only. If you take medicine, ask your clinician before the first night.</p>
+              </div>
+            </li>
+            <li>
+              <span>2</span>
+              <div>
+                <h3>Take 1 or 2 capsules</h3>
+                <p>The label serving is 2. Start with 1 if you want to see how the morning feels.</p>
+              </div>
+            </li>
+            <li>
+              <span>3</span>
+              <div>
+                <h3>Stop for the night</h3>
+                <p>Do not drive or keep working. The capsule is for sleep, not for one more task.</p>
+              </div>
+            </li>
+          </ol>
+          <p className="home-warn">
+            Adults 18 and older. If you are pregnant, nursing, or taking medicine, talk to your clinician first. Do not
+            mix it with alcohol or with another sleep product. It is a dietary supplement, not a treatment for
+            insomnia, sleep apnea, or any other condition.
           </p>
-          <div className="split split-top">
-            <FactsTable />
-            <div className="panel buy-note">
-              <p className="eyebrow">60 capsules · 30 servings</p>
-              <p className="offer-price">{site.priceLabel}</p>
-              <p>About $1.00 a night at the 2-capsule serving. The form does not charge your card.</p>
-              <a className="btn btn-wide" href="/order/">
-                Order the bottle
-              </a>
-            </div>
+        </div>
+      </section>
+
+      <section className="home-reviews" id="reviews">
+        <div className="wrap">
+          <div className="home-head">
+            <p className="home-kicker">Customers</p>
+            <h2>What people wrote us</h2>
+            <p>Notes from New Jersey, Baltimore, and Staten Island. We did not write them, and we do not turn them into a star score.</p>
+          </div>
+          <div className="home-quotes">
+            {reviews.map((review) => (
+              <figure className="home-quote" key={review.name}>
+                <blockquote>
+                  <p>{review.quote}</p>
+                </blockquote>
+                <figcaption>
+                  <strong>{review.name}</strong>
+                  <span>{review.detail}</span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="band" id="reviews">
-        <div className="wrap">
-          <div className="review-layout">
-            <div className="section-head">
-              <p className="eyebrow">Customers</p>
-              <h2>What people wrote us</h2>
+      <section className="home-formula" id="ingredients">
+        <div className="wrap home-formula-grid">
+          <div>
+            <div className="home-head">
+              <p className="home-kicker">The label</p>
+              <h2>What is in the bottle</h2>
               <p>
-                Notes from New Jersey, Baltimore, and Staten Island. We did not write them, and we do not turn them
-                into a star score.
+                Seven ingredients in a 2-capsule serving, plus {otherIngredients.join(" and ").toLowerCase()}. The
+                capsule is not vegetarian. A longer walk-through is in{" "}
+                <a href="/blog/what-is-in-the-bottle/">what&apos;s in the bottle</a>.
               </p>
             </div>
-            <ReviewSlider />
+            <ul className="home-ings">
+              {ingredients.map((item) => (
+                <li key={item.name} className={item.name === "Melatonin" ? "is-lead" : undefined}>
+                  <div>
+                    <strong>{item.name}</strong>
+                    {item.name === "Melatonin" ? <em>Kept low</em> : null}
+                    <p>{item.note}</p>
+                  </div>
+                  <span>{item.amount}</span>
+                </li>
+              ))}
+            </ul>
           </div>
+          <aside className="home-formula-side">
+            <div className="home-buy">
+              <p className="home-kicker">60 capsules · 30 servings</p>
+              <p className="home-buy-price">{site.priceLabel}</p>
+              <p>About $1.00 a night at the 2-capsule serving. The form does not charge your card.</p>
+              <a className="btn home-btn-light" href="/order/">
+                Order the bottle
+              </a>
+              <p className="home-fine">One capsule is half of each amount on the label.</p>
+            </div>
+            <FactsTable />
+          </aside>
         </div>
       </section>
 
-      <section className="band band-paper" id="blog">
+      <section className="home-journal" id="blog">
         <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">From the desk</p>
-            <h2>Read this before you order</h2>
-            <p>Three notes. Each one opens on its own page if you want the longer version.</p>
+          <div className="home-head">
+            <p className="home-kicker">Before you order</p>
+            <h2>Three notes worth the read</h2>
           </div>
-          <div className="post-grid">
+          <div className="home-posts">
             {posts.map((post) => (
-              <a className="post-card" href={`/blog/${post.slug}/`} key={post.slug}>
+              <a className="home-post" href={`/blog/${post.slug}/`} key={post.slug}>
                 <img src={post.image} alt={post.imageAlt} />
-                <h3>{post.title}</h3>
-                <p>{post.description}</p>
-                <span>Read the note</span>
+                <div>
+                  <p>{post.label}</p>
+                  <h3>{post.title}</h3>
+                  <span>Read the note</span>
+                </div>
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="band" id="faq">
-        <div className="wrap split">
+      <section className="home-faq" id="faq">
+        <div className="wrap home-faq-grid">
           <div>
-            <p className="eyebrow">Questions</p>
+            <p className="home-kicker">Questions</p>
             <h2>Before you send the form</h2>
-            <p>
-              Shipping, the morning, and who should skip the bottle. A question that is not here goes to the{" "}
-              <a href="#contact">desk</a>.
-            </p>
+            <p>Shipping, the morning, and who should skip the bottle.</p>
             <a className="btn" href="/order/">
               Order 60 capsules
             </a>
@@ -288,62 +292,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="band band-paper" id="contact">
+      <section className="home-desk" id="contact">
         <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">Desk</p>
-            <h2>Contact us</h2>
-            <p>Questions about an order, the formula, or a bottle that arrived wrong. We read every note.</p>
+          <div className="home-head">
+            <p className="home-kicker">Desk</p>
+            <h2>A question before the order</h2>
+            <p>Write us about a bottle, the formula, or an order that arrived wrong. We read every note.</p>
           </div>
-          <div className="layout-2">
+          <div className="home-desk-grid">
             <ContactForm returnTo="/" />
-            <aside className="stack">
-              <div className="panel stack">
-                <p className="icon-line">
-                  <Icon name="mail" />
-                  <a href={`mailto:${site.email}`}>{site.email}</a>
-                </p>
-                <p className="icon-line">
-                  <Icon name="pin" />
-                  <span>
-                    {site.street}
-                    <br />
-                    {site.city}, {site.region} {site.postal}
-                    <br />
-                    {site.country}
-                  </span>
-                </p>
-                <p>
-                  To leave the list, use <a href="/opt-out/">opt out</a>.
-                </p>
-              </div>
-              <div className="panel buy-card">
-                <p className="eyebrow">Already know the dose?</p>
-                <p className="offer-price">{site.priceLabel}</p>
-                <p>The order form is faster than a question. Nothing is charged when you send it.</p>
-                <a className="btn btn-wide" href="/order/">
-                  Order the bottle
-                </a>
-              </div>
+            <aside className="home-desk-side">
+              <p className="icon-line">
+                <Icon name="mail" />
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </p>
+              <p className="icon-line">
+                <Icon name="pin" />
+                <span>
+                  {site.street}
+                  <br />
+                  {site.city}, {site.region} {site.postal}
+                  <br />
+                  {site.country}
+                </span>
+              </p>
+              <p>
+                To leave the list, use <a href="/opt-out/">opt out</a>.
+              </p>
             </aside>
           </div>
         </div>
       </section>
 
-      <section className="cta-band">
-        <div className="wrap cta-inner">
-          <div>
-            <h2>One bottle. {site.priceLabel}. A clear morning.</h2>
-            <p>
-              Send the order form. We email you to confirm the count, shipping, and payment, then ship from{" "}
-              {site.city}, {site.region}. Nothing is charged when you send the form.
-            </p>
-          </div>
-          <div className="cta-actions">
-            <a className="btn" href="/order/">
+      <section className="home-close">
+        <div className="wrap">
+          <p className="home-word">Elite Sleeper</p>
+          <div className="hero-actions">
+            <a className="btn home-btn-light" href="/order/">
               Order the bottle
             </a>
-            <a className="btn btn-ghost" href="#contact">
+            <a className="btn home-btn-ghost" href="#contact">
               Ask a question
             </a>
           </div>
