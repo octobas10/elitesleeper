@@ -18,7 +18,7 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "Elite Sleeper",
-  image: `${site.url}/images/bottle.png`,
+  image: `${site.url}/images/product-promo.jpg`,
   description:
     "Dietary supplement. 60 capsules with melatonin, valerian root extract, GABA, L-tryptophan, chamomile, passion flower, and lemon balm.",
   brand: { "@type": "Brand", name: site.name },
@@ -76,8 +76,8 @@ const tiles = [
     kicker: "The morning",
     title: "A day you can use.",
     text: "The bottle is built so the next morning stays the point.",
-    image: "/images/stock/linen.jpg",
-    alt: "A person with a mug, looking out a bright window",
+    image: "/images/product-promo.jpg",
+    alt: "Elite Sleeper, 60 capsules, $29.95",
     cta: "Order the bottle",
     action: true,
   },
@@ -91,34 +91,34 @@ export default function HomePage() {
 
       <section className="home-hero-band" id="bottle">
         <div className="home-hero">
-        <div className="home-hero-copy">
-          <p className="home-kicker">Dietary supplement · 60 capsules</p>
-          <h1>Morning is calling.</h1>
-          <p className="home-lede">
-            Elite Sleeper is a bedtime capsule for adults who want the night to end and the morning to stay usable.
-            Melatonin stays at 2 mg, with valerian, GABA, and four evening herbs.
-          </p>
-          <p className="home-price">
-            {site.priceLabel} <span>about $1 a night</span>
-          </p>
-          <div className="hero-actions">
-            <a className="btn home-btn-light" href="/order/">
-              Order the bottle
-            </a>
+          <div className="home-hero-copy">
+            <p className="home-kicker">Dietary supplement · 60 capsules</p>
+            <h1>Morning is calling.</h1>
+            <p className="home-lede">
+              Elite Sleeper is a bedtime capsule for adults who want the night to end and the morning to stay usable.
+              Melatonin stays at 2 mg, with valerian, GABA, and four evening herbs.
+            </p>
+            <p className="home-price">
+              {site.priceLabel} <span>about $1 a night</span>
+            </p>
+            <div className="hero-actions">
+              <a className="btn home-btn-light" href="/order/">
+                Order the bottle
+              </a>
+            </div>
+            <p className="home-trust">
+              Pay on secure checkout. We ship from {site.city}, {site.region} after payment clears.
+            </p>
+            <p className="home-fine">{fdaLine}</p>
           </div>
-          <p className="home-trust">
-            The form does not charge your card. We confirm by email, then ship from {site.city}, {site.region}.
-          </p>
-          <p className="home-fine">{fdaLine}</p>
-        </div>
-        <div className="home-hero-visual">
-          <img
-            src="/images/bottle-clear.png"
-            alt="Elite Sleeper bottle, dietary supplement, 60 capsules"
-            width={505}
-            height={971}
-          />
-        </div>
+          <div className="home-hero-visual">
+            <img
+              src="/images/hero-panel.jpg"
+              alt="Elite Sleeper bottle with valerian, GABA, melatonin, chamomile, passion flower, lemon balm, and L-tryptophan"
+              width={1024}
+              height={1024}
+            />
+          </div>
         </div>
       </section>
 
@@ -233,8 +233,18 @@ export default function HomePage() {
               {ingredients.map((item) => (
                 <li key={item.name} className={item.name === "Melatonin" ? "is-lead" : undefined}>
                   <div>
-                    <strong>{item.name}</strong>
+                    <strong>
+                      <a href={item.href}>{item.name}</a>
+                    </strong>
                     {item.name === "Melatonin" ? <em>Kept low</em> : null}
+                    <a
+                      className="ing-source"
+                      href={item.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.sourceLabel}
+                    </a>
                     <p>{item.note}</p>
                   </div>
                   <span>{item.amount}</span>
@@ -246,7 +256,7 @@ export default function HomePage() {
             <div className="home-buy">
               <p className="home-kicker">60 capsules · 30 servings</p>
               <p className="home-buy-price">{site.priceLabel}</p>
-              <p>About $1.00 a night at the 2-capsule serving. The form does not charge your card.</p>
+              <p>About $1.00 a night at the 2-capsule serving. Pay securely on secure checkout.</p>
               <a className="btn home-btn-light" href="/order/">
                 Order the bottle
               </a>
@@ -297,7 +307,10 @@ export default function HomePage() {
           <div className="home-head">
             <p className="home-kicker">Desk</p>
             <h2>A question before the order</h2>
-            <p>Write us about a bottle, the formula, or an order that arrived wrong. We read every note.</p>
+            <p>
+              Write us about a bottle, the formula, or an order that arrived wrong. Refunds and monthly cancel are on
+              this site too.
+            </p>
           </div>
           <div className="home-desk-grid">
             <ContactForm returnTo="/" />
@@ -314,6 +327,14 @@ export default function HomePage() {
                   {site.city}, {site.region} {site.postal}
                   <br />
                   {site.country}
+                </span>
+              </p>
+              <p className="icon-line">
+                <Icon name="card" />
+                <span>
+                  <a href="/refund-policy/">Refund a payment</a>
+                  {" · "}
+                  <a href="/cancel-plan/">Cancel monthly</a>
                 </span>
               </p>
               <p>

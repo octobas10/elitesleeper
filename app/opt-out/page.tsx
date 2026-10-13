@@ -33,8 +33,8 @@ export default function OptOutPage() {
           <div className="panel">
           <h2>What this does not do</h2>
           <p>
-            It does not cancel a bottle that is already paid and with the carrier. Email{" "}
-            <a href={`mailto:${site.email}`}>{site.email}</a> with the order name if you need that stopped.
+            It does not cancel a bottle that is already paid and with the carrier. Stop monthly billing on{" "}
+            <a href="/cancel-plan/">cancel monthly</a>, or email <a href={`mailto:${site.email}`}>{site.email}</a>.
           </p>
           <p>It also does not delete a shipping record we have to keep for a past order. It stops new mail.</p>
           </div>

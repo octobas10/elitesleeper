@@ -4,13 +4,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/postbuild.mjs",
-    "preview": "php -S 127.0.0.1:10001 -t out deploy/router.php"
+    "start": "next start -p ${PORT:-3000}",
+    "preview": "npm run build && npm run start"
   },
   "dependencies": {
     "next": "^15.5.4",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "server-only": "^0.0.1",
+    "stripe": "^23.0.0"
   },
   "devDependencies": {
     "@types/node": "^24.5.2",

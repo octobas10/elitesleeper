@@ -1,0 +1,425 @@
+body {
+	background-color: #233444;
+	margin: 0px;
+	padding: 0px;
+}
+h1 {
+	font-family: arial;
+	font-size: 22px;
+	font-weight: normal;
+	color: #f8f8f8;
+	text-decoration: none;
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+.top-left-text {
+	font-family: arial;
+	font-size: 16px;
+	line-height: 18px;
+	font-weight: normal;
+	color: #f8f8f8;
+	text-decoration: none;
+	text-align: left;
+	padding-top: 20px;
+}
+.top-left-text-sync {
+
+	font-family: arial;
+	font-size: 17px;
+	line-height: normal;
+	font-weight: normal;
+	color: #f8f8f8;
+	text-decoration: none;
+	text-align: left;
+	padding-top: 24px;
+}
+.facebook-text {
+	font-family: arial;
+	font-size: 16px;
+	font-weight: bold;
+	color: #e6e6e6;
+	text-decoration: none;
+	text-align: left;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.facebook-down-text {
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #939393;
+	text-decoration: none;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	line-height: normal;
+	padding-left: 6px;
+}
+.piano-subtext {
+	font-family: arial;
+	font-size: 12px;
+	line-height: 18px;
+	color: #e6e6e6;
+	text-decoration: none;
+	text-align: left;
+	padding-top: 40px;
+	padding-left: 10px;
+}
+.get-look-text {
+
+	font-family: arial;
+	font-size: 12px;
+	line-height: 18px;
+	color: #e6e6e6;
+	text-decoration: none;
+	text-align: left;
+	padding-top: 40px;
+	padding-left: 10px;
+}
+.more-text {
+	font-family: arial;
+	font-size: 11px;
+	line-height: normal;
+	color: #727272;
+	text-decoration: none;
+	text-align: right;
+	padding-right: 38px;
+}
+.era-bg {
+	background-image: url(../images/new-era-bg.gif);
+	background-repeat: no-repeat;
+	height: 98px;
+	width: 171px;
+	padding-top: 5px;
+}
+
+.era-subheading {
+	font-family: arial;
+	font-size: 9px;
+	color: #e6e6e6;
+	text-decoration: none;
+	text-align: left;
+	line-height: 11px;
+	padding-left: 7px;
+}
+.footer-text {
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: #5d5d5d;
+	text-decoration: none;
+	text-align: left;
+	padding-left: 15px;
+}
+.header-who-ryan-bg {
+	background-image: url(../images/who-justin-ryan-header-bg.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	background-color: #F3F3F3;
+}
+h2 {
+	font-family: "Century Gothic";
+	font-size: 17px;
+	color: #000000;
+	text-decoration: none;
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 7px;
+}
+.personal-text {
+	font-family: arial;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+	text-align: left;
+	line-height: 23px;
+	float: left;
+	width: 432px;
+}
+.personal-text-new {
+	font-family: arial;
+	font-size: 13px;
+	color: #000000;
+	text-decoration: none;
+	text-align: left;
+	line-height: 23px;
+	float: right;
+	width: 243px;
+	padding-top: 25px;
+	font-weight: bold;
+}
+h3 {
+
+	font-family: "Century Gothic";
+	font-size: 16px;
+	color: #000000;
+	text-decoration: none;
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer-text {
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: #5d5d5d;
+	text-decoration: none;
+	text-align: left;
+	padding-left: 40px;
+}
+.footer-text a {
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: #5d5d5d;
+	text-decoration: none;
+	text-align: left;
+}
+.footer-text a:hover {
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: #5d5d5d;
+	text-decoration: underline;
+	text-align: left;
+}
+
+
+
+
+.top_left_orange_txt {
+	color:#f18126;
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size:24px;
+	font-weight:bold;
+	}
+	
+h2 {
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	padding:4px 0 0 10px;
+	margin:0px;
+	color: #f8f8f8;
+	text-decoration: none;
+	text-align: left;
+}
+h3 {
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #f8f8f8;
+	text-decoration: none;
+	text-align: left;
+	margin:0px;
+	padding:0 0 0 10px;
+}
+.small_white_txt{
+	color: #f8f8f8;
+	text-decoration: none;
+	text-align: left;
+	padding-top: 20px;
+}
+.center_long_image {
+	background:url(../images/center_long_img.jpg) no-repeat;
+	/*widows:1241px;*/
+	height:71px;
+	}
+.center_long_txt {
+		font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size:20px;
+	color:#e7e7e7;
+	padding-left:7px;
+	font-weight:bold;
+	}
+
+
+
+
+/*login*/
+
+.email_txt {
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	color:#e7e7e7;
+	font-weight:bold;
+	line-height:26px;
+	}
+.input_box {
+	background:url(../images/input_bg.gif) no-repeat;
+	width:345px;
+	height:32px;
+	}
+.input1 {
+	width:330px;
+	height:20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#fff;
+	margin:2px 0 0 5px;
+	background-color: transparent;
+	border:0;
+	}
+.forget_txt{
+	font-family:"Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#e7e7e7;
+	font-weight:bold;
+	padding-left:100px;
+	}
+.register_input_box {
+	background:url(../images/login_register_textbox.gif) no-repeat;
+	width:298px;
+	height:22px;
+	}
+.dixclamer{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	color:#5c5c5c;
+	}
+	.login_right_txt{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#cecdcd;
+	}
+ul#login{
+	margin:0px;
+	padding:0px;
+	}
+ul#login li {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#a5a5a5;
+	line-height:18px;
+	list-style-position:outside;
+	}
+.register_input{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#FFFFFF;
+	width:296px;
+	background:none;
+	border:none 0px; }
+	
+.contact-subheading {
+	font-family: arial;
+	font-size: 20px;
+	line-height: normal;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align: left;
+	padding-top: 20px;
+}
+.contact-subheading1 {
+
+	font-family: arial;
+	font-size: 15px;
+	line-height: normal;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align: left;
+}
+h4 {
+	font-family: "Century Gothic", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 7px;
+}
+h5 {
+
+	font-family: "Century Gothic";
+	font-size: 17px;
+	color: #000000;
+	text-decoration: none;
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.hover-bg {
+	background-image: url(../images/top-bg-new.gif);
+	background-repeat: no-repeat;
+	height: 72px;
+	width: 1245px;
+	background-position: center;
+}
+.hover-bg-justin {
+	background-image: url(../images/top-bg-new1.gif);
+	background-repeat: no-repeat;
+	height: 72px;
+	width: 1245px;
+	background-position: center;
+}
+.pianooutkast-page-top-bg {
+	background-image: url(../images/pianooutkast-page-top-bg.jpg);
+	background-repeat: no-repeat;
+	background-position: top;
+	height: 10px;
+	width: 1245px;
+}
+.border-bg {
+	background-image: url(../images/border-bg.jpg);
+	background-repeat: repeat;
+	height: 1px;
+	width: 1px;
+}
+.tell-me-text-bg {
+	background-image: url(../images/a-universe.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.main-table-bg {
+	background-image: url(../images/main-table-bg.jpg);
+	background-repeat: repeat-y;
+	padding-bottom: 15px;
+}
+.universe-bg {
+	background-image: url(../images/a-universe.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+h6 {
+	font-family: arial;
+	font-size: 24px;
+	color: #FFFFFF;
+	font-weight: normal;
+	text-decoration: none;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+
+
+.login_sec {width:400px; padding:40px; box-sizing:border-box; border:1px solid #30485e;     font-family: Verdana, Arial, Helvetica, sans-serif;}
+.login-back{
+	
+	width:990px;
+	height:477px;
+}
+
+.login-back input[type="text"], .login-back input[type="password"] {padding:10px; border:none; background:#faffbd; border-radius:17px; width:100%; box-sizing:border-box;}
+.login-back input[type="submit"] {padding:10px; box-sizing:border-box; background:#fff; color:#333; border:none; width:100%; border-radius:17px; cursor:pointer; font-weight:bold;}
+.login-back input[type="submit"]:hover {background:#e0e0e0;}

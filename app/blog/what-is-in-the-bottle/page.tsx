@@ -83,8 +83,8 @@ export default function BottleArticlePage() {
       </p>
       <p>
         At 2 capsules a night, 60 capsules cover 30 nights, about $1.00 a night. At 1 capsule a night, the same bottle
-        covers about 60 nights. Shipping is confirmed by email before you pay. The{" "}
-        <a href="/order/">order form</a> is a request, not a card charge.
+        covers about 60 nights. Pay on secure checkout from the <a href="/order/">order form</a>. Card details never
+        touch this site.
       </p>
 
       <h2 id="melatonin">Melatonin, 2 mg per serving</h2>
@@ -131,6 +131,7 @@ export default function BottleArticlePage() {
       </p>
 
       <h2 id="gaba-tryptophan">GABA, 100 mg, and L-tryptophan, 100 mg</h2>
+      <h3 id="gaba">GABA, 100 mg</h3>
       <p>
         Gamma-aminobutyric acid, written GABA on most labels, is a compound the nervous system already uses when
         activity quiets down. The serving includes 100 mg. L-tryptophan is an amino acid the body uses when it makes
@@ -145,6 +146,7 @@ export default function BottleArticlePage() {
         as the GABA your brain already makes, and public evidence on that oral dose is limited. We still list 100 mg
         because that is what is in the capsule, and you should see the number rather than a vague word like "blend."
       </p>
+      <h3 id="tryptophan">L-tryptophan, 100 mg</h3>
       <p>
         L-tryptophan is an amino acid you also get from food. A 100 mg capsule amount is a measured add-on, not a
         meal. People taking antidepressants or other drugs that affect serotonin should not add tryptophan on a whim.
@@ -164,7 +166,7 @@ export default function BottleArticlePage() {
         the dose is the milligram line, not "a cup." The <a href="/#ingredients">ingredient list</a> uses the same
         figures.
       </p>
-      <h3>Chamomile extract, 150 mg</h3>
+      <h3 id="chamomile">Chamomile extract, 150 mg</h3>
       <p>
         Chamomile is the flower in the tea most people already know. The{" "}
         <OutLink href="https://www.nccih.nih.gov/health/chamomile">National Center for Complementary and Integrative
@@ -172,7 +174,7 @@ export default function BottleArticlePage() {
         ragweed, chrysanthemums, or related plants, chamomile can be a problem. Skip the bottle and write us if that
         is you. A sleep capsule is not worth a reaction.
       </p>
-      <h3>Passion flower extract, 150 mg</h3>
+      <h3 id="passion-flower">Passion flower extract, 150 mg</h3>
       <p>
         Passion flower is a vine traditionally used on nights when the mind is still running. The{" "}
         <OutLink href="https://www.nccih.nih.gov/health/passionflower">NCCIH passionflower page</OutLink> is the short
@@ -180,7 +182,7 @@ export default function BottleArticlePage() {
         the plant is, and for the caution about combining it with sedatives. Our amount is 150 mg of extract per
         2-capsule serving.
       </p>
-      <h3>Lemon balm extract, 100 mg</h3>
+      <h3 id="lemon-balm">Lemon balm extract, 100 mg</h3>
       <p>
         Lemon balm is a mint-family herb. NCCIH does not give it a standalone fact sheet the way it does for chamomile
         and passion flower. Their <OutLink href="https://www.nccih.nih.gov/health/herbsataglance">Herbs at a Glance

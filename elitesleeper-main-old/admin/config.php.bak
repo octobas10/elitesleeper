@@ -1,0 +1,7 @@
+<?php
+	define("WWW_ROOT","http://www.eliterev.com/");    //Please dont remove last slashe            // change here eliterev site url according to  your site path 
+	define("ADMIN_ROOT","http://www.eliterev.com/admin/");		// change  here eliterev admin url according to  your site path  
+	define("ADMIN_EMAIL","support@eliterev.com");				// admin email address.	
+	define("PAYPAL_EMAIL","vicd@rcn.com");	
+	define("AFFILIATE_ROOT","http://www.elitecashmachine.com");	// change here elitecashmachine url according to  your site path 
+?>

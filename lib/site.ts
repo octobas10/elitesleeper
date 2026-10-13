@@ -38,36 +38,57 @@ export const ingredients = [
     name: "Valerian root extract",
     amount: "150 mg",
     note: "An herb people have used for a long time when they want the evening to settle.",
+    href: "/blog/what-is-in-the-bottle/#valerian",
+    source: "https://www.nccih.nih.gov/health/valerian",
+    sourceLabel: "NCCIH",
   },
   {
     name: "Gamma-aminobutyric acid (GABA)",
     amount: "100 mg",
     note: "A compound the nervous system already uses when it is time to quiet down.",
+    href: "/blog/what-is-in-the-bottle/#gaba",
+    source: "https://medlineplus.gov/ency/article/002397.htm",
+    sourceLabel: "MedlinePlus",
   },
   {
     name: "Melatonin",
     amount: "2 mg",
     note: "The evening hormone, at a modest 2 mg. We kept the dose low on purpose.",
+    href: "/blog/what-is-in-the-bottle/#melatonin",
+    source: "https://ods.od.nih.gov/factsheets/Melatonin-Consumer/",
+    sourceLabel: "NIH",
   },
   {
     name: "L-tryptophan",
     amount: "100 mg",
     note: "An amino acid the body uses when it makes serotonin and melatonin.",
+    href: "/blog/what-is-in-the-bottle/#tryptophan",
+    source: "https://medlineplus.gov/ency/article/002332.htm",
+    sourceLabel: "MedlinePlus",
   },
   {
     name: "Chamomile extract",
     amount: "150 mg",
     note: "The same flower people have poured as an evening tea.",
+    href: "/blog/what-is-in-the-bottle/#chamomile",
+    source: "https://www.nccih.nih.gov/health/chamomile",
+    sourceLabel: "NCCIH",
   },
   {
     name: "Passion flower extract",
     amount: "150 mg",
     note: "A vine traditionally used on nights when the mind is still running.",
+    href: "/blog/what-is-in-the-bottle/#passion-flower",
+    source: "https://www.nccih.nih.gov/health/passionflower",
+    sourceLabel: "NCCIH",
   },
   {
     name: "Lemon balm extract",
     amount: "100 mg",
     note: "A mint-family herb used in evening cups for generations.",
+    href: "/blog/what-is-in-the-bottle/#lemon-balm",
+    source: "https://medlineplus.gov/druginfo/natural/437.html",
+    sourceLabel: "MedlinePlus",
   },
 ];
 
@@ -112,12 +133,17 @@ export const faqs = [
   {
     question: "How much does it cost?",
     answer:
-      "One bottle is $29.95. At the 2-capsule serving, the bottle covers 30 nights, about $1.00 a night. Shipping is confirmed by email before you pay.",
+      "One bottle is $29.95. At the 2-capsule serving, the bottle covers 30 nights, about $1.00 a night. Shipping is confirmed on the secure receipt and by email after payment.",
   },
   {
     question: "How does ordering work?",
     answer:
-      "Send the order form with your shipping address. We email you to confirm the bottle count, shipping, and payment. We accept Visa, Mastercard, American Express, and Discover. The bottle ships from Forest Hills, NY after payment clears. Nothing is charged when you send the form.",
+      "Send the order form with your shipping address, then finish payment. We accept Visa, Mastercard, American Express, and Discover. The bottle ships from Forest Hills, NY after payment confirms.",
+  },
+  {
+    question: "How do I get a refund or stop monthly billing?",
+    answer:
+      "Use the email and payment ID on the thank-you page. Refunds go through the refunds page. Monthly plans stop on the cancel monthly page. Canceling does not refund a bottle already paid.",
   },
   {
     question: "Can you reply on the phone or WhatsApp?",

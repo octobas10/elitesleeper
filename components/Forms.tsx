@@ -36,11 +36,19 @@ const errors: Record<string, string> = {
   zip: "Use a 5-digit ZIP code.",
   rate: "Too many notes from this network. Wait a few minutes, or email the desk.",
   save: "We could not store that note. Email support@elitesleeper.com and we will take it from there.",
+  payment: "We could not start secure checkout. Try again, or email support@elitesleeper.com.",
+  payment_failed: "Payment did not go through. Use a new Pay attempt from this form.",
+  declined: "The processor declined that payment. Try another number, or email support@elitesleeper.com.",
+  nmi_error: "The processor could not finish that. Try again, or email support@elitesleeper.com.",
+  cancelled: "Checkout was cancelled. Your card was not charged. You can try again below.",
+  none_found: "We could not match that email and payment ID. Check the thank-you page ID, or email the desk.",
+  not_monthly: "That order is not a monthly plan, so there is nothing to cancel.",
+  already: "That request was already finished.",
 };
 
 export function OrderForm() {
   return (
-    <form className="form" method="post" action="/lead.php" acceptCharset="UTF-8">
+    <form className="form" method="post" action="/api/checkout/" acceptCharset="UTF-8">
       <input type="hidden" name="form_type" value="order" />
       <Honeypot />
       <QueryNote messages={errors} />
@@ -50,14 +58,17 @@ export function OrderForm() {
           <input type="radio" name="plan" value="once" defaultChecked />
           <span>
             <strong>One-time order</strong>
-            <small>{site.priceLabel} per bottle. We confirm before any charge.</small>
+            <small>{site.priceLabel} per bottle. Pay securely.</small>
           </span>
         </label>
         <label className="plan">
           <input type="radio" name="plan" value="monthly" />
           <span>
             <strong>A bottle each month</strong>
-            <small>Same price. We email before each refill. Stop whenever you want.</small>
+            <small>
+              Same price billed today and each month until you stop it on the{" "}
+              <a href="/cancel-plan/">cancel monthly</a> page.
+            </small>
           </span>
         </label>
       </fieldset>
@@ -119,11 +130,11 @@ export function OrderForm() {
         <span>Text me about this order. Message and data rates may apply. Reply STOP to opt out.</span>
       </label>
       <button className="btn btn-wide" type="submit">
-        Request my bottle
+        Pay
       </button>
       <p className="fine">
-        Sending the form does not charge your card. We email you to confirm bottles, shipping, and payment. By
-        sending it you agree to the <a href="/terms/">terms</a> and <a href="/privacy/">privacy policy</a>.
+        Next you finish payment. Details go to the processor. Visa, Mastercard, American Express, and Discover. By
+        continuing you agree to the <a href="/terms/">terms</a> and <a href="/privacy/">privacy policy</a>.
       </p>
     </form>
   );
@@ -131,7 +142,7 @@ export function OrderForm() {
 
 export function ContactForm({ returnTo }: { returnTo?: string }) {
   return (
-    <form className="form" method="post" action="/lead.php" acceptCharset="UTF-8">
+    <form className="form" method="post" action="/api/leads/" acceptCharset="UTF-8">
       <input type="hidden" name="form_type" value="contact" />
       {returnTo ? <input type="hidden" name="return_to" value={returnTo} /> : null}
       <Honeypot />
@@ -171,7 +182,7 @@ export function ContactForm({ returnTo }: { returnTo?: string }) {
 
 export function SidebarContactForm({ returnTo }: { returnTo: string }) {
   return (
-    <form className="form" method="post" action="/lead.php" acceptCharset="UTF-8">
+    <form className="form" method="post" action="/api/leads/" acceptCharset="UTF-8">
       <input type="hidden" name="form_type" value="contact" />
       <input type="hidden" name="return_to" value={returnTo} />
       <Honeypot />
@@ -205,9 +216,110 @@ export function SidebarContactForm({ returnTo }: { returnTo: string }) {
   );
 }
 
+function billingLink(path: string, reference: string) {
+  if (!reference) return path;
+  return `${path}?session_id=${encodeURIComponent(reference)}`;
+}
+
+function PaymentReferenceField({ defaultValue = "" }: { defaultValue?: string }) {
+  const [value, setValue] = useState(defaultValue);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.get("session_id") || params.get("reference") || "";
+    if (fromUrl) setValue(fromUrl);
+  }, []);
+
+  return (
+    <label>
+      Payment ID
+      <input
+        name="reference"
+        required
+        maxLength={80}
+        placeholder="From the thank-you page"
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+        autoComplete="off"
+      />
+      <small className="field-hint">The number on your confirmation page after you paid.</small>
+    </label>
+  );
+}
+
+export function CancelPlanForm({
+  reference = "",
+  email = "",
+}: {
+  reference?: string;
+  email?: string;
+}) {
+  return (
+    <form className="form" method="post" action="/api/billing/" acceptCharset="UTF-8">
+      <input type="hidden" name="intent" value="cancel" />
+      <Honeypot />
+      <QueryNote messages={errors} />
+      <label>
+        Order email
+        <input
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          maxLength={120}
+          defaultValue={email}
+        />
+      </label>
+      <PaymentReferenceField defaultValue={reference} />
+      <button className="btn btn-wide" type="submit">
+        Stop monthly billing
+      </button>
+      <p className="fine">
+        This stops future monthly charges. A bottle already paid still ships. To get the last charge back, use the{" "}
+        <a href={billingLink("/refund-policy/", reference)}>refund form</a>.
+      </p>
+    </form>
+  );
+}
+
+export function RefundForm({
+  reference = "",
+  email = "",
+}: {
+  reference?: string;
+  email?: string;
+}) {
+  return (
+    <form className="form" method="post" action="/api/billing/" acceptCharset="UTF-8">
+      <input type="hidden" name="intent" value="refund" />
+      <Honeypot />
+      <QueryNote messages={errors} />
+      <label>
+        Order email
+        <input
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          maxLength={120}
+          defaultValue={email}
+        />
+      </label>
+      <PaymentReferenceField defaultValue={reference} />
+      <button className="btn btn-wide" type="submit">
+        Refund this payment
+      </button>
+      <p className="fine">
+        This returns the last charge. It does not stop a monthly plan. To stop future bottles, use{" "}
+        <a href={billingLink("/cancel-plan/", reference)}>cancel monthly</a>.
+      </p>
+    </form>
+  );
+}
+
 export function OptOutForm() {
   return (
-    <form className="form" method="post" action="/lead.php" acceptCharset="UTF-8">
+    <form className="form" method="post" action="/api/leads/" acceptCharset="UTF-8">
       <input type="hidden" name="form_type" value="optout" />
       <Honeypot />
       <QueryNote messages={errors} />

@@ -198,8 +198,8 @@ export default function NightRoutinePage() {
       <p>
         A sleep capsule works best on a night you were already willing to end. Set the bedtime, dim the last hour,
         take 1 or 2 Elite Sleeper capsules, and stop. One bottle is {site.priceLabel} for 60 capsules, about $1.00 a
-        night at the 2-capsule serving. The order form does not charge your card. We email you to confirm the count,
-        the shipping cost, and payment, then ship from Forest Hills, NY.
+        night at the 2-capsule serving. The order form sends you to secure checkout to pay. Card details never touch
+        this site. We ship from Forest Hills, NY after payment clears.
       </p>
       <p>
         <a className="btn" href="/order/">

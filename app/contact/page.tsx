@@ -66,6 +66,14 @@ export default function ContactPage() {
                 <a href={whatsapp}>WhatsApp the desk</a>
               </p>
             ) : null}
+            <p className="icon-line">
+              <Icon name="card" />
+              <span>
+                <a href="/refund-policy/">Refund a payment</a>
+                {" · "}
+                <a href="/cancel-plan/">Cancel monthly</a>
+              </span>
+            </p>
             <p>
               To leave the list, use <a href="/opt-out/">opt out</a>.
             </p>

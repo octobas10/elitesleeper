@@ -25,10 +25,10 @@ export function buildMetadata(opts: {
       locale: "en_US",
       images: [
         {
-          url: "/images/bottle.png",
-          width: 300,
-          height: 497,
-          alt: "White Elite Sleeper bottle, dietary supplement, 60 capsules",
+          url: "/images/product-promo.jpg",
+          width: 1024,
+          height: 1024,
+          alt: "Elite Sleeper, 60 capsules. A calmer nighttime routine.",
         },
       ],
     },
@@ -36,7 +36,7 @@ export function buildMetadata(opts: {
       card: "summary_large_image",
       title: opts.title,
       description: opts.description,
-      images: ["/images/bottle.png"],
+      images: ["/images/product-promo.jpg"],
     },
   };
 }

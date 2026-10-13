@@ -1,0 +1,36 @@
+<?php
+class Header	
+{
+	function show_header1()
+	{
+	?>
+	<!--Header Start from here-->
+      <div id="header">
+        <div class="logo"> <img src="images/logo.jpg" /> </div>
+        <div class="menu-top">
+          <ul>
+            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="index.php?mode=howitwork">How it Works</a></li>
+            <li><a href="index.php?mode=ordernow">Order Now</a></li>
+            <li><a href="index.php?mode=faq">FAQs</a></li>
+            <li><a href="index.php?mode=contact">Contact Us</a></li>
+            <li class="last"><a href="index.php?mode=optoutlink">Opt Out </a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="banner-top"> <img src="images/banner.jpg" /> 
+	 
+	  </div>   <a style="float:right;  postion:releative;" href="?mode=ordernow"><img src="images/animation_button.gif" alt="" width="128" height="46" border="0" /></a>
+	  
+      <!--Header End here-->
+	<?php
+	}
+	function show_header2()
+	{
+	?>
+	
+	
+	<?php
+	}
+}
+?>

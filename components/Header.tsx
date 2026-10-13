@@ -155,12 +155,8 @@ export function Header() {
       </div>
       <div className="wrap header-row">
         <a className="brand" href="/">
-          <img
-            src="/images/logo.png"
-            alt="Elite Sleeper. We Simplify Sleeping."
-            width={343}
-            height={131}
-          />
+          <span className="brand-name">{site.name}</span>
+          <span className="brand-tag">{site.tagline}</span>
         </a>
         <nav className="desk-nav" aria-label="Primary">
           {nav.map((item) => (

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageIntro, ProductShot } from "@/components/Blocks";
+import { PageIntro, PromoShot } from "@/components/Blocks";
 import { Icon } from "@/components/Icons";
 import { OrderForm } from "@/components/Forms";
 import { JsonLd } from "@/components/JsonLd";
@@ -9,7 +9,7 @@ import { phoneHref, site, whatsappHref } from "@/lib/site";
 export const metadata: Metadata = buildMetadata({
   title: "Order Elite Sleeper",
   description:
-    "Order Elite Sleeper for $29.95 a bottle. 60 capsules. We email you to confirm shipping and payment. Visa, Mastercard, American Express, and Discover.",
+    "Order Elite Sleeper for $29.95 a bottle. 60 capsules. Pay securely with secure checkout. Visa, Mastercard, American Express, and Discover.",
   path: "/order/",
 });
 
@@ -17,7 +17,7 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "Elite Sleeper",
-  image: `${site.url}/images/bottle.png`,
+  image: `${site.url}/images/product-promo.jpg`,
   brand: { "@type": "Brand", name: site.name },
   offers: {
     "@type": "Offer",
@@ -38,33 +38,31 @@ export default function OrderPage() {
       <div className="wrap">
         <PageIntro
           eyebrow="Order desk"
-          title="Request your bottle"
-          lede="One bottle is $29.95 for 60 capsules. The form does not charge your card. We email you to confirm the count, the shipping cost, and payment."
+          title="Order your bottle"
+          lede="One bottle is $29.95 for 60 capsules. Fill in shipping details, then pay on the processor’s checkout page."
           crumb="Order"
         />
         <div className="layout-2">
           <OrderForm />
           <aside className="stack">
-            <div className="offer">
-              <ProductShot size="card" />
-              <p className="offer-kicker">60 capsules</p>
-              <p className="offer-price">{site.priceLabel}</p>
+            <div className="offer offer-promo">
+              <PromoShot />
               <p>About $1.00 a night at 2 capsules.</p>
               <ul>
                 <li>Comprehensive sleep formula</li>
                 <li>2 mg melatonin in the full serving</li>
-                <li>Ships after we confirm payment</li>
+                <li>Ships after payment confirms</li>
               </ul>
             </div>
             <div className="panel">
               <h2>What happens next</h2>
               <p className="icon-line">
-                <Icon name="mail" />
-                <span>We reply by email on business days. If you picked phone or WhatsApp, we use your number.</span>
+                <Icon name="card" />
+                <span>Pay on secure checkout. Visa, Mastercard, American Express, and Discover.</span>
               </p>
               <p className="icon-line">
-                <Icon name="card" />
-                <span>Pay when we confirm. Visa, Mastercard, American Express, and Discover.</span>
+                <Icon name="mail" />
+                <span>We email a receipt and shipping update. Phone or WhatsApp if you asked for that reply.</span>
               </p>
               <p className="icon-line">
                 <Icon name="truck" />

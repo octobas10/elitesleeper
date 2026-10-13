@@ -50,6 +50,20 @@ export function Photo({
   );
 }
 
+export const heroBanner = {
+  src: "/images/hero-banner.jpg",
+  width: 1024,
+  height: 576,
+  alt: "Elite Sleeper, 60 capsules, $29.95. A calmer nighttime routine with valerian, chamomile, passion flower, lemon balm, GABA, melatonin, and L-tryptophan.",
+};
+
+export const productPromo = {
+  src: "/images/product-promo.jpg",
+  width: 1024,
+  height: 1024,
+  alt: "Elite Sleeper dietary supplement, 60 capsules. Bottle with valerian, chamomile, passion flower, lemon balm, GABA, melatonin, and L-tryptophan.",
+};
+
 export function ProductShot({ size = "hero" }: { size?: "hero" | "card" | "side" }) {
   return (
     <div className={`product-shot product-shot-${size}`}>
@@ -61,6 +75,20 @@ export function ProductShot({ size = "hero" }: { size?: "hero" | "card" | "side"
       />
     </div>
   );
+}
+
+export function PromoShot({ linked = false }: { linked?: boolean }) {
+  const image = (
+    <img src={productPromo.src} alt={productPromo.alt} width={productPromo.width} height={productPromo.height} />
+  );
+  if (linked) {
+    return (
+      <a className="promo-shot" href="/order/">
+        {image}
+      </a>
+    );
+  }
+  return <div className="promo-shot">{image}</div>;
 }
 
 export function PageIntro({

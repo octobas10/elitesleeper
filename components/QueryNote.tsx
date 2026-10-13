@@ -15,7 +15,8 @@ export function QueryNote({ messages }: { messages: Record<string, string> }) {
     const sent = params.get("sent");
     if (error && map[error]) {
       setTone("bad");
-      setText(map[error]);
+      const why = params.get("why")?.trim();
+      setText(why ? `${map[error]} (${why})` : map[error]);
       return;
     }
     if (sent && map[sent]) {

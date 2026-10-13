@@ -1,0 +1,15 @@
+<?php
+class Footer
+{
+	function footer()
+	{
+
+?>
+  <!--Footer Start from Here-->
+      <div id="footer_wrapper">Elite Sleeper - We Simplify Sleeping<br />
+        Copyright 2012. EliteSleeper.com. All rights reserved. </div>
+      <!--Footer End Here-->
+<?php }
+}	
+
+?>
