@@ -1,0 +1,87 @@
+# Build Next.js and reload the Node app on the VPS (PM2).
+#
+# Secrets: SSH_HOST, SSH_USER, SSH_PRIVATE_KEY, DEPLOY_PATH
+# Optional: SSH_PORT
+#
+# On the server (one-time):
+#   cd $DEPLOY_PATH && npm ci && npm run build
+#   pm2 start deploy/ecosystem.config.cjs
+#   pm2 save
+# Point nginx at 127.0.0.1:3000 (see deploy/nginx-next.conf.example).
+# Stripe webhook: https://elitesleeper.com/api/webhooks/stripe/
+
+name: Deploy site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ssh-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Rsync app to VPS
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          if [ -z "${DEPLOY_PATH:-}" ]; then
+            echo "ERROR: DEPLOY_PATH secret is not set."
+            exit 1
+          fi
+          RSYNC_SSH="ssh -i ~/.ssh/deploy_key -p ${SSH_PORT} -o StrictHostKeyChecking=accept-new"
+          rsync -avz --delete \
+            --exclude '.env' \
+            --exclude '.env.*' \
+            --exclude 'data/' \
+            --exclude 'node_modules/' \
+            --exclude '.next/' \
+            --exclude 'out/' \
+            --exclude '.git/' \
+            --exclude 'elitesleeper-main-old/' \
+            -e "$RSYNC_SSH" \
+            ./ \
+            "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/"
+
+      - name: Install, build, and reload PM2
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          RSYNC_SSH="ssh -i ~/.ssh/deploy_key -p ${SSH_PORT} -o StrictHostKeyChecking=accept-new"
+          $RSYNC_SSH "${SSH_USER}@${SSH_HOST}" "bash -s" <<EOF
+          set -euo pipefail
+          cd "${DEPLOY_PATH}"
+          npm ci
+          npm run build
+          if pm2 describe elitesleeper >/dev/null 2>&1; then
+            pm2 reload elitesleeper --update-env
+          else
+            pm2 start deploy/ecosystem.config.cjs
+          fi
+          pm2 save
+          echo "Deploy complete"
+          EOF
